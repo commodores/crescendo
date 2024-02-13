@@ -22,7 +22,8 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.generated.TunerConstants;
-import frc.subsystems.Intake;
+import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.Intake;
 
 public class RobotContainer {
 
@@ -32,12 +33,8 @@ public class RobotContainer {
   private double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
 
   /* Setting up bindings for necessary control of the swerve drive platform */
-  private final CommandXboxController joystick = new CommandXboxController(0); // My joystick
-  private final Joystick driver2 = new Joystick(1);
-
-   /* Intake buttons */
-  private final JoystickButton intakeIn = new JoystickButton(driver2, XboxController.Button.kA.value);
-  private final JoystickButton intakeOut = new JoystickButton(driver2, XboxController.Button.kB.value);
+  private final CommandXboxController joystick = new CommandXboxController(0); // Driver
+  private final CommandXboxController joystick2 = new CommandXboxController(0); // Secondary
 
 
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -68,8 +65,8 @@ public class RobotContainer {
     joystick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
 
     /* Intake Commands */
-    intakeIn.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(0.5)));
-    intakeOut.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(-0.5)));
+    joystick2.a().whileTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(0.5)));
+    joystick2.b().whileTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(-0.5)));
     
     
 
