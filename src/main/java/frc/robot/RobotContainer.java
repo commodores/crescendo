@@ -24,6 +24,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.TrampElevator;
+import frc.robot.subsystems.Trampinator;
 
 public class RobotContainer {
 
@@ -34,12 +36,14 @@ public class RobotContainer {
 
   /* Setting up bindings for necessary control of the swerve drive platform */
   private final CommandXboxController joystick = new CommandXboxController(0); // Driver
-  private final CommandXboxController joystick2 = new CommandXboxController(0); // Secondary
+  private final CommandXboxController joystick2 = new CommandXboxController(1); // Secondary
 
 
   public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
 
   public static final Intake m_Intake = new Intake();
+  public static final Trampinator m_Trampinator = new Trampinator();
+  // public static final TrampElevator m_TrampElevator = new TrampElevator();
 
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
@@ -50,7 +54,7 @@ public class RobotContainer {
   private final Telemetry logger = new Telemetry(MaxSpeed);
 
   private void configureBindings() {
-    drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
+     drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
         drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with
                                                                                            // negative Y (forward)
             .withVelocityY(-joystick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
@@ -65,15 +69,27 @@ public class RobotContainer {
     joystick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
 
     /* Intake Commands */
-    joystick2.a().whileTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(0.5)));
-    joystick2.b().whileTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(-0.5)));
+    joystick2.a().onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(0.5)));
+    joystick2.b().onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(-0.5)));
+
+    joystick2.a().onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(0)));
+    joystick2.b().onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(0)));
+
+
+    /*Trampinator Commands */
+    joystick2.x().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(1)));
+    joystick2.y().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(-1)));
+
+    joystick2.x().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
+    joystick2.y().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
+    
     
     
 
     if (Utils.isSimulation()) {
       drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(90)));
     }
-    drivetrain.registerTelemetry(logger::telemeterize);
+    drivetrain.registerTelemetry(logger::telemeterize); 
   }
 
   public RobotContainer() {

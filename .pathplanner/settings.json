@@ -3,10 +3,14 @@
   "robotLength": 0.9,
   "holonomicMode": true,
   "pathFolders": [
-    "FourPieceW",
-    "FourPiece"
+    "FourSW1",
+    "FourSW2",
+    "ThreeUM1",
+    "ThreeUM2"
   ],
-  "autoFolders": [],
+  "autoFolders": [
+    "BadAuto"
+  ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 540.0,

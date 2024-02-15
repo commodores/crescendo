@@ -24,12 +24,12 @@ public class Intake extends SubsystemBase {
   /** Creates a new Intake. */
   public Intake() {
 
-    intakeLeftMotor = new CANSparkMax(Constants.IntakeConstants.intakeRight, MotorType.kBrushless);
+    intakeLeftMotor = new CANSparkMax(Constants.IntakeConstants.intakeLeft, MotorType.kBrushless);
     intakeLeftMotor.restoreFactoryDefaults();
     intakeLeftMotor.setSmartCurrentLimit(30);
     intakeLeftMotor.setIdleMode(IdleMode.kBrake);
 
-    intakeRightMotor = new CANSparkMax(Constants.IntakeConstants.intakLeft, MotorType.kBrushless);
+    intakeRightMotor = new CANSparkMax(Constants.IntakeConstants.intakeRight, MotorType.kBrushless);
     intakeRightMotor.restoreFactoryDefaults();
     intakeRightMotor.setSmartCurrentLimit(30);
     intakeRightMotor.setIdleMode(IdleMode.kBrake);
@@ -40,15 +40,15 @@ public class Intake extends SubsystemBase {
     intakeChooserMotor.setSmartCurrentLimit(30);
     intakeChooserMotor.setIdleMode(IdleMode.kBrake);
 
-    trampSensor = new TimeOfFlight(21);
+    trampSensor = new TimeOfFlight(12);
     trampSensor.setRangingMode(RangingMode.Short, 40);
-    shootSensor = new TimeOfFlight(22);
+    shootSensor = new TimeOfFlight(13);
     shootSensor.setRangingMode(RangingMode.Short, 40);
   }
 
   public void runIntakeSpeed(double speed){
     intakeLeftMotor.set(speed);
-    intakeChooserMotor.set(speed);  
+    intakeChooserMotor.set(-speed);  
   }
 
   public void runChooserSpeed(double speed){

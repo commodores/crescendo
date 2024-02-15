@@ -208,11 +208,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -121.60750224567714,
+    "rotation": -179.58780725851227,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "FourPieceW",
+  "folder": "FourSW2",
   "previewStartingState": {
     "rotation": -178.02340490544617,
     "velocity": 0
