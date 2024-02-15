@@ -9,8 +9,6 @@ import frc.robot.Constants;
 
 import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkMax;
-import com.playingwithfusion.TimeOfFlight;
-import com.playingwithfusion.TimeOfFlight.RangingMode;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
@@ -40,9 +38,6 @@ public class Climber extends SubsystemBase {
    public void windUp(double speed){
     captainHookMotor.set(speed); 
   }
-
-
-
 
   @Override
   public void periodic() {

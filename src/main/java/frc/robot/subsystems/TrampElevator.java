@@ -10,7 +10,6 @@ import com.revrobotics.SparkPIDController;
 
 import edu.wpi.first.math.controller.ElevatorFeedforward;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
-import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
@@ -37,15 +36,13 @@ public class TrampElevator extends TrapezoidProfileSubsystem {
   public TrampElevator() {
     super(
         // The constraints for the generated profiles
-        new TrapezoidProfile.Constraints(0, 0),
-        // The initial position of the mechanism
-        Math.PI);
+        new TrapezoidProfile.Constraints(0, 0));
 
     shoulderMotor = new CANSparkMax(Constants.TrampinatorConstants.elevator, MotorType.kBrushless);
     
     shoulderMotor.restoreFactoryDefaults();
     shoulderMotor.setInverted(false);
-    shoulderMotor.setSmartCurrentLimit(1);
+    shoulderMotor.setSmartCurrentLimit(35);
     shoulderMotor.setIdleMode(IdleMode.kBrake);
 
     m_PIDController = shoulderMotor.getPIDController();
@@ -55,7 +52,7 @@ public class TrampElevator extends TrapezoidProfileSubsystem {
     m_PIDController.setFF(Constants.TrampinatorConstants.KFF);
 
     m_relative_encoder = shoulderMotor.getEncoder();
-    m_relative_encoder.setPositionConversionFactor((2 * Math.PI) / Constants.TrampinatorConstants.kGearRatio); //Converted to Radians
+    m_relative_encoder.setPositionConversionFactor(Constants.TrampinatorConstants.kMeterPerRevolution); 
 
     m_PIDController.setFeedbackDevice(m_relative_encoder);
     
@@ -64,14 +61,9 @@ public class TrampElevator extends TrapezoidProfileSubsystem {
 
   @Override
   public void periodic() {
-    double relativeEncoderValue = m_relative_encoder.getPosition();
-    //syncEncoder();
-    
     // Display current values on the SmartDashboard
-    //SmartDashboard.putNumber("arm Output", shoulderMotor.getAppliedOutput());
-    SmartDashboard.putNumber("Shoulder Relative Encoder Degrees", Units.radiansToDegrees(relativeEncoderValue));
-    SmartDashboard.putNumber("Shoulder Relative Encoder Radians", relativeEncoderValue);
-    SmartDashboard.putNumber("Shoulder WAWA", getEncoder());
+    
+    SmartDashboard.putNumber("Elevator Raw", getEncoder());
 
     // Execute the super class periodic method
     super.periodic();
@@ -86,15 +78,12 @@ public class TrampElevator extends TrapezoidProfileSubsystem {
     // The ArmFeedForward computes in radians. We need to convert back to degrees.
     // Remember that the encoder was already set to account for the gear ratios.
     
-    m_PIDController.setReference(setPoint.position, CANSparkMax.ControlType.kPosition, 0);
+    m_PIDController.setReference(setPoint.position, CANSparkMax.ControlType.kPosition, 0, feedforward);
     
-    //SmartDashboard.putNumber("Shoulder Feedforward", feedforward);
-    //SmartDashboard.putNumber("Shoulder SetPoint", Units.metersToInches(setPoint.position));
-    //SmartDashboard.putNumber("Shoulder Velocity", Units.metersToInches(setPoint.velocity));
   }
 
-  public Command setArmGoalCommand(double kArmOffsetRads) {
-    return Commands.runOnce(() -> setGoal(kArmOffsetRads), this);
+  public Command setElevatorGoalCommand(double goal) {
+    return Commands.runOnce(() -> setGoal(goal), this);
   }
 
   public double getEncoder(){
