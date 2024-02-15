@@ -19,8 +19,8 @@ public class Trampinator extends SubsystemBase {
 
      shooterMotor = new CANSparkFlex(Constants.TrampinatorConstants.shooter, MotorType.kBrushless);
      shooterMotor.restoreFactoryDefaults();
-     shooterMotor.setSmartCurrentLimit(60);
-     shooterMotor.setIdleMode(IdleMode.kCoast);
+     shooterMotor.setSmartCurrentLimit(100);
+     shooterMotor.setIdleMode(IdleMode.kBrake);
   }
 
 

@@ -36,12 +36,12 @@ public class TrampElevator extends TrapezoidProfileSubsystem {
   public TrampElevator() {
     super(
         // The constraints for the generated profiles
-        new TrapezoidProfile.Constraints(0, 0));
+        new TrapezoidProfile.Constraints(2.54, 2.54));
 
     shoulderMotor = new CANSparkMax(Constants.TrampinatorConstants.elevator, MotorType.kBrushless);
     
     shoulderMotor.restoreFactoryDefaults();
-    shoulderMotor.setInverted(false);
+    shoulderMotor.setInverted(true);
     shoulderMotor.setSmartCurrentLimit(35);
     shoulderMotor.setIdleMode(IdleMode.kBrake);
 
@@ -52,6 +52,7 @@ public class TrampElevator extends TrapezoidProfileSubsystem {
     m_PIDController.setFF(Constants.TrampinatorConstants.KFF);
 
     m_relative_encoder = shoulderMotor.getEncoder();
+   //m_relative_encoder.setInverted(true);
     m_relative_encoder.setPositionConversionFactor(Constants.TrampinatorConstants.kMeterPerRevolution); 
 
     m_PIDController.setFeedbackDevice(m_relative_encoder);
@@ -78,7 +79,7 @@ public class TrampElevator extends TrapezoidProfileSubsystem {
     // The ArmFeedForward computes in radians. We need to convert back to degrees.
     // Remember that the encoder was already set to account for the gear ratios.
     
-    m_PIDController.setReference(setPoint.position, CANSparkMax.ControlType.kPosition, 0, feedforward);
+    m_PIDController.setReference(setPoint.position, CANSparkMax.ControlType.kPosition, 0);
     
   }
 

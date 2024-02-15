@@ -17,9 +17,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.commands.ShooterIntake;
+import frc.robot.commands.StopAll;
+import frc.robot.commands.TrampIntake;
 import frc.robot.generated.TunerConstants;
+import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.TrampElevator;
 import frc.robot.subsystems.Trampinator;
 
@@ -40,6 +45,8 @@ public class RobotContainer {
   public static final Intake m_Intake = new Intake();
   public static final Trampinator m_Trampinator = new Trampinator();
   public static final TrampElevator m_TrampElevator = new TrampElevator();
+  public static final Shooter m_Shooter = new Shooter();
+  public static final Climber m_Climber = new Climber();
 
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
@@ -62,15 +69,12 @@ public class RobotContainer {
         .applyRequest(() -> point.withModuleDirection(new Rotation2d(-joystick.getLeftY(), -joystick.getLeftX()))));
 
     // reset the field-centric heading on left bumper press
-    joystick.leftBumper().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
+    joystick.start().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
 
     /* Intake Commands */
-    joystick2.a().onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(0.5)));
-    joystick2.b().onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(-0.5)));
-
-    joystick2.a().onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(0)));
-    joystick2.b().onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(0)));
-
+    joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).withTimeout(5));
+    joystick2.b().onTrue(new TrampIntake(m_Intake, m_Trampinator).withTimeout(5));
+    joystick2.b().onFalse(new StopAll(m_Intake, m_Trampinator).withTimeout(5));
 
     /*Trampinator Commands */
     joystick2.x().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(1)));
@@ -78,9 +82,27 @@ public class RobotContainer {
 
     joystick2.x().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
     joystick2.y().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
+
+    /*Tramp Elevator Commands */
+    joystick2.rightBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.375));
+    joystick2.leftBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.0));
+
+    /*Shooter Commands */
+    joystick.x().whileTrue(new InstantCommand(() ->m_Shooter.shoot(6000)));
+    joystick.x().onFalse(new InstantCommand(() ->m_Shooter.stopShooter()));
+  
+    /*Climber Commands */
+    joystick.rightBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(0.5)));
+    joystick.rightBumper().onFalse(new InstantCommand(() -> m_Climber.windUp(0)));
     
-    
-    
+    joystick.leftBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(-0.5)));
+    joystick.leftBumper().onFalse(new InstantCommand(() -> m_Climber.windUp(0)));
+
+    joystick2.povDown().whileTrue(new InstantCommand(() -> m_Climber.climbUp(-0.5)));
+    joystick2.povDown().onFalse(new InstantCommand(() -> m_Climber.climbUp(0)));
+
+    joystick2.povUp().whileTrue(new InstantCommand(() -> m_Climber.climbUp(0.5)));
+    joystick2.povUp().onFalse(new InstantCommand(() -> m_Climber.climbUp(0)));
 
     if (Utils.isSimulation()) {
       drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(90)));

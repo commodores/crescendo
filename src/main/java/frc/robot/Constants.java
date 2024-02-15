@@ -16,14 +16,16 @@ public class Constants {
         public static final int shooterRight = 5;
         public static final int shooterAngle = 6;
         public static final int shooterFeeder = 7;
+
+        public static final double kGearRatio = 5.0 * 10.0;
  
  
              // PID coefficients for Shooter
-         public static final double KP = 0.0000; 
+         public static final double KP = 0.0000065; 
          public static final double KI = 0.00000;
          public static final double KD = 0; 
          public static final double KIz = 0; 
-         public static final double KFF = 0.0003; 
+         public static final double KFF = 0.000177; 
          public static final double KMaxOutput = 1; 
          public static final double KMinOutput = -1;
          public static final double MaxRPM = 5700;
@@ -38,26 +40,22 @@ public class Constants {
         public static final int shooter = 9;
   
         public static final double kGearRatio = 5.0;
-        public static final double kMeterPerRevolution = Units.inchesToMeters((1.64*Math.PI)/kGearRatio);
+        public static final double kMeterPerRevolution = Units.inchesToMeters((1.888*Math.PI)/kGearRatio);
   
           // PID coefficients for AMP/Trap
-        public static final double KP = 1.0; 
+        public static final double KP = 3.0; 
         public static final double KI = 0.000000;
         public static final double KD = 0.0000; 
         public static final double KIz = 0.0; 
-        public static final double KFF = 0.0004;
+        public static final double KFF = 0.3;
         public static final double MaxOutput = 1.0; 
         public static final double KMinOutput = -1.0;
         public static final double MaxRPM = 5700;
 
-        public static final double kSVolts = 0.14;
-        public static final double kGVolts = 0.02;
+        public static final double kSVolts = 0.3;
+        public static final double kGVolts = 0.04;
         public static final double kVVoltSecondPerRad = 4.65;
         public static final double kAVoltSecondSquaredPerRad = 0.04;
-
-        public static final double kMaxVelocityRadPerSecond = .5;
-        public static final double kMaxAccelerationRadPerSecSquared = 1.0;
-    
 
        }
 

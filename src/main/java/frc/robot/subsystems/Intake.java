@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -40,15 +41,14 @@ public class Intake extends SubsystemBase {
     intakeChooserMotor.setSmartCurrentLimit(30);
     intakeChooserMotor.setIdleMode(IdleMode.kBrake);
 
-    trampSensor = new TimeOfFlight(12);
+    trampSensor = new TimeOfFlight(0);
     trampSensor.setRangingMode(RangingMode.Short, 40);
-    shootSensor = new TimeOfFlight(13);
+    shootSensor = new TimeOfFlight(1);
     shootSensor.setRangingMode(RangingMode.Short, 40);
   }
 
   public void runIntakeSpeed(double speed){
-    intakeLeftMotor.set(speed);
-    intakeChooserMotor.set(-speed);  
+    intakeLeftMotor.set(speed);  
   }
 
   public void runChooserSpeed(double speed){
@@ -66,6 +66,8 @@ public class Intake extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Tramp", getTrampDistance());
+    SmartDashboard.putNumber("Shooter", getShooterDistance());
   }
 
  

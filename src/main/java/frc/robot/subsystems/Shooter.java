@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkBase.IdleMode;
 
@@ -22,6 +23,7 @@ public class Shooter extends SubsystemBase {
   private final CANSparkFlex shooterFeederMotor ;
 
   private double shooterSetpoint = 3750;
+ private final RelativeEncoder m_relative_encoder;
  
   private final SparkPIDController shooterPIDLeft;
 
@@ -31,6 +33,7 @@ public class Shooter extends SubsystemBase {
     shooterLeftMotor.restoreFactoryDefaults();
     shooterLeftMotor.setSmartCurrentLimit(40);
     shooterLeftMotor.setIdleMode(IdleMode.kCoast);
+    shooterLeftMotor.setInverted(true);
     shooterPIDLeft = shooterLeftMotor.getPIDController();
     // Applies the previously-declared values to the PIDF controller.
     shooterPIDLeft.setP(Constants.ShooterConstants.KP);
@@ -44,16 +47,20 @@ public class Shooter extends SubsystemBase {
     shooterRightMotor.restoreFactoryDefaults();
     shooterRightMotor.setSmartCurrentLimit(40);
     shooterLeftMotor.setIdleMode(IdleMode.kCoast);
-    shooterRightMotor.follow(shooterLeftMotor, true);   
+    shooterRightMotor.follow(shooterLeftMotor, false);   
 
     shooterAngleMotor = new CANSparkFlex(Constants.ShooterConstants.shooterAngle, MotorType.kBrushless);
     shooterAngleMotor.restoreFactoryDefaults();
     shooterAngleMotor.setSmartCurrentLimit(40);
     shooterAngleMotor.setIdleMode(IdleMode.kBrake);
+    shooterAngleMotor.setInverted(true);
+
+    m_relative_encoder = shooterAngleMotor.getEncoder();
+    m_relative_encoder.setPositionConversionFactor((2 * Math.PI) / Constants.ShooterConstants.kGearRatio);
     
     shooterFeederMotor = new CANSparkFlex(Constants.ShooterConstants.shooterFeeder, MotorType.kBrushless);
     shooterFeederMotor.restoreFactoryDefaults();
-    shooterFeederMotor.setSmartCurrentLimit(40);
+    shooterFeederMotor.setSmartCurrentLimit(100);
     shooterFeederMotor.setIdleMode(IdleMode.kBrake);
    
   }
@@ -91,5 +98,6 @@ public class Shooter extends SubsystemBase {
   public void periodic() {
     SmartDashboard.putNumber("SetPoint", shooterSetpoint);
     SmartDashboard.putNumber("Velocity", shooterLeftMotor.getEncoder().getVelocity());
+    SmartDashboard.putNumber("Shooter Angle", m_relative_encoder.getPosition());
   }
 }
