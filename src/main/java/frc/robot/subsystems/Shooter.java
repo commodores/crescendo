@@ -19,7 +19,6 @@ public class Shooter extends SubsystemBase {
    */
   private final CANSparkFlex shooterLeftMotor ;
   private final CANSparkFlex shooterRightMotor ;
-  private final CANSparkFlex shooterAngleMotor ;
   private final CANSparkFlex shooterFeederMotor ;
 
   private double shooterSetpoint = 3750;
@@ -49,14 +48,7 @@ public class Shooter extends SubsystemBase {
     shooterLeftMotor.setIdleMode(IdleMode.kCoast);
     shooterRightMotor.follow(shooterLeftMotor, false);   
 
-    shooterAngleMotor = new CANSparkFlex(Constants.ShooterConstants.shooterAngle, MotorType.kBrushless);
-    shooterAngleMotor.restoreFactoryDefaults();
-    shooterAngleMotor.setSmartCurrentLimit(40);
-    shooterAngleMotor.setIdleMode(IdleMode.kBrake);
-    shooterAngleMotor.setInverted(true);
-
-    m_relative_encoder = shooterAngleMotor.getEncoder();
-    m_relative_encoder.setPositionConversionFactor((2 * Math.PI) / Constants.ShooterConstants.kGearRatio);
+    m_relative_encoder = shooterLeftMotor.getEncoder();
     
     shooterFeederMotor = new CANSparkFlex(Constants.ShooterConstants.shooterFeeder, MotorType.kBrushless);
     shooterFeederMotor.restoreFactoryDefaults();
@@ -89,15 +81,10 @@ public class Shooter extends SubsystemBase {
     shooterFeederMotor.set(speed);
   }
 
-  public void runAngleSpeed(double speed){
-    shooterAngleMotor.set(speed);
-  }
-
 
   @Override
   public void periodic() {
     SmartDashboard.putNumber("SetPoint", shooterSetpoint);
     SmartDashboard.putNumber("Velocity", shooterLeftMotor.getEncoder().getVelocity());
-    SmartDashboard.putNumber("Shooter Angle", m_relative_encoder.getPosition());
   }
 }

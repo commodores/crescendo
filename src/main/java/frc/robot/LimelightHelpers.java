@@ -475,6 +475,31 @@ public class LimelightHelpers {
         return getLimelightNTString(limelightName, "json");
     }
 
+
+    //Calculate robot distance from apriltag
+
+    public static NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight-front");
+    public static NetworkTableEntry ty = table.getEntry("ty");
+    public static double targetOffsetAngle_Vertical = ty.getDouble(0.0);
+
+    // how many degrees back is your limelight rotated from perfectly vertical?
+    public static double limelightMountAngleDegrees = 5.0; 
+
+    // distance from the center of the Limelight lens to the floor
+    public static double limelightLensHeightInches = 20.0; 
+
+    // distance from the target to the floor
+    public static double goalHeightInches = 57.0; 
+
+    public static double angleToGoalDegrees = limelightMountAngleDegrees + targetOffsetAngle_Vertical;
+    public static double angleToGoalRadians = angleToGoalDegrees * (3.14159 / 180.0);
+
+    //calculate distance
+    public static double distanceFromLimelightToGoalInches = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
+
+    public static double getDistance(){
+        return distanceFromLimelightToGoalInches;
+    }
     /**
      * Switch to getBotPose
      * 

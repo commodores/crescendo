@@ -24,7 +24,9 @@ import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.ShooterAngle;
 import frc.robot.subsystems.TrampElevator;
 import frc.robot.subsystems.Trampinator;
 
@@ -47,6 +49,9 @@ public class RobotContainer {
   public static final TrampElevator m_TrampElevator = new TrampElevator();
   public static final Shooter m_Shooter = new Shooter();
   public static final Climber m_Climber = new Climber();
+  public static final ShooterAngle m_ShooterAngle = new ShooterAngle();
+  public static final Limelight m_Limelight = new Limelight();
+
 
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
@@ -88,9 +93,18 @@ public class RobotContainer {
     joystick2.leftBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.0));
 
     /*Shooter Commands */
-    joystick.x().whileTrue(new InstantCommand(() ->m_Shooter.shoot(6000)));
+    joystick.x().whileTrue(new InstantCommand(() ->m_Shooter.shoot(4700)));
     joystick.x().onFalse(new InstantCommand(() ->m_Shooter.stopShooter()));
-  
+
+   // joystick2.start().onTrue(m_ShooterAngle.setArmGoalCommand(.25));
+
+    joystick2.start().whileTrue(new InstantCommand(() -> m_ShooterAngle.runAngleSpeed(1.0)));
+    joystick2.start().onFalse(new InstantCommand(() -> m_ShooterAngle.runAngleSpeed(0)));
+    
+    joystick2.back().whileTrue(new InstantCommand(() -> m_ShooterAngle.runAngleSpeed(-1.0)));
+    joystick2.back().onFalse(new InstantCommand(() -> m_ShooterAngle.runAngleSpeed(0)));
+
+
     /*Climber Commands */
     joystick.rightBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(0.5)));
     joystick.rightBumper().onFalse(new InstantCommand(() -> m_Climber.windUp(0)));

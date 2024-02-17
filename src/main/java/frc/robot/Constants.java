@@ -14,13 +14,10 @@ public class Constants {
      public static final class ShooterConstants {
         public static final int shooterLeft = 4;
         public static final int shooterRight = 5;
-        public static final int shooterAngle = 6;
         public static final int shooterFeeder = 7;
-
-        public static final double kGearRatio = 5.0 * 10.0;
  
  
-             // PID coefficients for Shooter
+        // PID coefficients for Shooter
          public static final double KP = 0.0000065; 
          public static final double KI = 0.00000;
          public static final double KD = 0; 
@@ -30,7 +27,31 @@ public class Constants {
          public static final double KMinOutput = -1;
          public static final double MaxRPM = 5700;
  
-         
+         public static final double kSVolts = 0.3;
+         public static final double kGVolts = 0.04;
+         public static final double kVVoltSecondPerRad = 4.65;
+         public static final double kAVoltSecondSquaredPerRad = 0.04;
+      }
+
+      public static final class ShooterAngleConstants {
+        public static final int shooterAngle = 6;
+
+        public static final double kGearRatio = 5.0 * 10.0; 
+ 
+        // PID coefficients for Shooter Angle Motor
+         public static final double KP = 4.0; //0.65
+         public static final double KI = 0.00000;
+         public static final double KD = 0; 
+         public static final double KIz = 0; 
+         public static final double KFF = 0.0177; 
+         public static final double KMaxOutput = 1; 
+         public static final double KMinOutput = -1;
+         public static final double MaxRPM = 5700;
+ 
+         public static final double kSVolts = 0.3;
+         public static final double kGVolts = 0.04;
+         public static final double kVVoltSecondPerRad = 4.65;
+         public static final double kAVoltSecondSquaredPerRad = 0.04;         
  
       }
 
