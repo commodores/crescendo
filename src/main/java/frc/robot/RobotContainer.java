@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.commands.AutoShooterRPM;
 import frc.robot.commands.ShooterIntake;
 import frc.robot.commands.StopAll;
 import frc.robot.commands.TrampIntake;
@@ -69,7 +70,7 @@ public class RobotContainer {
             .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ));
 
-    m_Shooter.setDefaultCommand(getAutonomousCommand());
+    m_Shooter.setDefaultCommand(new AutoShooterRPM(m_Limelight, m_Shooter));
     
     //Button Bindings
     joystick.a().whileTrue(m_Drivetrain.applyRequest(() -> brake));
