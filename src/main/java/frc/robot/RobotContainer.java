@@ -41,9 +41,8 @@ public class RobotContainer {
   private final CommandXboxController joystick = new CommandXboxController(0); // Driver
   private final CommandXboxController joystick2 = new CommandXboxController(1); // Secondary
 
-
-  public final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
-
+  //Create Subsystems
+  public final CommandSwerveDrivetrain m_Drivetrain = TunerConstants.DriveTrain; // My drivetrain  
   public static final Intake m_Intake = new Intake();
   public static final Trampinator m_Trampinator = new Trampinator();
   public static final TrampElevator m_TrampElevator = new TrampElevator();
@@ -52,7 +51,7 @@ public class RobotContainer {
   public static final ShooterAngle m_ShooterAngle = new ShooterAngle();
   public static final Limelight m_Limelight = new Limelight();
 
-
+  //Drive Swerve
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
       .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // I want field-centric
@@ -62,19 +61,23 @@ public class RobotContainer {
   private final Telemetry logger = new Telemetry(MaxSpeed);
 
   private void configureBindings() {
-     drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
-        drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with
+    //Set Default Commands
+    m_Drivetrain.setDefaultCommand( // Drivetrain will execute this command periodically
+        m_Drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with
                                                                                            // negative Y (forward)
             .withVelocityY(-joystick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
             .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ));
 
-    joystick.a().whileTrue(drivetrain.applyRequest(() -> brake));
-    joystick.b().whileTrue(drivetrain
+    m_Shooter.setDefaultCommand(getAutonomousCommand());
+    
+    //Button Bindings
+    joystick.a().whileTrue(m_Drivetrain.applyRequest(() -> brake));
+    joystick.b().whileTrue(m_Drivetrain
         .applyRequest(() -> point.withModuleDirection(new Rotation2d(-joystick.getLeftY(), -joystick.getLeftX()))));
 
     // reset the field-centric heading on left bumper press
-    joystick.start().onTrue(drivetrain.runOnce(() -> drivetrain.seedFieldRelative()));
+    joystick.start().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldRelative()));
 
     /* Intake Commands */
     joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).withTimeout(5));
@@ -119,9 +122,9 @@ public class RobotContainer {
     joystick2.povUp().onFalse(new InstantCommand(() -> m_Climber.climbUp(0)));
 
     if (Utils.isSimulation()) {
-      drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(90)));
+      m_Drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(90)));
     }
-    drivetrain.registerTelemetry(logger::telemeterize); 
+    m_Drivetrain.registerTelemetry(logger::telemeterize); 
   }
 
   public RobotContainer() {

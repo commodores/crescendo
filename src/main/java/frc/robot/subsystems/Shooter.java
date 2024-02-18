@@ -21,8 +21,8 @@ public class Shooter extends SubsystemBase {
   private final CANSparkFlex shooterRightMotor ;
   private final CANSparkFlex shooterFeederMotor ;
 
-  private double shooterSetpoint = 3750;
- private final RelativeEncoder m_relative_encoder;
+  
+  private final RelativeEncoder m_relative_encoder;
  
   private final SparkPIDController shooterPIDLeft;
 
@@ -73,10 +73,6 @@ public class Shooter extends SubsystemBase {
     shooterLeftMotor.stopMotor();
   }
 
-  public void setSetpoint(double newPoint) {
-    shooterSetpoint = newPoint;
-  }
-
   public void runFeederSpeed(double speed){
     shooterFeederMotor.set(speed);
   }
@@ -84,7 +80,6 @@ public class Shooter extends SubsystemBase {
 
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("SetPoint", shooterSetpoint);
-    SmartDashboard.putNumber("Velocity", shooterLeftMotor.getEncoder().getVelocity());
+    SmartDashboard.putNumber("Velocity", m_relative_encoder.getVelocity());
   }
 }

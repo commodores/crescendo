@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
       Pose2d llPose = lastResult.getBotPose2d_wpiBlue();
 
       if (lastResult.valid) {
-        m_robotContainer.drivetrain.addVisionMeasurement(llPose, Timer.getFPGATimestamp());
+        m_robotContainer.m_Drivetrain.addVisionMeasurement(llPose, Timer.getFPGATimestamp());
       }
     }
     SmartDashboard.putNumber("Distance to Goal", RobotContainer.m_Limelight.getDistance());
