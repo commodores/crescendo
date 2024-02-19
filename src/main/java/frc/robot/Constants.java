@@ -18,11 +18,11 @@ public class Constants {
  
  
         // PID coefficients for Shooter
-         public static final double KP = 0.0000065; 
+         public static final double KP = 0.00004; 
          public static final double KI = 0.00000;
          public static final double KD = 0; 
          public static final double KIz = 0; 
-         public static final double KFF = 0.000177; 
+         public static final double KFF = 0.000157; 
          public static final double KMaxOutput = 1; 
          public static final double KMinOutput = -1;
          public static final double MaxRPM = 5700;
@@ -39,13 +39,13 @@ public class Constants {
         public static final double kGearRatio = 5.0 * 5.0 * 10.0; 
  
         // PID coefficients for Shooter Angle Motor
-         public static final double KP = 4.0; //0.65
+         public static final double KP = 10.0; //0.65
          public static final double KI = 0.00000;
          public static final double KD = 0; 
          public static final double KIz = 0; 
-         public static final double KFF = 0.0177; 
-         public static final double KMaxOutput = 1; 
-         public static final double KMinOutput = -1;
+         public static final double KFF = 0.02; 
+         public static final double KMaxOutput = .14; 
+         public static final double KMinOutput = -.14;
          public static final double MaxRPM = 5700;
  
          public static final double kSVolts = 0.3;

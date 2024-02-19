@@ -36,7 +36,7 @@ public class ShooterAngle extends TrapezoidProfileSubsystem {
   public ShooterAngle() {
     super(
         // The constraints for the generated profiles
-        new TrapezoidProfile.Constraints(1, 1));
+        new TrapezoidProfile.Constraints(.01, .01));
 
     shooterAngleMotor = new CANSparkFlex(Constants.ShooterAngleConstants.shooterAngle, MotorType.kBrushless);
 
@@ -50,6 +50,8 @@ public class ShooterAngle extends TrapezoidProfileSubsystem {
     shooterPIDAngle.setI(Constants.ShooterAngleConstants.KI);
     shooterPIDAngle.setD(Constants.ShooterAngleConstants.KD);
     shooterPIDAngle.setFF(Constants.ShooterAngleConstants.KFF);
+
+    shooterPIDAngle.setOutputRange(Constants.ShooterAngleConstants.KMinOutput, Constants.ShooterAngleConstants.KMaxOutput);
 
     m_relative_encoder = shooterAngleMotor.getEncoder();
     m_relative_encoder.setPositionConversionFactor((2 * Math.PI) / Constants.ShooterAngleConstants.kGearRatio); //Converted to Radians
@@ -89,9 +91,9 @@ public class ShooterAngle extends TrapezoidProfileSubsystem {
     //SmartDashboard.putNumber("Shoulder Velocity", Units.metersToInches(setPoint.velocity));
   }
 
-   //public Command setArmGoalCommand(double goal) {
-  // return Commands.runOnce(() -> setGoal(goal), this);
-  //}
+  public Command setArmGoalCommand(double goal) {
+   return Commands.runOnce(() -> setGoal(goal), this);
+  }
 
   public double getEncoder(){
     return m_relative_encoder.getPosition();

@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.AutoShooterRPM;
 import frc.robot.commands.ShooterIntake;
 import frc.robot.commands.StopAll;
+import frc.robot.commands.StopAllShooter;
 import frc.robot.commands.TrampIntake;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.Climber;
@@ -70,7 +71,7 @@ public class RobotContainer {
             .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ));
 
-    m_Shooter.setDefaultCommand(new AutoShooterRPM(m_Limelight, m_Shooter));
+    //m_Shooter.setDefaultCommand(new AutoShooterRPM(m_Limelight, m_Shooter));
     
     //Button Bindings
     joystick.a().whileTrue(m_Drivetrain.applyRequest(() -> brake));
@@ -82,8 +83,11 @@ public class RobotContainer {
 
     /* Intake Commands */
     joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).withTimeout(5));
+    joystick2.a().onFalse(new StopAllShooter(m_Intake, m_Shooter).withTimeout(5));
+
     joystick2.b().onTrue(new TrampIntake(m_Intake, m_Trampinator).withTimeout(5));
     joystick2.b().onFalse(new StopAll(m_Intake, m_Trampinator).withTimeout(5));
+    
 
     /*Trampinator Commands */
     joystick2.x().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(1)));
@@ -93,20 +97,21 @@ public class RobotContainer {
     joystick2.y().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
 
     /*Tramp Elevator Commands */
-    joystick2.rightBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.375));
+    joystick2.rightBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.35));
     joystick2.leftBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.0));
 
     /*Shooter Commands */
-    joystick.x().whileTrue(new InstantCommand(() ->m_Shooter.shoot(4700)));
+    joystick.x().whileTrue(new InstantCommand(() ->m_Shooter.shoot(3600)));//5000
     joystick.x().onFalse(new InstantCommand(() ->m_Shooter.stopShooter()));
 
-   // joystick2.start().onTrue(m_ShooterAngle.setArmGoalCommand(.25));
+    joystick2.start().onTrue(m_ShooterAngle.setArmGoalCommand(.37));
+    joystick2.back().onTrue(m_ShooterAngle.setArmGoalCommand(0));
 
-    joystick2.start().whileTrue(new InstantCommand(() -> m_ShooterAngle.runAngleSpeed(1.0)));
-    joystick2.start().onFalse(new InstantCommand(() -> m_ShooterAngle.runAngleSpeed(0)));
+    //joystick2.start().whileTrue(new InstantCommand(() -> m_ShooterAngle.runAngleSpeed(.5)));
+    //joystick2.start().onFalse(new InstantCommand(() -> m_ShooterAngle.runAngleSpeed(0)));
     
-    joystick2.back().whileTrue(new InstantCommand(() -> m_ShooterAngle.runAngleSpeed(-1.0)));
-    joystick2.back().onFalse(new InstantCommand(() -> m_ShooterAngle.runAngleSpeed(0)));
+    //joystick2.back().whileTrue(new InstantCommand(() -> m_ShooterAngle.runAngleSpeed(-.5)));
+    //joystick2.back().onFalse(new InstantCommand(() -> m_ShooterAngle.runAngleSpeed(0)));
 
 
     /*Climber Commands */

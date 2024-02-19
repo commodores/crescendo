@@ -6,20 +6,20 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Trampinator;
+import frc.robot.subsystems.Shooter;
 
-public class TrampIntake extends Command {
+public class StopAllShooter extends Command {
   /** Creates a new IntakeInn. */
 
   private final Intake m_Intake;
-  private final Trampinator m_Trampinator;
+  private final Shooter m_Shooter;
 
-  public TrampIntake(Intake intakeSub, Trampinator trampSub) {
+  public StopAllShooter(Intake intakeSub, Shooter shooterSub) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_Intake = intakeSub;
-    m_Trampinator = trampSub;
+    m_Shooter = shooterSub;
     addRequirements(m_Intake);
-    addRequirements(m_Trampinator);
+    addRequirements(m_Shooter);
   }
   
 
@@ -30,9 +30,9 @@ public class TrampIntake extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Intake.runIntakeSpeed(-1.0);
-    m_Intake.runChooserSpeed(1.0);
-    m_Trampinator.runShooterSpeed(1.0);
+    m_Intake.runIntakeSpeed(0.0);
+    m_Intake.runChooserSpeed(0.0);
+    m_Shooter.runFeederSpeed(0.0);
   }
 
   // Called once the command ends or is interrupted.
@@ -40,12 +40,14 @@ public class TrampIntake extends Command {
   public void end(boolean interrupted) {
     m_Intake.runIntakeSpeed(0);
     m_Intake.runChooserSpeed(0);
-    m_Trampinator.runShooterSpeed(0);
+    m_Shooter.runFeederSpeed(0);
+
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_Intake.getTrampDistance() < 90;
+   // return m_Intake.getShooterDistance() < 95;
+   return false;
   }
 }
