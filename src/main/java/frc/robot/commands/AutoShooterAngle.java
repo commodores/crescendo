@@ -6,50 +6,53 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Limelight;
-import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.ShooterAngle;
 
-public class AutoShooterRPM extends Command {
+public class AutoShooterAngle extends Command {
 
   private final Limelight m_Limelight;
-  private final Shooter m_Shooter;
-  double setpoint = 2000;
+  private final ShooterAngle m_ShooterAngle;
+  double setpoint = .61;
 
   /** Creates a new AutoShooterRPM. */
-  public AutoShooterRPM(Limelight limelightSub, Shooter shooterSub) {
+  public AutoShooterAngle(Limelight limelightSub, ShooterAngle angleSub) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_Limelight = limelightSub;
-    m_Shooter = shooterSub;
+    m_ShooterAngle = angleSub;
     addRequirements(m_Limelight);
-    addRequirements(m_Shooter);
+    addRequirements(m_ShooterAngle);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_Shooter.shoot(setpoint);
+  //  m_ShooterAngle.setArmGoalCommand(setpoint);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double distance = m_Limelight.getDistance();
     //Check for target
-    if(m_Limelight.seesTarget()){
+   
       //Check distance
-      if(distance>100){
-        setpoint = 4000;
-      } else if(distance > 80 && distance < 100){
-        setpoint = 3000;
+      if(m_Limelight.getDistance()>100 && m_Limelight.getDistance() < 200){
+        setpoint = .37;
+      } else if(m_Limelight.getDistance() > 200 && m_Limelight.getDistance() < 220){
+        setpoint = .1;
+      } else if(m_Limelight.getDistance() > 220){
+        setpoint = 0;
+      }else{
+        setpoint = .61;
       }
-    }
+    
     //Set Speed
-    m_Shooter.shoot(setpoint);
+    m_ShooterAngle.setArmGoalCommand(setpoint);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_Shooter.stopShooter();
+    
   }
 
   // Returns true when the command should end.

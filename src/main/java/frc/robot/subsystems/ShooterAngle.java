@@ -99,9 +99,5 @@ public class ShooterAngle extends TrapezoidProfileSubsystem {
     return m_relative_encoder.getPosition();
   }
 
-  public void runAngleSpeed(double speed){
-    shooterAngleMotor.set(speed);
-  }
-
 
 }

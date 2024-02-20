@@ -100,6 +100,10 @@ public class Constants {
      }
 
 
-    
+    public static final class BlinkinConstants {
+        public static final int led = 0;
+
+     }
+
 
 }
