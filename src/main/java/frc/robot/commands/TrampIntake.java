@@ -5,6 +5,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Trampinator;
 
@@ -41,6 +43,7 @@ public class TrampIntake extends Command {
     m_Intake.runIntakeSpeed(0);
     m_Intake.runChooserSpeed(0);
     m_Trampinator.runShooterSpeed(0);
+    new InstantCommand(()->RobotContainer.m_Blinkin.orange()).withTimeout(3);
   }
 
   // Returns true when the command should end.

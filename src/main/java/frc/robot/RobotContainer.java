@@ -16,12 +16,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.AutoLEDTarget;
-import frc.robot.commands.AutoShooterAngle;
 import frc.robot.commands.AutoShooter;
+import frc.robot.commands.ShooterAngleDefaultCommand;
+import frc.robot.commands.ShooterDefaultCommand;
 import frc.robot.commands.ShooterIntake;
 import frc.robot.commands.StopAll;
 import frc.robot.commands.StopAllShooter;
@@ -78,9 +77,9 @@ public class RobotContainer {
             .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ));
 
-   // m_Shooter.setDefaultCommand(new AutoShooterRPM(m_Limelight, m_Shooter));
+    m_Shooter.setDefaultCommand(new ShooterDefaultCommand(m_Shooter));    
+    m_ShooterAngle.setDefaultCommand(new ShooterAngleDefaultCommand(m_ShooterAngle));
     m_Blinkin.setDefaultCommand(new AutoLEDTarget(m_Limelight, m_Blinkin));
-   // m_ShooterAngle.setDefaultCommand(new AutoShooterAngle(m_Limelight, m_ShooterAngle));
 
     
     //Button Bindings
@@ -111,18 +110,12 @@ public class RobotContainer {
     joystick2.leftBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.0));
 
     /*Shooter Commands */
-    //joystick.x().whileTrue(new AutoShooterRPM(m_Limelight, m_Shooter));//5000
-    joystick.x().onFalse(new InstantCommand(() ->m_Shooter.stopShooter()));
     joystick.x().onTrue(new AutoShooter(m_Limelight, m_Shooter,m_ShooterAngle));
+    joystick.x().onFalse(new InstantCommand(() ->m_Shooter.stopShooter()));
     
     joystick.y().onTrue(new InstantCommand(() -> m_Shooter.runFeederSpeed(-1.0)));
     joystick.y().onFalse(new InstantCommand(() -> m_Shooter.runFeederSpeed(0)));
 
-
-    //joystick2.start().onTrue(m_ShooterAngle.setArmGoalCommand(.37));
-    //joystick2.back().onTrue(m_ShooterAngle.setArmGoalCommand(0));
-
-    
     /*Climber Commands */
     joystick.rightBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(0.5)));
     joystick.rightBumper().onFalse(new InstantCommand(() -> m_Climber.windUp(0)));
@@ -138,8 +131,7 @@ public class RobotContainer {
 
     /*C Commands */
     joystick2.povRight().whileTrue(new InstantCommand(() -> m_Blinkin.green()));
-    joystick2.povLeft().whileTrue(new InstantCommand(() -> m_Blinkin.defult()));
-   
+    joystick2.povLeft().whileTrue(new InstantCommand(() -> m_Blinkin.defult()));   
    
     if (Utils.isSimulation()) {
       m_Drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(90)));

@@ -4,7 +4,6 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Shooter;
@@ -15,8 +14,9 @@ public class AutoShooter extends Command {
   private final Limelight m_Limelight;
   private final Shooter m_Shooter;
   private final ShooterAngle m_ShooterAngle;
-  double shootersetpoint = 4000;
-  double anglesetpoint = .61;
+  double shooterSetPoint = 2000;
+  double angleSetPoint = .61;
+  double distance = 0;
 
   /** Creates a new AutoShooterRPM. */
   public AutoShooter(Limelight limelightSub, Shooter shooterSub, ShooterAngle angleSub) {
@@ -40,37 +40,48 @@ public class AutoShooter extends Command {
   public void execute() {
   
     //Check for target
-    //if(m_Limelight.seesTarget()){
+    if(m_Limelight.seesTarget()){
       //Check distance
-    if(m_Limelight.getDistance()>150){
-      shootersetpoint = 5000;
-    } else {
-        shootersetpoint = 4000;
-    }
+      distance = m_Limelight.getDistance();
+      
+      //KISS
+      if(distance > 250){
+        shooterSetPoint = 5500;
+        angleSetPoint = 0.0;
+      }else if(distance > 225){
+        shooterSetPoint = 5000;
+        angleSetPoint = 0.04;
+      }else if(distance > 200){
+        shooterSetPoint = 5000;
+        angleSetPoint = 0.1;
+      }else if(distance > 175){
+        shooterSetPoint = 5000;
+        angleSetPoint = 0.17;
+      } else if(distance > 150) {
+        shooterSetPoint = 5000;
+        angleSetPoint = 0.24;
+      }  else if(distance > 125) {
+        shooterSetPoint = 5000;
+        angleSetPoint = 0.31;
+      } else if(distance > 100) {
+        shooterSetPoint = 4000;
+        angleSetPoint = 0.37;
+      } else if(distance > 75) {
+        shooterSetPoint = 4000;
+        angleSetPoint = 0.61;
+      }
     
-    //Set Speed
-   m_Shooter.shoot(shootersetpoint);
-
-    //Shooter Angle
-    if(m_Limelight.getDistance()>100 && m_Limelight.getDistance() < 200){
-      anglesetpoint = .37;
-    } else if(m_Limelight.getDistance() > 200 && m_Limelight.getDistance() < 220){
-      anglesetpoint = .1;
-    } else if(m_Limelight.getDistance() > 220){
-      anglesetpoint = 0;
-    }else{
-      anglesetpoint = .61;
+      //Set Speed
+      m_Shooter.shoot(shooterSetPoint);
+      //Set Angle
+      m_ShooterAngle.setGoal(angleSetPoint);
     }
-  
-  //Set Angle
-  m_ShooterAngle.setGoal(anglesetpoint);
 
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    //m_Shooter.stopShooter();
   }
 
   // Returns true when the command should end.
