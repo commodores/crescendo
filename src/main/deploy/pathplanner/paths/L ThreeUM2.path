@@ -171,7 +171,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "ThreeUM2",
+  "folder": null,
   "previewStartingState": {
     "rotation": 120.0,
     "velocity": 0.0

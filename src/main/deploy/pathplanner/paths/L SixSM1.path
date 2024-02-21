@@ -81,15 +81,15 @@
     {
       "anchor": {
         "x": 2.681441747064286,
-        "y": 2.7967264070121365
+        "y": 2.9012399842981513
       },
       "prevControl": {
         "x": 2.3263682951429265,
-        "y": 2.988855192640818
+        "y": 3.093368769926833
       },
       "nextControl": {
         "x": 3.358592751083808,
-        "y": 2.4303227815495174
+        "y": 2.5348363588355323
       },
       "isLocked": false,
       "linkedName": null
@@ -211,7 +211,7 @@
     },
     {
       "waypointRelativePos": 8.0,
-      "rotationDegrees": -161.56505117707798,
+      "rotationDegrees": -164.28370566137394,
       "rotateFast": true
     }
   ],
@@ -229,7 +229,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "FourSW1",
+  "folder": null,
   "previewStartingState": {
     "rotation": -122.21092772367378,
     "velocity": 0

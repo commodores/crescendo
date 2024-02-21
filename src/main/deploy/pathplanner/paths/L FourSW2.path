@@ -191,7 +191,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "FourSW2",
+  "folder": null,
   "previewStartingState": {
     "rotation": -123.44677480771492,
     "velocity": 0
