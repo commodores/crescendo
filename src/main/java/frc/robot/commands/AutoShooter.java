@@ -45,7 +45,7 @@ public class AutoShooter extends Command {
       distance = m_Limelight.getDistance();
       
       //KISS
-      if(distance > 250){
+      if(distance > 250 && distance < 350){
         shooterSetPoint = 5500;
         angleSetPoint = 0.0;
       }else if(distance > 225){

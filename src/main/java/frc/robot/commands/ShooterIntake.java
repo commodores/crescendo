@@ -27,13 +27,15 @@ public class ShooterIntake extends Command {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    RobotContainer.m_ShooterAngle.setArmGoalCommand(0);
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Intake.runIntakeSpeed(-.75);
-    m_Intake.runChooserSpeed(-.75);
+    m_Intake.runIntakeSpeed(-1.0);
+    m_Intake.runChooserSpeed(-1.0);
     m_Shooter.runFeederSpeed(-1.0);
   }
 
@@ -43,7 +45,7 @@ public class ShooterIntake extends Command {
     m_Intake.runIntakeSpeed(0);
     m_Intake.runChooserSpeed(0);
     m_Shooter.runFeederSpeed(0);
-    new InstantCommand(()->RobotContainer.m_Blinkin.orange()).withTimeout(3);
+    new InstantCommand(()->RobotContainer.m_Blinkin.orange()).withTimeout(5);
   }
 
   // Returns true when the command should end.

@@ -43,7 +43,7 @@ public class TrampIntake extends Command {
     m_Intake.runIntakeSpeed(0);
     m_Intake.runChooserSpeed(0);
     m_Trampinator.runShooterSpeed(0);
-    new InstantCommand(()->RobotContainer.m_Blinkin.orange()).withTimeout(3);
+    new InstantCommand(()->RobotContainer.m_Blinkin.orange()).withTimeout(5);
   }
 
   // Returns true when the command should end.
