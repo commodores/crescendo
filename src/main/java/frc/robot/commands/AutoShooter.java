@@ -48,6 +48,45 @@ public class AutoShooter extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+  
+    //Check for target
+    if(m_Limelight.seesTarget()){
+      //Check distance
+      distance = m_Limelight.getDistance();
+      
+      //KISS
+      if(distance > 250 && distance < 350){
+        shooterSetPoint = 5500;
+        angleSetPoint = 0.0;
+      }else if(distance > 225){
+        shooterSetPoint = 5000;
+        angleSetPoint = 0.04;
+      }else if(distance > 200){
+        shooterSetPoint = 5000;
+        angleSetPoint = 0.1;
+      }else if(distance > 175){
+        shooterSetPoint = 5000;
+        angleSetPoint = 0.17;
+      } else if(distance > 150) {
+        shooterSetPoint = 5000;
+        angleSetPoint = 0.24;
+      }  else if(distance > 125) {
+        shooterSetPoint = 5000;
+        angleSetPoint = 0.31;
+      } else if(distance > 100) {
+        shooterSetPoint = 4000;
+        angleSetPoint = 0.37;
+      } else if(distance > 75) {
+        shooterSetPoint = 4000;
+        angleSetPoint = 0.61;
+      }
+    
+      //Set Speed
+      m_Shooter.shoot(shooterSetPoint);
+      //Set Angle
+      m_ShooterAngle.setGoal(angleSetPoint);
+    }
+
   }
 
   // Called once the command ends or is interrupted.
