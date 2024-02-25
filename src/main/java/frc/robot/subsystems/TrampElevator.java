@@ -8,7 +8,6 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
 
-import edu.wpi.first.math.controller.ElevatorFeedforward;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -25,12 +24,6 @@ public class TrampElevator extends TrapezoidProfileSubsystem {
   private final CANSparkMax shoulderMotor;
   private final SparkPIDController m_PIDController;
   private final RelativeEncoder m_relative_encoder;
- 
-
-  private final ElevatorFeedforward m_feedforward =
-      new ElevatorFeedforward(
-          Constants.TrampinatorConstants.kSVolts, Constants.TrampinatorConstants.kGVolts,
-          Constants.TrampinatorConstants.kVVoltSecondPerRad, Constants.TrampinatorConstants.kAVoltSecondSquaredPerRad);
 
   /** Creates a new ArmShoulder. */
   public TrampElevator() {
@@ -55,8 +48,7 @@ public class TrampElevator extends TrapezoidProfileSubsystem {
    //m_relative_encoder.setInverted(true);
     m_relative_encoder.setPositionConversionFactor(Constants.TrampinatorConstants.kMeterPerRevolution); 
 
-    m_PIDController.setFeedbackDevice(m_relative_encoder);
-    
+    m_PIDController.setFeedbackDevice(m_relative_encoder);    
 
   }
 
@@ -72,15 +64,7 @@ public class TrampElevator extends TrapezoidProfileSubsystem {
 
   @Override
   protected void useState(TrapezoidProfile.State setPoint) {
-    // Calculate the feedforward fromteh setPoint
-    double feedforward = m_feedforward.calculate(setPoint.position, setPoint.velocity);
-
-    // Add the feedforward to the PID output to get the motor output
-    // The ArmFeedForward computes in radians. We need to convert back to degrees.
-    // Remember that the encoder was already set to account for the gear ratios.
-    
     m_PIDController.setReference(setPoint.position, CANSparkMax.ControlType.kPosition, 0);
-    
   }
 
   public Command setElevatorGoalCommand(double goal) {

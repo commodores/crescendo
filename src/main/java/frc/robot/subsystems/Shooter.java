@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -17,21 +18,23 @@ public class Shooter extends SubsystemBase {
    * Initializes the SparkMAX motor controller, assigns it to the CAN address
    * specified, and sets it to the NEO Brushless Motor.
    */
-  private final CANSparkFlex shooterLeftMotor ;
-  private final CANSparkFlex shooterRightMotor ;
-  private final CANSparkFlex shooterFeederMotor ;
-
+  private final CANSparkFlex shooterLeftMotor;
+  private final CANSparkFlex shooterRightMotor;
+  private final CANSparkFlex shooterFeederMotor;
+  private final CANSparkFlex shooterAngleMotor;
   
-  private final RelativeEncoder m_relative_encoder;
-  private final RelativeEncoder m_relative_encoder2;
+  private final RelativeEncoder m_left_encoder;
+  private final RelativeEncoder m_right_encoder;
+  private final RelativeEncoder m_angle_encoder;
  
   private final SparkPIDController shooterPIDLeft;
-
   private final SparkPIDController shooterPIDRight;
+  private final SparkPIDController shooterPIDAngle;
 
 
   public Shooter() {
 
+    //Shooter Motors
     shooterLeftMotor = new CANSparkFlex(Constants.ShooterConstants.shooterLeft, MotorType.kBrushless);
     shooterLeftMotor.restoreFactoryDefaults();
     shooterLeftMotor.setSmartCurrentLimit(80);
@@ -60,13 +63,36 @@ public class Shooter extends SubsystemBase {
     shooterPIDRight.setFF(Constants.ShooterConstants.KFF);
     shooterPIDRight.setOutputRange(Constants.ShooterConstants.KMinOutput, Constants.ShooterConstants.KMaxOutput); 
 
-    m_relative_encoder = shooterLeftMotor.getEncoder();
-    m_relative_encoder2 = shooterRightMotor.getEncoder();
+    m_left_encoder = shooterLeftMotor.getEncoder();
+    m_right_encoder = shooterRightMotor.getEncoder();
     
+    //Feeder Motor
     shooterFeederMotor = new CANSparkFlex(Constants.ShooterConstants.shooterFeeder, MotorType.kBrushless);
     shooterFeederMotor.restoreFactoryDefaults();
     shooterFeederMotor.setSmartCurrentLimit(100);
     shooterFeederMotor.setIdleMode(IdleMode.kBrake);
+
+    //Angle Motor
+    shooterAngleMotor = new CANSparkFlex(Constants.ShooterConstants.shooterAngle, MotorType.kBrushless);
+
+    shooterAngleMotor.restoreFactoryDefaults();
+    shooterAngleMotor.setInverted(false);
+    shooterAngleMotor.setSmartCurrentLimit(100);
+    shooterAngleMotor.setIdleMode(IdleMode.kBrake);
+
+    shooterPIDAngle = shooterAngleMotor.getPIDController();
+    shooterPIDAngle.setP(Constants.ShooterConstants.ANGLEKP);
+    shooterPIDAngle.setI(Constants.ShooterConstants.ANGLEKI);
+    shooterPIDAngle.setD(Constants.ShooterConstants.ANGLEKD);
+    shooterPIDAngle.setFF(Constants.ShooterConstants.ANGLEKFF);
+
+    shooterPIDAngle.setOutputRange(Constants.ShooterConstants.ANGLEKMinOutput, Constants.ShooterConstants.ANGLEKMaxOutput);
+
+    m_angle_encoder = shooterAngleMotor.getEncoder();
+    m_angle_encoder.setPositionConversionFactor((2 * Math.PI) / Constants.ShooterConstants.kAngleGearRatio); //Converted to Radians
+    m_angle_encoder.setPosition(.61);
+
+    shooterPIDAngle.setFeedbackDevice(m_angle_encoder);
    
   }
 
@@ -77,7 +103,6 @@ public class Shooter extends SubsystemBase {
   public void shoot(double setPoint) {
     shooterPIDLeft.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
     shooterPIDRight.setReference(setPoint-200, CANSparkMax.ControlType.kVelocity);
-
   }
 
   /**
@@ -93,11 +118,17 @@ public class Shooter extends SubsystemBase {
     shooterFeederMotor.set(speed);
   }
 
+  public void setShooterAngle(double goal){
+    shooterPIDAngle.setReference(goal, CANSparkFlex.ControlType.kPosition, 0);
+  }
 
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("Velocity", m_relative_encoder.getVelocity());
-    SmartDashboard.putNumber("Velocity 2", m_relative_encoder2.getVelocity());
+    SmartDashboard.putNumber("Left Shooter Velocity", m_left_encoder.getVelocity());
+    SmartDashboard.putNumber("Right Shooter Velocity", m_right_encoder.getVelocity()); 
+    
+    SmartDashboard.putNumber("Shooter Angle Degrees", Units.radiansToDegrees(m_angle_encoder.getPosition()));
+    SmartDashboard.putNumber("Shooter Angles Radians", m_angle_encoder.getPosition());
 
   }
 }

@@ -19,7 +19,6 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.AutoLEDTarget;
 import frc.robot.commands.AutoShooter;
-import frc.robot.commands.AutoShooterAngle;
 import frc.robot.commands.ShooterDefaultCommand;
 import frc.robot.commands.ShooterIntake;
 import frc.robot.commands.StopAll;
@@ -32,7 +31,6 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Shooter;
-import frc.robot.subsystems.ShooterAngle;
 import frc.robot.subsystems.TrampElevator;
 import frc.robot.subsystems.Trampinator;
 
@@ -54,7 +52,6 @@ public class RobotContainer {
   public static final TrampElevator m_TrampElevator = new TrampElevator();
   public static final Shooter m_Shooter = new Shooter();
   public static final Climber m_Climber = new Climber();
-  public static final ShooterAngle m_ShooterAngle = new ShooterAngle();
   public static final Limelight m_Limelight = new Limelight();
   public static final Blinkin m_Blinkin = new Blinkin();
 
@@ -77,15 +74,11 @@ public class RobotContainer {
         ));
 
     m_Shooter.setDefaultCommand(new ShooterDefaultCommand(m_Shooter));    
-    m_ShooterAngle.setDefaultCommand(new AutoShooterAngle(m_ShooterAngle, m_Limelight.getDistance()));
     m_Blinkin.setDefaultCommand(new AutoLEDTarget(m_Limelight, m_Blinkin));
     
     //Button Bindings
-    joystick.a().whileTrue(m_Drivetrain.applyRequest(() -> brake));
-    joystick.b().whileTrue(m_Drivetrain
-        .applyRequest(() -> point.withModuleDirection(new Rotation2d(-joystick.getLeftY(), -joystick.getLeftX()))));
-
-    // reset the field-centric heading on left bumper press
+    
+    // reset the field-centric heading
     joystick.start().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldRelative()));
 
     /* Intake Commands */
@@ -107,11 +100,15 @@ public class RobotContainer {
     joystick2.leftBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.0));
 
     /*Shooter Commands */
-    joystick.x().whileTrue(new AutoShooter(m_Shooter, m_Limelight.getDistance()));
+    joystick.x().onTrue(new AutoShooter(m_Shooter, m_Limelight.getDistance()));
     joystick.x().onFalse(new InstantCommand(() ->m_Shooter.stopShooter()));
     
     joystick.y().onTrue(new InstantCommand(() -> m_Shooter.runFeederSpeed(1.0)));
     joystick.y().onFalse(new InstantCommand(() -> m_Shooter.runFeederSpeed(0)));
+
+    joystick.b().onTrue(new InstantCommand(() -> m_Shooter.runFeederSpeed(-1.0)));
+    joystick.b().onFalse(new InstantCommand(() -> m_Shooter.runFeederSpeed(0)));
+
 
     /*Climber Commands */
     joystick.rightBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(1.0 )));

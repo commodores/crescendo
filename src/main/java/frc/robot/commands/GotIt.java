@@ -5,34 +5,27 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.ShooterAngle;
+import frc.robot.RobotContainer;
 
-public class ShooterAngleDefaultCommand extends Command {
-
-  private final ShooterAngle m_ShooterAngle;
-
-  /** Creates a new AutoShooterRPM. */
-  public ShooterAngleDefaultCommand(ShooterAngle angleSub) {
+public class GotIt extends Command {
+  /** Creates a new GotIt. */
+  public GotIt() {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_ShooterAngle = angleSub;
-    addRequirements(m_ShooterAngle);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_ShooterAngle.setGoal(.31);//.61
+    RobotContainer.m_Blinkin.orange();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override

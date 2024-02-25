@@ -5,7 +5,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
@@ -28,15 +27,15 @@ public class ShooterIntake extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.m_ShooterAngle.setArmGoalCommand(0);
+    RobotContainer.m_Shooter.setShooterAngle(0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Intake.runIntakeSpeed(-1.0);
-    m_Intake.runChooserSpeed(-1.0);
-    m_Shooter.runFeederSpeed(-1.0);
+    m_Intake.runIntakeSpeed(-.8);
+    m_Intake.runChooserSpeed(-.8);
+    m_Shooter.runFeederSpeed(1.0);
   }
 
   // Called once the command ends or is interrupted.
@@ -45,8 +44,7 @@ public class ShooterIntake extends Command {
     m_Intake.runIntakeSpeed(0);
     m_Intake.runChooserSpeed(0);
     m_Shooter.runFeederSpeed(0);
-    new InstantCommand(()->RobotContainer.m_Blinkin.orange()).withTimeout(5);
-    new AutoShooterAngle(RobotContainer.m_ShooterAngle, RobotContainer.m_Limelight.getDistance());
+    new GotIt().withTimeout(2);
   }
 
   // Returns true when the command should end.

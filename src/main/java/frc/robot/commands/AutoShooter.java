@@ -11,6 +11,7 @@ public class AutoShooter extends Command {
 
   private final Shooter m_Shooter;
   double shooterSetPoint = 2000;
+  double angleSetPoint = .61;
 
   /** Creates a new AutoShooterRPM. */
   public AutoShooter(Shooter shooterSub, double distance) {
@@ -21,20 +22,28 @@ public class AutoShooter extends Command {
     //KISS
     if(distance > 250 && distance < 400){
       shooterSetPoint = 2750;
+      angleSetPoint = 0.0;
     }else if(distance > 225 && distance < 400){
       shooterSetPoint = 2500;
+      angleSetPoint = 0.04;
     }else if(distance > 200 && distance < 225){
       shooterSetPoint = 2250;
+      angleSetPoint = 0.1;
     }else if(distance > 175 && distance < 200){
       shooterSetPoint = 2150;
+      angleSetPoint = 0.17;
     } else if(distance > 150 && distance < 175) {
       shooterSetPoint = 2000;
+      angleSetPoint = 0.24;
     }  else if(distance > 125 && distance < 150) {
       shooterSetPoint = 2000;
+      angleSetPoint = 0.31;
     } else if(distance > 100 && distance < 125) {
       shooterSetPoint = 2000;
+      angleSetPoint = 0.37;
     } else if(distance > 75 && distance < 100) {
       shooterSetPoint = 2000;
+      angleSetPoint = 0.61;
     }
 
   }
@@ -43,6 +52,7 @@ public class AutoShooter extends Command {
   @Override
   public void initialize() {
     m_Shooter.shoot(shooterSetPoint);
+    m_Shooter.setShooterAngle(angleSetPoint);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
