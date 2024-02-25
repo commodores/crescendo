@@ -18,14 +18,14 @@ public class Constants {
  
  
         // PID coefficients for Shooter
-         public static final double KP = 0.00004; 
+         public static final double KP = .0006; 
          public static final double KI = 0.00000;
          public static final double KD = 0; 
          public static final double KIz = 0; 
          public static final double KFF = 0.000157; 
          public static final double KMaxOutput = 1; 
          public static final double KMinOutput = -1;
-         public static final double MaxRPM = 5700;
+         public static final double MaxRPM = 6700;
  
          public static final double kSVolts = 0.3;
          public static final double kGVolts = 0.04;
@@ -43,10 +43,10 @@ public class Constants {
          public static final double KI = 0.00000;
          public static final double KD = 0; 
          public static final double KIz = 0; 
-         public static final double KFF = 0.02; 
-         public static final double KMaxOutput = .14; 
-         public static final double KMinOutput = -.14;
-         public static final double MaxRPM = 5700;
+         public static final double KFF = 0.002; 
+         public static final double KMaxOutput = 1; 
+         public static final double KMinOutput = -1;
+         public static final double MaxRPM = 6700;
  
          public static final double kSVolts = 0.3;
          public static final double kGVolts = 0.04;

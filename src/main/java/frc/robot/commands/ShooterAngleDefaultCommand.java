@@ -21,7 +21,7 @@ public class ShooterAngleDefaultCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_ShooterAngle.setGoal(.61);
+    m_ShooterAngle.setGoal(.31);//.61
   }
 
   // Called every time the scheduler runs while the command is scheduled.

@@ -34,7 +34,7 @@ public class ShooterIntake extends Command {
   public void execute() {
     m_Intake.runIntakeSpeed(-.75);
     m_Intake.runChooserSpeed(-.75);
-    m_Shooter.runFeederSpeed(-1.0);
+    m_Shooter.runFeederSpeed(1.0);
   }
 
   // Called once the command ends or is interrupted.
@@ -49,7 +49,7 @@ public class ShooterIntake extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-   return m_Intake.getShooterDistance() < 95;
+   return m_Intake.getShooterDistance() < 90;
    //return false;
   }
 }

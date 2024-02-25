@@ -19,6 +19,8 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.AutoLEDTarget;
 import frc.robot.commands.AutoShooter;
+import frc.robot.commands.AutoShooterAngle;
+import frc.robot.commands.AutoShoot;
 import frc.robot.commands.ShooterAngleDefaultCommand;
 import frc.robot.commands.ShooterDefaultCommand;
 import frc.robot.commands.ShooterIntake;
@@ -77,8 +79,8 @@ public class RobotContainer {
             .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ));
 
-    m_Shooter.setDefaultCommand(new ShooterDefaultCommand(m_Shooter));    
-    m_ShooterAngle.setDefaultCommand(new ShooterAngleDefaultCommand(m_ShooterAngle));
+    //m_Shooter.setDefaultCommand(new ShooterDefaultCommand(m_Shooter));    
+    //m_ShooterAngle.setDefaultCommand(new ShooterAngleDefaultCommand(m_ShooterAngle));
     m_Blinkin.setDefaultCommand(new AutoLEDTarget(m_Limelight, m_Blinkin));
 
     
@@ -110,29 +112,25 @@ public class RobotContainer {
     joystick2.leftBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.0));
 
     /*Shooter Commands */
-    joystick.x().onTrue(new AutoShooter(m_Limelight, m_Shooter,m_ShooterAngle));
+    joystick.x().whileTrue(new AutoShoot(m_Limelight));
+    //joystick.x().onTrue(new InstantCommand(() ->m_Shooter.shoot(3000)));
     joystick.x().onFalse(new InstantCommand(() ->m_Shooter.stopShooter()));
     
-    joystick.y().onTrue(new InstantCommand(() -> m_Shooter.runFeederSpeed(-1.0)));
+    joystick.y().onTrue(new InstantCommand(() -> m_Shooter.runFeederSpeed(1.0)));
     joystick.y().onFalse(new InstantCommand(() -> m_Shooter.runFeederSpeed(0)));
+    
+    joystick.x().onTrue(new AutoShooterAngle(m_ShooterAngle, 201));
+
 
     /*Climber Commands */
-    joystick.rightBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(0.5)));
+    joystick.rightBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(1.0 )));
     joystick.rightBumper().onFalse(new InstantCommand(() -> m_Climber.windUp(0)));
     
-    joystick.leftBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(-0.5)));
+    joystick.leftBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(-1.0)));
     joystick.leftBumper().onFalse(new InstantCommand(() -> m_Climber.windUp(0)));
 
-    joystick2.povDown().whileTrue(new InstantCommand(() -> m_Climber.climbUp(-0.5)));
-    joystick2.povDown().onFalse(new InstantCommand(() -> m_Climber.climbUp(0)));
 
-    joystick2.povUp().whileTrue(new InstantCommand(() -> m_Climber.climbUp(0.5)));
-    joystick2.povUp().onFalse(new InstantCommand(() -> m_Climber.climbUp(0)));
-
-    /*C Commands */
-    joystick2.povRight().whileTrue(new InstantCommand(() -> m_Blinkin.green()));
-    joystick2.povLeft().whileTrue(new InstantCommand(() -> m_Blinkin.defult()));   
-   
+       
     if (Utils.isSimulation()) {
       m_Drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(90)));
     }

@@ -36,12 +36,12 @@ public class ShooterAngle extends TrapezoidProfileSubsystem {
   public ShooterAngle() {
     super(
         // The constraints for the generated profiles
-        new TrapezoidProfile.Constraints(.01, .01));
+        new TrapezoidProfile.Constraints(1, 1));
 
     shooterAngleMotor = new CANSparkFlex(Constants.ShooterAngleConstants.shooterAngle, MotorType.kBrushless);
 
     shooterAngleMotor.restoreFactoryDefaults();
-    shooterAngleMotor.setInverted(true);
+    shooterAngleMotor.setInverted(false);
     shooterAngleMotor.setSmartCurrentLimit(100);
     shooterAngleMotor.setIdleMode(IdleMode.kBrake);
 

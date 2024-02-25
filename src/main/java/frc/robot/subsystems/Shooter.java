@@ -23,16 +23,20 @@ public class Shooter extends SubsystemBase {
 
   
   private final RelativeEncoder m_relative_encoder;
+  private final RelativeEncoder m_relative_encoder2;
  
   private final SparkPIDController shooterPIDLeft;
+
+  private final SparkPIDController shooterPIDRight;
+
 
   public Shooter() {
 
     shooterLeftMotor = new CANSparkFlex(Constants.ShooterConstants.shooterLeft, MotorType.kBrushless);
     shooterLeftMotor.restoreFactoryDefaults();
-    shooterLeftMotor.setSmartCurrentLimit(40);
+    shooterLeftMotor.setSmartCurrentLimit(80);
     shooterLeftMotor.setIdleMode(IdleMode.kCoast);
-    shooterLeftMotor.setInverted(true);
+    shooterLeftMotor.setInverted(false);
     shooterPIDLeft = shooterLeftMotor.getPIDController();
     // Applies the previously-declared values to the PIDF controller.
     shooterPIDLeft.setP(Constants.ShooterConstants.KP);
@@ -44,11 +48,20 @@ public class Shooter extends SubsystemBase {
 
     shooterRightMotor = new CANSparkFlex(Constants.ShooterConstants.shooterRight, MotorType.kBrushless);
     shooterRightMotor.restoreFactoryDefaults();
-    shooterRightMotor.setSmartCurrentLimit(40);
-    shooterLeftMotor.setIdleMode(IdleMode.kCoast);
-    shooterRightMotor.follow(shooterLeftMotor, false);   
+    shooterRightMotor.setSmartCurrentLimit(80);
+    shooterRightMotor.setIdleMode(IdleMode.kCoast);
+    shooterRightMotor.setInverted(true);
+    shooterPIDRight = shooterRightMotor.getPIDController();
+    // Applies the previously-declared values to the PIDF controller.
+    shooterPIDRight.setP(Constants.ShooterConstants.KP);
+    shooterPIDRight.setI(Constants.ShooterConstants.KI);
+    shooterPIDRight.setD(Constants.ShooterConstants.KD);
+    shooterPIDRight.setIZone(Constants.ShooterConstants.KIz);
+    shooterPIDRight.setFF(Constants.ShooterConstants.KFF);
+    shooterPIDRight.setOutputRange(Constants.ShooterConstants.KMinOutput, Constants.ShooterConstants.KMaxOutput); 
 
     m_relative_encoder = shooterLeftMotor.getEncoder();
+    m_relative_encoder2 = shooterRightMotor.getEncoder();
     
     shooterFeederMotor = new CANSparkFlex(Constants.ShooterConstants.shooterFeeder, MotorType.kBrushless);
     shooterFeederMotor.restoreFactoryDefaults();
@@ -63,6 +76,8 @@ public class Shooter extends SubsystemBase {
    */
   public void shoot(double setPoint) {
     shooterPIDLeft.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
+    shooterPIDRight.setReference(setPoint-200, CANSparkMax.ControlType.kVelocity);
+
   }
 
   /**
@@ -71,6 +86,7 @@ public class Shooter extends SubsystemBase {
    */
   public void stopShooter() {
     shooterLeftMotor.stopMotor();
+    shooterRightMotor.stopMotor();
   }
 
   public void runFeederSpeed(double speed){
@@ -81,5 +97,7 @@ public class Shooter extends SubsystemBase {
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Velocity", m_relative_encoder.getVelocity());
+    SmartDashboard.putNumber("Velocity 2", m_relative_encoder2.getVelocity());
+
   }
 }
