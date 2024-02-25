@@ -46,6 +46,7 @@ public class ShooterIntake extends Command {
     m_Intake.runChooserSpeed(0);
     m_Shooter.runFeederSpeed(0);
     new InstantCommand(()->RobotContainer.m_Blinkin.orange()).withTimeout(5);
+    new AutoShooterAngle(RobotContainer.m_ShooterAngle, RobotContainer.m_Limelight.getDistance());
   }
 
   // Returns true when the command should end.

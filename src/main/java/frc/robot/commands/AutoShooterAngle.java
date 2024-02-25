@@ -11,8 +11,6 @@ public class AutoShooterAngle extends Command {
 
   private final ShooterAngle m_ShooterAngle;
   double angleSetPoint = .61;
-  double m_distance;
-  double distance2;
 
   /** Creates a new AutoShooterRPM. */
   public AutoShooterAngle(ShooterAngle angleSub, double distance) {
@@ -49,6 +47,7 @@ public class AutoShooterAngle extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    m_ShooterAngle.setGoal(angleSetPoint);
   }
 
   // Called once the command ends or is interrupted.
