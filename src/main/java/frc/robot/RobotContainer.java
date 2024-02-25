@@ -101,7 +101,7 @@ public class RobotContainer {
 
     /*Shooter Commands */
     joystick.x().onTrue(new AutoShooter(m_Shooter, m_Limelight.getDistance()));
-    joystick.x().onFalse(new InstantCommand(() ->m_Shooter.stopShooter()));
+    joystick.x().onFalse(new ShooterDefaultCommand(m_Shooter));
     
     joystick.y().onTrue(new InstantCommand(() -> m_Shooter.runFeederSpeed(1.0)));
     joystick.y().onFalse(new InstantCommand(() -> m_Shooter.runFeederSpeed(0)));
