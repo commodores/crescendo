@@ -44,7 +44,6 @@ public class ShooterIntake extends Command {
     m_Intake.runIntakeSpeed(0);
     m_Intake.runChooserSpeed(0);
     m_Shooter.runFeederSpeed(0);
-    new GotIt().withTimeout(2);
   }
 
   // Returns true when the command should end.

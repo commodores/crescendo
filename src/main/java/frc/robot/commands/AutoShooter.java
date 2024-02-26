@@ -21,29 +21,29 @@ public class AutoShooter extends Command {
       
     //KISS
     if(distance > 250 && distance < 400){
-      shooterSetPoint = 2750;
+      shooterSetPoint = 3200;
       angleSetPoint = 0.0;
     }else if(distance > 225 && distance < 400){
-      shooterSetPoint = 2500;
-      angleSetPoint = 0.04;
+      shooterSetPoint = 3100;
+      angleSetPoint = 0.0;
     }else if(distance > 200 && distance < 225){
-      shooterSetPoint = 2250;
+      shooterSetPoint = 3000;
       angleSetPoint = 0.1;
     }else if(distance > 175 && distance < 200){
-      shooterSetPoint = 2150;
-      angleSetPoint = 0.17;
+      shooterSetPoint = 2900;
+      angleSetPoint = 0.2;
     } else if(distance > 150 && distance < 175) {
-      shooterSetPoint = 2000;
-      angleSetPoint = 0.24;
+      shooterSetPoint = 2800;
+      angleSetPoint = 0.3;
     }  else if(distance > 125 && distance < 150) {
-      shooterSetPoint = 2000;
-      angleSetPoint = 0.31;
+      shooterSetPoint = 2700;
+      angleSetPoint = 0.4;
     } else if(distance > 100 && distance < 125) {
-      shooterSetPoint = 2000;
-      angleSetPoint = 0.37;
+      shooterSetPoint = 2600;
+      angleSetPoint = 0.5;
     } else if(distance > 75 && distance < 100) {
-      shooterSetPoint = 2000;
-      angleSetPoint = 0.61;
+      shooterSetPoint = 2500;
+      angleSetPoint = 0.6;
     }
 
   }

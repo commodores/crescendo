@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.AutoLEDTarget;
 import frc.robot.commands.AutoShooter;
+import frc.robot.commands.GotIt;
 import frc.robot.commands.ShooterDefaultCommand;
 import frc.robot.commands.ShooterIntake;
 import frc.robot.commands.StopAll;
@@ -82,17 +83,17 @@ public class RobotContainer {
     joystick.start().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldRelative()));
 
     /* Intake Commands */
-    joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).withTimeout(5));
-    joystick2.a().onFalse(new StopAllShooter(m_Intake, m_Shooter).withTimeout(5));
+    joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).andThen(new GotIt().withTimeout(2)));
+    joystick2.a().onFalse(new StopAllShooter(m_Intake, m_Shooter));
 
-    joystick2.b().onTrue(new TrampIntake(m_Intake, m_Trampinator).withTimeout(5));
-    joystick2.b().onFalse(new StopAll(m_Intake, m_Trampinator).withTimeout(5));    
+    joystick2.b().onTrue(new TrampIntake(m_Intake, m_Trampinator).andThen(new GotIt().withTimeout(2)));
+    joystick2.b().onFalse(new StopAll(m_Intake, m_Trampinator));    
 
     /*Trampinator Commands */
     joystick2.x().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(1)));
-    joystick2.y().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(-1)));
-
     joystick2.x().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
+
+    joystick2.y().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(-1)));
     joystick2.y().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
 
     /*Tramp Elevator Commands */
