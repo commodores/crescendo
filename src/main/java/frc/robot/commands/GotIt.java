@@ -25,7 +25,9 @@ public class GotIt extends Command {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    new AutoLEDTarget(RobotContainer.m_Limelight, RobotContainer.m_Blinkin);
+  }
 
   // Returns true when the command should end.
   @Override

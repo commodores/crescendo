@@ -90,7 +90,7 @@ public class Shooter extends SubsystemBase {
 
     m_angle_encoder = shooterAngleMotor.getEncoder();
     m_angle_encoder.setPositionConversionFactor((2 * Math.PI) / Constants.ShooterConstants.kAngleGearRatio); //Converted to Radians
-    m_angle_encoder.setPosition(.61);
+    
 
     shooterPIDAngle.setFeedbackDevice(m_angle_encoder);
    
@@ -102,7 +102,7 @@ public class Shooter extends SubsystemBase {
    */
   public void shoot(double setPoint) {
     shooterPIDLeft.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
-    shooterPIDRight.setReference(setPoint-200, CANSparkMax.ControlType.kVelocity);
+    shooterPIDRight.setReference(setPoint-400, CANSparkMax.ControlType.kVelocity);
   }
 
   /**
@@ -118,8 +118,12 @@ public class Shooter extends SubsystemBase {
     shooterFeederMotor.set(speed);
   }
 
-  public void setShooterAngle(double goal){
-    shooterPIDAngle.setReference(goal, CANSparkFlex.ControlType.kPosition, 0);
+  public void setShooterAngle(double angle){
+    shooterPIDAngle.setReference(angle, CANSparkFlex.ControlType.kPosition, 0);
+  }
+
+  public void resetAngle(){
+    m_angle_encoder.setPosition(.61);
   }
 
   @Override

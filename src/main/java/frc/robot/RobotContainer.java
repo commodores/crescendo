@@ -7,6 +7,7 @@ package frc.robot;
 import com.ctre.phoenix6.Utils;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 
 import edu.wpi.first.math.geometry.Pose2d;
@@ -51,10 +52,12 @@ public class RobotContainer {
   public static final Intake m_Intake = new Intake();
   public static final Trampinator m_Trampinator = new Trampinator();
   public static final TrampElevator m_TrampElevator = new TrampElevator();
-  public static final Shooter m_Shooter = new Shooter();
+  public final Shooter m_Shooter = new Shooter();
   public static final Climber m_Climber = new Climber();
   public static final Limelight m_Limelight = new Limelight();
   public static final Blinkin m_Blinkin = new Blinkin();
+
+  
 
   //Drive Swerve
   private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
@@ -74,24 +77,27 @@ public class RobotContainer {
             .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ));
 
-    m_Shooter.setDefaultCommand(new ShooterDefaultCommand(m_Shooter));    
+    //m_Shooter.setDefaultCommand(new ShooterDefaultCommand(m_Shooter));    
     m_Blinkin.setDefaultCommand(new AutoLEDTarget(m_Limelight, m_Blinkin));
     
+
+    
+
     //Button Bindings
     
     // reset the field-centric heading
     joystick.start().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldRelative()));
 
     /* Intake Commands */
-    joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).andThen(new GotIt().withTimeout(2)));
-    joystick2.a().onFalse(new StopAllShooter(m_Intake, m_Shooter));
+    joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).withTimeout(5).andThen(new GotIt().withTimeout(2).andThen(new ShooterDefaultCommand(m_Shooter))));
+    //joystick2.a().onFalse(new StopAllShooter(m_Intake, m_Shooter));
 
-    joystick2.b().onTrue(new TrampIntake(m_Intake, m_Trampinator).andThen(new GotIt().withTimeout(2)));
-    joystick2.b().onFalse(new StopAll(m_Intake, m_Trampinator));    
+    joystick2.b().onTrue(new TrampIntake(m_Intake, m_Trampinator).withTimeout(2).andThen(new GotIt().withTimeout(2)));
+    //joystick2.b().onFalse(new StopAll(m_Intake, m_Trampinator));    
 
     /*Trampinator Commands */
     joystick2.x().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(1)));
-    joystick2.x().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
+    //joystick2.x().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
 
     joystick2.y().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(-1)));
     joystick2.y().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
@@ -101,14 +107,20 @@ public class RobotContainer {
     joystick2.leftBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.0));
 
     /*Shooter Commands */
-    joystick.x().onTrue(new AutoShooter(m_Shooter, m_Limelight.getDistance()));
+    joystick.x().whileTrue(new AutoShooter(m_Shooter, m_Limelight));
     joystick.x().onFalse(new ShooterDefaultCommand(m_Shooter));
     
-    joystick.y().onTrue(new InstantCommand(() -> m_Shooter.runFeederSpeed(1.0)));
-    joystick.y().onFalse(new InstantCommand(() -> m_Shooter.runFeederSpeed(0)));
+    joystick.y().onTrue(new InstantCommand(() -> m_Shooter.runFeederSpeed(1.0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1))));
+    joystick.y().onFalse(new InstantCommand(() -> m_Shooter.runFeederSpeed(0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(0))));
 
     joystick.b().onTrue(new InstantCommand(() -> m_Shooter.runFeederSpeed(-1.0)));
     joystick.b().onFalse(new InstantCommand(() -> m_Shooter.runFeederSpeed(0)));
+
+    //joystick.povUp().onTrue(new InstantCommand(() -> m_Shooter.setShooterAngle(0.61)));
+    //joystick.povDown().onTrue(new InstantCommand(() -> m_Shooter.setShooterAngle(0.06)));
+    //joystick.x().onTrue(new InstantCommand(() -> m_Shooter.shoot(2650)));
+    //joystick.x().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()));
+
 
 
     /*Climber Commands */
@@ -126,6 +138,10 @@ public class RobotContainer {
 
   public RobotContainer() {
     configureBindings();
+
+    //Auto Naming of Commands and Such//
+    NamedCommands.registerCommand("ShooterIntake", new ShooterIntake(m_Intake, m_Shooter));
+    NamedCommands.registerCommand("AutoShooter", new AutoShooter(m_Shooter, m_Limelight));
 
     // Build an auto chooser. This will use Commands.none() as the default option.
     autoChooser = AutoBuilder.buildAutoChooser();

@@ -42,9 +42,9 @@ public class Intake extends SubsystemBase {
     intakeChooserMotor.setIdleMode(IdleMode.kBrake);
 
     trampSensor = new TimeOfFlight(0);
-    trampSensor.setRangingMode(RangingMode.Short, 40);
+    trampSensor.setRangingMode(RangingMode.Short, 24);
     shootSensor = new TimeOfFlight(1);
-    shootSensor.setRangingMode(RangingMode.Short, 40);
+    shootSensor.setRangingMode(RangingMode.Short, 24);
   }
 
   public void runIntakeSpeed(double speed){

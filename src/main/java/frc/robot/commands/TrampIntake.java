@@ -30,8 +30,8 @@ public class TrampIntake extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Intake.runIntakeSpeed(-.8);
-    m_Intake.runChooserSpeed(.8);
+    m_Intake.runIntakeSpeed(-1.0);
+    m_Intake.runChooserSpeed(1.0);
     m_Trampinator.runShooterSpeed(1.0);
   }
 
@@ -46,6 +46,6 @@ public class TrampIntake extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_Intake.getTrampDistance() < 90;
+    return m_Intake.getTrampDistance() < 120;
   }
 }

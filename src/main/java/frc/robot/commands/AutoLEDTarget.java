@@ -37,7 +37,7 @@ public class AutoLEDTarget extends Command {
     //Check for target
     if(m_Limelight.seesTarget()){
       //Check distance
-      if(m_Limelight.getX()> -5 && m_Limelight.getX() < 5){
+      if(m_Limelight.getX()> -1 && m_Limelight.getX() < 1){
         m_Blinkin.green();
       } else {
         m_Blinkin.defult();
