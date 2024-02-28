@@ -3,25 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.4602720114531138,
-        "y": 5.634562541852357
+        "x": 2.6170365068002863,
+        "y": 6.968573209873693
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.460272011453113,
-        "y": 5.634562541852357
+        "x": 2.346502874823931,
+        "y": 6.819313274990187
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 4.342854503890826,
-        "y": 6.511464659292955
+        "x": 1.5908744544761815,
+        "y": 5.662548779643014
       },
       "prevControl": {
-        "x": 3.342854503890826,
-        "y": 6.511464659292955
+        "x": 1.6002032004064008,
+        "y": 5.69986376336389
+      },
+      "nextControl": {
+        "x": 1.5524776529997033,
+        "y": 5.508961573737109
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.738310203893135,
+        "y": 5.503960098829289
+      },
+      "prevControl": {
+        "x": 2.5050915556376565,
+        "y": 5.643891287782577
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 175.985824304589,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "TwoPieceAutoTest",
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": -177.39743779750026,
     "velocity": 0
   },
   "useDefaultConstraints": true

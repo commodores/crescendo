@@ -1,0 +1,103 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.635693998660724,
+        "y": 4.1979356685986104
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.477105317846999,
+        "y": 4.4777980465051845
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.971528852148613,
+        "y": 5.531946336619947
+      },
+      "prevControl": {
+        "x": 1.6002032004064008,
+        "y": 5.214768974992495
+      },
+      "nextControl": {
+        "x": 3.3023663379336092,
+        "y": 5.608466571427361
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.0013392754058237,
+        "y": 5.531946336619947
+      },
+      "prevControl": {
+        "x": 2.393146604475027,
+        "y": 5.550603828480384
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.0,
+      "rotationDegrees": -172.0565281894095,
+      "rotateFast": true
+    },
+    {
+      "waypointRelativePos": 0.1,
+      "rotationDegrees": 164.22788149402936,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "Intake&Shoot",
+      "waypointRelativePos": 0.35,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "PathIntake"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "PathShoot"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -178.15238973400542,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "TwoPieceAutoTest",
+  "previewStartingState": {
+    "rotation": 159.5901171661961,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

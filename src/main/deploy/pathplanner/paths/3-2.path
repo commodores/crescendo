@@ -1,0 +1,109 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.78495393354423,
+        "y": 4.151291938947515
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.8502551550557644,
+        "y": 4.41249682499365
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.1226129724986724,
+        "y": 4.944235343016141
+      },
+      "prevControl": {
+        "x": 2.187914194010206,
+        "y": 4.505784284295841
+      },
+      "nextControl": {
+        "x": 2.0897088280401688,
+        "y": 5.165163170094666
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.78495393354423,
+        "y": 5.587918812201261
+      },
+      "prevControl": {
+        "x": 2.8036114254046685,
+        "y": 5.27074145057381
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.0,
+      "rotationDegrees": -117.75854060106005,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "Intake",
+      "waypointRelativePos": 0.0,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "AutoFeeder"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Shoot",
+      "waypointRelativePos": 2.0,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "AutoShooter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -175.60129464500457,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "BetweenWing",
+  "previewStartingState": {
+    "rotation": 178.6360724683971,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

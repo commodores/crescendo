@@ -20,7 +20,6 @@ public class Shooter extends SubsystemBase {
    */
   private final CANSparkFlex shooterLeftMotor;
   private final CANSparkFlex shooterRightMotor;
-  private final CANSparkFlex shooterFeederMotor;
   private final CANSparkFlex shooterAngleMotor;
   
   private final RelativeEncoder m_left_encoder;
@@ -66,18 +65,13 @@ public class Shooter extends SubsystemBase {
     m_left_encoder = shooterLeftMotor.getEncoder();
     m_right_encoder = shooterRightMotor.getEncoder();
     
-    //Feeder Motor
-    shooterFeederMotor = new CANSparkFlex(Constants.ShooterConstants.shooterFeeder, MotorType.kBrushless);
-    shooterFeederMotor.restoreFactoryDefaults();
-    shooterFeederMotor.setSmartCurrentLimit(100);
-    shooterFeederMotor.setIdleMode(IdleMode.kBrake);
 
     //Angle Motor
     shooterAngleMotor = new CANSparkFlex(Constants.ShooterConstants.shooterAngle, MotorType.kBrushless);
 
     shooterAngleMotor.restoreFactoryDefaults();
     shooterAngleMotor.setInverted(false);
-    shooterAngleMotor.setSmartCurrentLimit(100);
+    shooterAngleMotor.setSmartCurrentLimit(80);
     shooterAngleMotor.setIdleMode(IdleMode.kBrake);
 
     shooterPIDAngle = shooterAngleMotor.getPIDController();
@@ -102,7 +96,7 @@ public class Shooter extends SubsystemBase {
    */
   public void shoot(double setPoint) {
     shooterPIDLeft.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
-    shooterPIDRight.setReference(setPoint-400, CANSparkMax.ControlType.kVelocity);
+    shooterPIDRight.setReference(setPoint-1000, CANSparkMax.ControlType.kVelocity);
   }
 
   /**
@@ -114,9 +108,6 @@ public class Shooter extends SubsystemBase {
     shooterRightMotor.stopMotor();
   }
 
-  public void runFeederSpeed(double speed){
-    shooterFeederMotor.set(speed);
-  }
 
   public void setShooterAngle(double angle){
     shooterPIDAngle.setReference(angle, CANSparkFlex.ControlType.kPosition, 0);

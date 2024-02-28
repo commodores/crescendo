@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Shooter;
 
-public class AutoShooter extends Command {
+public class AutonShoot extends Command {
 
   private final Shooter m_Shooter;
   //private final Limelight m_Limelight;
@@ -17,7 +17,7 @@ public class AutoShooter extends Command {
   double distance;
 
   /** Creates a new AutoShooterRPM. */
-  public AutoShooter(Shooter shooterSub) {
+  public AutonShoot(Shooter shooterSub) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_Shooter = shooterSub;
     addRequirements(m_Shooter);
@@ -58,25 +58,25 @@ public class AutoShooter extends Command {
       shooterSetPoint = 3000.0;
       angleSetPoint = 0.067;
     } else if(distance > 110.0 && distance < 115.0) {
-      shooterSetPoint = 3000.0;
+      shooterSetPoint = 2700.0;
       angleSetPoint = 0.0705;
     } else if(distance > 105.0 && distance < 110.0) {
-      shooterSetPoint = 3000.0;
+      shooterSetPoint = 2700.0;
       angleSetPoint = 0.0775;
     } else if(distance > 100.0 && distance < 105) {
-      shooterSetPoint = 3000.0;
+      shooterSetPoint = 2700.0;
       angleSetPoint = 0.1;
     } else if(distance > 95.0 && distance < 100.0) {
-      shooterSetPoint = 3000.0;
+      shooterSetPoint = 2700.0;
       angleSetPoint = 0.15;
     } else if(distance > 82.5 && distance < 95.0) {
-      shooterSetPoint = 3000.0;
+      shooterSetPoint = 2700.0;
       angleSetPoint = 0.2;
     } else if(distance > 76.0 && distance < 82.5) {
-      shooterSetPoint = 3000.0;
+      shooterSetPoint = 2700.0;
       angleSetPoint = 0.3;
     } else if(distance > 70.0 && distance < 76) {
-      shooterSetPoint = 3000.0;
+      shooterSetPoint = 2700.0;
       angleSetPoint = 0.35;
     } else {
       shooterSetPoint = 2500.0;

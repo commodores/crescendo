@@ -26,7 +26,7 @@ public class ShooterIntake extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_Shooter.setShooterAngle(0);
+    m_Shooter.setShooterAngle(0.04);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -34,7 +34,7 @@ public class ShooterIntake extends Command {
   public void execute() {
     m_Intake.runIntakeSpeed(-1.0);
     m_Intake.runChooserSpeed(-1.0);
-    m_Shooter.runFeederSpeed(0.8);
+    m_Intake.runFeederSpeed(1.0);
   }
 
   // Called once the command ends or is interrupted.
@@ -42,7 +42,7 @@ public class ShooterIntake extends Command {
   public void end(boolean interrupted) {
     m_Intake.runIntakeSpeed(0);
     m_Intake.runChooserSpeed(0);
-    m_Shooter.runFeederSpeed(0);
+    m_Intake.runFeederSpeed(0);
   }
 
   // Returns true when the command should end.

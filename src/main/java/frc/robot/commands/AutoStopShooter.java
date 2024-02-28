@@ -5,50 +5,42 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Blinkin;
 import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.Shooter;
 
+public class AutoStopShooter extends Command {
 
-public class AutoLEDTarget extends Command {
-
+  private final Shooter m_Shooter;
   private final Limelight m_Limelight;
-  private final Blinkin m_Blinkin;
-  double defult = 2000;
+  double shooterSetPoint;
+  double angleSetPoint;
+  double distance;
 
   /** Creates a new AutoShooterRPM. */
-  public AutoLEDTarget(Limelight limelightSub, Blinkin blinkinSub) {
+  public AutoStopShooter(Shooter shooterSub, Limelight limelightSub) {
     // Use addRequirements() here to declare subsystem dependencies.
+    m_Shooter = shooterSub;
     m_Limelight = limelightSub;
-    m_Blinkin = blinkinSub;
+    addRequirements(m_Shooter);
     addRequirements(m_Limelight);
-    addRequirements(m_Blinkin);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_Blinkin.defult();
+    m_Shooter.stopShooter();
+    //m_Shooter.setShooterAngle(angleSetPoint);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
-    //Check for target
-    if(m_Limelight.seesTarget()){
-      //Check distance
-      if(m_Limelight.getX()> -2 && m_Limelight.getX() < 2){
-        m_Blinkin.green();
-      } else {
-        m_Blinkin.defult();
-      }
-    }
+
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_Blinkin.defult();
   }
 
   // Returns true when the command should end.

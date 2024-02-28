@@ -9,13 +9,14 @@ public class Constants {
         public static final int intakeLeft = 1;
         public static final int intakeRight = 2;
         public static final int intakeChooser = 3;
+        public static final int shooterFeeder = 7;
      }
 
      public static final class ShooterConstants {
         public static final int shooterLeft = 4;
         public static final int shooterRight = 5;
         public static final int shooterAngle = 6;
-        public static final int shooterFeeder = 7;
+        
 
         public static final double kAngleGearRatio = 5.0 * 5.0 * 10.0;  
  

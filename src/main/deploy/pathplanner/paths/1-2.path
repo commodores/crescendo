@@ -1,0 +1,136 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.78495393354423,
+        "y": 7.0058881935945685
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.6450227445909436,
+        "y": 6.175629805805066
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.78495393354423,
+        "y": 5.531946336619947
+      },
+      "prevControl": {
+        "x": 1.478929503313552,
+        "y": 5.475973861038631
+      },
+      "nextControl": {
+        "x": 3.3537910518785323,
+        "y": 5.5563250702628455
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.0013392754058237,
+        "y": 5.531946336619947
+      },
+      "prevControl": {
+        "x": 1.9360380538942894,
+        "y": 5.653220033712795
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.0,
+      "rotationDegrees": 180.0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 0.35,
+      "rotationDegrees": 164.22788149402936,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 0.1,
+      "rotationDegrees": -153.86888288578803,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "Shoot",
+      "waypointRelativePos": 0.15,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "AutoShooter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Intake&Shoot",
+      "waypointRelativePos": 0.35,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "PathShoot"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Intake&Shoot2",
+      "waypointRelativePos": 0.85,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "PathIntake"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -178.15238973400542,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "TwoPieceAutoTest",
+  "previewStartingState": {
+    "rotation": 180.0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": true
+}

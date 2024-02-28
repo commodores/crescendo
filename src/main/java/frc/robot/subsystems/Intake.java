@@ -12,6 +12,7 @@ import com.revrobotics.CANSparkMax;
 import com.playingwithfusion.TimeOfFlight;
 import com.playingwithfusion.TimeOfFlight.RangingMode;
 import com.revrobotics.CANSparkBase.IdleMode;
+import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 public class Intake extends SubsystemBase {
@@ -21,6 +22,7 @@ public class Intake extends SubsystemBase {
   private final CANSparkMax intakeChooserMotor;
   private final TimeOfFlight trampSensor;
   private final TimeOfFlight shootSensor;
+  private final CANSparkFlex shooterFeederMotor;
 
   /** Creates a new Intake. */
   public Intake() {
@@ -45,6 +47,12 @@ public class Intake extends SubsystemBase {
     trampSensor.setRangingMode(RangingMode.Short, 24);
     shootSensor = new TimeOfFlight(1);
     shootSensor.setRangingMode(RangingMode.Short, 24);
+
+    //Feeder Motor
+    shooterFeederMotor = new CANSparkFlex(Constants.IntakeConstants.shooterFeeder, MotorType.kBrushless);
+    shooterFeederMotor.restoreFactoryDefaults();
+    shooterFeederMotor.setSmartCurrentLimit(100);
+    shooterFeederMotor.setIdleMode(IdleMode.kBrake);
   }
 
   public void runIntakeSpeed(double speed){
@@ -61,6 +69,10 @@ public class Intake extends SubsystemBase {
 
   public double getShooterDistance(){
     return shootSensor.getRange();
+  }
+
+  public void runFeederSpeed(double speed){
+    shooterFeederMotor.set(speed);
   }
 
   @Override
