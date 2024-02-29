@@ -13,7 +13,6 @@ import com.ctre.phoenix6.mechanisms.swerve.SwerveModule.DriveRequestType;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.networktables.DoubleEntry;
 import edu.wpi.first.networktables.GenericEntry;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
@@ -31,8 +30,6 @@ import frc.robot.commands.AutonShoot;
 import frc.robot.commands.GotIt;
 import frc.robot.commands.ReverseIntake;
 import frc.robot.commands.ShooterIntake;
-import frc.robot.commands.StopAll;
-import frc.robot.commands.StopAllShooter;
 import frc.robot.commands.TrampIntake;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.Blinkin;
@@ -85,11 +82,8 @@ public class RobotContainer {
             .withVelocityY(-joystick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
             .withRotationalRate(joystick.a().getAsBoolean()?m_Limelight.LimelightAim():-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ));
-
-    //m_Shooter.setDefaultCommand(new ShooterDefaultCommand(m_Shooter));    
-    m_Blinkin.setDefaultCommand(new AutoLEDTarget(m_Limelight, m_Blinkin));
     
-
+    m_Blinkin.setDefaultCommand(new AutoLEDTarget(m_Limelight, m_Blinkin));
     
 
     //Button Bindings
@@ -110,7 +104,7 @@ public class RobotContainer {
 
     /*Trampinator Commands */
     joystick2.x().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(1)));
-    //joystick2.x().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
+    joystick2.x().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
 
     joystick2.y().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(-1)));
     joystick2.y().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
@@ -126,13 +120,6 @@ public class RobotContainer {
     joystick.y().onTrue(new InstantCommand(() -> m_Intake.runFeederSpeed(1.0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1))));
     joystick.y().onFalse(new InstantCommand(() -> m_Intake.runFeederSpeed(0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(0))));
 
-    //joystick.povUp().onTrue(new InstantCommand(() -> m_Shooter.setShooterAngle(0.61)));
-    //joystick.povDown().onTrue(new InstantCommand(() -> m_Shooter.setShooterAngle(0.06)));
-    //joystick.x().onTrue(new InstantCommand(() -> m_Shooter.shoot(2650)));
-    //joystick.x().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()));
-
-
-
     /*Climber Commands */
     joystick.rightBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(1.0 )));
     joystick.rightBumper().onFalse(new InstantCommand(() -> m_Climber.windUp(0)));
@@ -140,7 +127,7 @@ public class RobotContainer {
     joystick.leftBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(-1.0)));
     joystick.leftBumper().onFalse(new InstantCommand(() -> m_Climber.windUp(0)));
 
-    /*Smart Dashboard Commands */
+    /*Smart Dashboard Commands
     ShuffleboardTab tab = Shuffleboard.getTab("Shooter Tuner");
     GenericEntry rpm = tab.add("Shooter RPM", 0).getEntry();
 
@@ -153,7 +140,7 @@ public class RobotContainer {
     GenericEntry angle = tab.add("Shooter Angle", 0).getEntry();
 
     SmartDashboard.putData("Change Shooter Angle", new InstantCommand(() -> m_Shooter.setShooterAngle(angle.getDouble(MaxAngularRate))));
-
+    */
 
 
     if (Utils.isSimulation()) {
@@ -170,16 +157,12 @@ public class RobotContainer {
     NamedCommands.registerCommand("AutoStopShooter", new AutoStopShooter(m_Shooter, m_Limelight).withTimeout(.5));
     NamedCommands.registerCommand("PathIntake", new AutoIntake(m_Intake));
     NamedCommands.registerCommand("PathShoot", new AutonShoot(m_Shooter));
-
-
-
     
     configureBindings();
 
     // Build an auto chooser. This will use Commands.none() as the default option.
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData("Auto Chooser", autoChooser);
-
   }
 
   public Command getAutonomousCommand() {
