@@ -6,7 +6,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Shooter;
 
 public class AutoFeeder extends Command {
   /** Creates a new IntakeInn. */
@@ -45,6 +44,5 @@ public class AutoFeeder extends Command {
   @Override
   public boolean isFinished() {
    return false;
-   //return false;
   }
 }

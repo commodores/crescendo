@@ -29,7 +29,6 @@ public class AutoStopShooter extends Command {
   @Override
   public void initialize() {
     m_Shooter.stopShooter();
-    //m_Shooter.setShooterAngle(angleSetPoint);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
