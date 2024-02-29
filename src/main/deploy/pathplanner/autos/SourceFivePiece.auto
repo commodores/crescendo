@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3016833306393887,
-      "y": 5.625233795922139
+      "x": 0.7512873207564597,
+      "y": 4.356524349412336
     },
-    "rotation": -179.28384005452955
+    "rotation": 121.18497465873844
   },
   "command": {
     "type": "sequential",
@@ -37,22 +37,27 @@
           }
         },
         {
-          "type": "sequential",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "CenterPartOne"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "2-3"
-                }
-              }
-            ]
+            "pathName": "SourcePartOne"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "1-2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "2-3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "3-4"
           }
         }
       ]

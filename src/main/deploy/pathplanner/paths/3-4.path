@@ -3,41 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.635693998660724,
-        "y": 4.1979356685986104
+        "x": 2.78,
+        "y": 6.93
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.477105317846999,
-        "y": 4.4777980465051845
+        "x": 3.5685685916826375,
+        "y": 7.295079317431362
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.971528852148613,
-        "y": 5.531946336619947
+        "x": 8.214284064931766,
+        "y": 7.407024268593991
       },
       "prevControl": {
-        "x": 1.6002032004064008,
-        "y": 5.214768974992495
+        "x": 7.215768357000821,
+        "y": 7.352559775434121
       },
       "nextControl": {
-        "x": 3.3023663379336092,
-        "y": 5.608466571427361
+        "x": 8.727365091093818,
+        "y": 7.435010506384649
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.0013392754058237,
-        "y": 5.531946336619947
+        "x": 5.891426328307202,
+        "y": 6.754012053478652
       },
       "prevControl": {
-        "x": 2.393146604475027,
-        "y": 5.550603828480384
+        "x": 7.7067795044681,
+        "y": 7.08518253400143
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,21 +46,16 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 1.0,
-      "rotationDegrees": -172.0565281894095,
+      "waypointRelativePos": 0.2,
+      "rotationDegrees": -176.57118983132455,
       "rotateFast": true
-    },
-    {
-      "waypointRelativePos": 0.1,
-      "rotationDegrees": 164.22788149402936,
-      "rotateFast": false
     }
   ],
   "constraintZones": [],
   "eventMarkers": [
     {
       "name": "Intake&Shoot",
-      "waypointRelativePos": 0.35,
+      "waypointRelativePos": 0,
       "command": {
         "type": "parallel",
         "data": {
@@ -90,13 +85,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -178.15238973400542,
+    "rotation": -168.48616881551314,
     "rotateFast": false
   },
   "reversed": false,
   "folder": "TwoPieceAutoTest",
   "previewStartingState": {
-    "rotation": 159.5901171661961,
+    "rotation": -138.20044862164173,
     "velocity": 0
   },
   "useDefaultConstraints": true

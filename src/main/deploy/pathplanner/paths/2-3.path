@@ -3,43 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7512873207564597,
-        "y": 4.356524349412336
+        "x": 2.97,
+        "y": 5.53
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7512873207564617,
-        "y": 4.356524349412336
+        "x": 1.5255732329646479,
+        "y": 6.119657330223752
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.6170365068002863,
-        "y": 4.244579398249706
+        "x": 2.7756251876140117,
+        "y": 6.931258226152816
       },
       "prevControl": {
-        "x": 2.029325513196481,
-        "y": 4.552428013946938
+        "x": 2.1879141940102063,
+        "y": 6.418177199990764
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.15,
-      "rotationDegrees": 166.1613760829348,
-      "rotateFast": true
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
       "name": "Intake&Shoot",
-      "waypointRelativePos": 0.1,
+      "waypointRelativePos": 0.05,
       "command": {
         "type": "parallel",
         "data": {
@@ -69,13 +63,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 142.59464336859153,
+    "rotation": -150.39554925399509,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "TwoPieceAutoTest",
+  "folder": "WingNotes",
   "previewStartingState": {
-    "rotation": 119.19748604606445,
+    "rotation": 180.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

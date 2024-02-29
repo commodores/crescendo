@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.0311496986630337,
-      "y": 5.559932574410603
+      "x": 0.75,
+      "y": 4.356524349412336
     },
-    "rotation": 180.0
+    "rotation": 119.46842727724851
   },
   "command": {
     "type": "sequential",
@@ -37,40 +37,9 @@
           }
         },
         {
-          "type": "named",
-          "data": {
-            "name": "AutoStopShooter"
-          }
-        },
-        {
           "type": "path",
           "data": {
-            "pathName": "Test"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "AutoShooter"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "AutoShooter"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "AutoFeeder"
-                }
-              }
-            ]
+            "pathName": "SourcePartOne"
           }
         }
       ]

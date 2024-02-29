@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.6673286073844874,
-      "y": 6.726025815687995
+      "x": 0.7512873207564597,
+      "y": 4.356524349412336
     },
-    "rotation": -117.21611155730747
+    "rotation": 121.32869286780421
   },
   "command": {
     "type": "sequential",
@@ -39,13 +39,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RPartOne"
+            "pathName": "SourcePartOne"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "MidLeftSeg"
+            "pathName": "1-2"
           }
         }
       ]

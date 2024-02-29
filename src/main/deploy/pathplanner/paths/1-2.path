@@ -3,111 +3,67 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.78495393354423,
-        "y": 7.0058881935945685
+        "x": 2.6,
+        "y": 4.35
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.6450227445909436,
-        "y": 6.175629805805066
+        "x": 2.4414113191862747,
+        "y": 4.629862377906574
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.78495393354423,
+        "x": 2.971528852148613,
         "y": 5.531946336619947
       },
       "prevControl": {
-        "x": 1.478929503313552,
-        "y": 5.475973861038631
+        "x": 1.255039600988293,
+        "y": 5.392015147666659
       },
       "nextControl": {
-        "x": 3.3537910518785323,
-        "y": 5.5563250702628455
+        "x": 3.309977561792789,
+        "y": 5.559537264036591
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.0013392754058237,
+        "x": 2.971528852148613,
         "y": 5.531946336619947
       },
       "prevControl": {
-        "x": 1.9360380538942894,
-        "y": 5.653220033712795
+        "x": 3.3633361812178166,
+        "y": 5.550603828480384
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 1.0,
-      "rotationDegrees": 180.0,
-      "rotateFast": false
-    },
-    {
-      "waypointRelativePos": 0.35,
-      "rotationDegrees": 164.22788149402936,
-      "rotateFast": false
-    },
-    {
-      "waypointRelativePos": 0.1,
-      "rotationDegrees": -153.86888288578803,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
-    {
-      "name": "Shoot",
-      "waypointRelativePos": 0.15,
-      "command": {
-        "type": "sequential",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "AutoShooter"
-              }
-            }
-          ]
-        }
-      }
-    },
     {
       "name": "Intake&Shoot",
       "waypointRelativePos": 0.35,
       "command": {
-        "type": "sequential",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "PathShoot"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Intake&Shoot2",
-      "waypointRelativePos": 0.85,
-      "command": {
-        "type": "sequential",
+        "type": "parallel",
         "data": {
           "commands": [
             {
               "type": "named",
               "data": {
                 "name": "PathIntake"
+              }
+            },
+            {
+              "type": "named",
+              "data": {
+                "name": "PathShoot"
               }
             }
           ]
@@ -123,13 +79,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -178.15238973400542,
+    "rotation": -179.0289780689208,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "TwoPieceAutoTest",
+  "folder": "WingNotes",
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": 159.5901171661961,
     "velocity": 0
   },
   "useDefaultConstraints": true

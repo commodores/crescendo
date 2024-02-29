@@ -1,16 +1,13 @@
 {
-  "robotWidth": 0.7366,
-  "robotLength": 0.762,
+  "robotWidth": 0.914,
+  "robotLength": 0.939,
   "holonomicMode": true,
   "pathFolders": [
-    "BetweenCenterLine",
-    "BetweenWing",
-    "CenterLineToWing",
-    "Five",
-    "TwoPieceAutoTest",
-    "Six",
+    "(Old)Five",
+    "(Old)Six",
+    "WingNotes",
     "Starting Paths",
-    "WingToCenterLine"
+    "TwoPieceAutoTest"
   ],
   "autoFolders": [],
   "defaultMaxVel": 3.0,

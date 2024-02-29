@@ -4,28 +4,12 @@
     {
       "anchor": {
         "x": 2.78495393354423,
-        "y": 4.151291938947515
+        "y": 7.0058881935945685
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.8502551550557644,
-        "y": 4.41249682499365
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 2.1226129724986724,
-        "y": 4.944235343016141
-      },
-      "prevControl": {
-        "x": 2.187914194010206,
-        "y": 4.505784284295841
-      },
-      "nextControl": {
-        "x": 2.0897088280401688,
-        "y": 5.165163170094666
+        "x": 1.1617521416861016,
+        "y": 5.326713926155125
       },
       "isLocked": false,
       "linkedName": null
@@ -33,46 +17,23 @@
     {
       "anchor": {
         "x": 2.78495393354423,
-        "y": 5.587918812201261
+        "y": 5.522617590689727
       },
       "prevControl": {
-        "x": 2.8036114254046685,
-        "y": 5.27074145057381
+        "x": 2.1599279562195486,
+        "y": 5.690535017433672
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 1.0,
-      "rotationDegrees": -117.75854060106005,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "Intake",
-      "waypointRelativePos": 0.0,
-      "command": {
-        "type": "sequential",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "AutoFeeder"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
       "name": "Shoot",
-      "waypointRelativePos": 2.0,
+      "waypointRelativePos": 0.1,
       "command": {
         "type": "sequential",
         "data": {
@@ -81,6 +42,40 @@
               "type": "named",
               "data": {
                 "name": "AutoShooter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Intake&Shoot",
+      "waypointRelativePos": 0.2,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "PathShoot"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Intake&Shoot2",
+      "waypointRelativePos": 0.45,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "PathIntake"
               }
             }
           ]
@@ -96,13 +91,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -175.60129464500457,
+    "rotation": -178.15238973400542,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "BetweenWing",
+  "folder": "WingNotes",
   "previewStartingState": {
-    "rotation": 178.6360724683971,
+    "rotation": 180.0,
     "velocity": 0
   },
   "useDefaultConstraints": true
