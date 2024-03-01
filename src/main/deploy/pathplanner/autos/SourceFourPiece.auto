@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.75,
+      "x": 0.7512873207564597,
       "y": 4.356524349412336
     },
-    "rotation": 119.46842727724851
+    "rotation": 121.32869286780421
   },
   "command": {
     "type": "sequential",
@@ -41,10 +41,22 @@
           "data": {
             "pathName": "SourcePartOne"
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "1-2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "2-3"
+          }
         }
       ]
     }
   },
-  "folder": "TwoPiece",
+  "folder": "FourPiece",
   "choreoAuto": false
 }

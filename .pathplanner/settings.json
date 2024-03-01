@@ -5,11 +5,16 @@
   "pathFolders": [
     "(Old)Five",
     "(Old)Six",
-    "WingNotes",
     "Starting Paths",
-    "TwoPieceAutoTest"
+    "RandomWorkingOnIt",
+    "WingNotes"
   ],
-  "autoFolders": [],
+  "autoFolders": [
+    "FourPiece",
+    "FivePiece",
+    "ThreePiece",
+    "TwoPiece"
+  ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 540.0,

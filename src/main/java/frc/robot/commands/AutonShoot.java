@@ -83,7 +83,7 @@ public class AutonShoot extends Command {
       angleSetPoint = 0.525;
     }
 
-    m_Shooter.shoot(shooterSetPoint*.08);
+    m_Shooter.shoot(shooterSetPoint*.825);
     m_Shooter.setShooterAngle(angleSetPoint);
     //System.out.println(m_Limelight.getDistance());
   }

@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.75,
-      "y": 4.356524349412336
+      "x": 0.7512873207564597,
+      "y": 6.847299512780844
     },
-    "rotation": 119.46842727724851
+    "rotation": -113.59423974556307
   },
   "command": {
     "type": "sequential",
@@ -37,14 +37,27 @@
           }
         },
         {
-          "type": "path",
+          "type": "sequential",
           "data": {
-            "pathName": "SourcePartOne"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "AmpPartOne"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3-2"
+                }
+              }
+            ]
           }
         }
       ]
     }
   },
-  "folder": "TwoPiece",
+  "folder": "ThreePiece",
   "choreoAuto": false
 }
