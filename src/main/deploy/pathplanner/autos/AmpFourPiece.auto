@@ -37,47 +37,21 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "PathIntake"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "PathShoot"
-                }
-              },
-              {
-                "type": "sequential",
-                "data": {
-                  "commands": [
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "AmpPartOne"
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "3-2"
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "2-1"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
+            "pathName": "AmpPartOne"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "3-2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "2-1"
           }
         }
       ]

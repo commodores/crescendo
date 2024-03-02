@@ -37,28 +37,9 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "PathIntake"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "PathShoot"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "CenterPartOne"
-                }
-              }
-            ]
+            "pathName": "CenterPartOne"
           }
         }
       ]

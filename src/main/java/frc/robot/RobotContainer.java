@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import java.util.Map;
+
 import com.ctre.phoenix6.Utils;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -14,6 +16,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.networktables.GenericEntry;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -62,6 +65,7 @@ public class RobotContainer {
   public static final Limelight m_Limelight = new Limelight();
   public static final Blinkin m_Blinkin = new Blinkin();
 
+  public static double shooterPower;
   
 
   //Drive Swerve
@@ -127,21 +131,24 @@ public class RobotContainer {
     joystick.leftBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(-1.0)));
     joystick.leftBumper().onFalse(new InstantCommand(() -> m_Climber.windUp(0)));
 
-    /*Smart Dashboard Commands
+    /*Smart Dashboard Commands*/
+
+    //Shooter Tuner
     ShuffleboardTab tab = Shuffleboard.getTab("Shooter Tuner");
     GenericEntry rpm = tab.add("Shooter RPM", 0).getEntry();
-
-    SmartDashboard.putData("Enable Shooter", new InstantCommand(() -> m_Shooter.shoot(rpm.getDouble(MaxAngularRate))));
-
+    SmartDashboard.putData("Enable Shooter", new InstantCommand(() -> m_Shooter.shoot(rpm.getDouble(0))));
     SmartDashboard.putData("Enable Feeder", new AutoFeeder(m_Intake));
-
     SmartDashboard.putData("Disable Shooter", new InstantCommand(() -> m_Shooter.stopShooter()));
-
     GenericEntry angle = tab.add("Shooter Angle", 0).getEntry();
+    SmartDashboard.putData("Change Shooter Angle", new InstantCommand(() -> m_Shooter.setShooterAngle(angle.getDouble(0))));
 
-    SmartDashboard.putData("Change Shooter Angle", new InstantCommand(() -> m_Shooter.setShooterAngle(angle.getDouble(MaxAngularRate))));
-    */
-
+    //Shooter Adjust for game piece newness
+    GenericEntry power = tab.add("Shooter Percent", 1)
+      .withWidget(BuiltInWidgets.kNumberSlider)
+      .withProperties(Map.of("min", 0, "max", 1))
+      .getEntry();
+    
+    shooterPower = power.getDouble(1);
 
     if (Utils.isSimulation()) {
       m_Drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(90)));
