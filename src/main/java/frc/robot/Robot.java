@@ -39,7 +39,7 @@ public class Robot extends TimedRobot {
     }
     
     SmartDashboard.putNumber("Distance to Goal", RobotContainer.m_Limelight.getDistance());
-    SmartDashboard.putNumber("Current Shooter Power", RobotContainer.shooterPower.getDouble(1));
+    //SmartDashboard.putNumber("Current Shooter Power", RobotContainer.shooterPower.getDouble(1));
 
   }
 

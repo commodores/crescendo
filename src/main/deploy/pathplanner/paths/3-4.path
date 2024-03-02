@@ -3,58 +3,36 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.78,
-        "y": 6.93
+        "x": 2.99,
+        "y": 6.85
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.5685685916826375,
-        "y": 7.295079317431362
+        "x": 3.9790334126122797,
+        "y": 7.071189415106104
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.214284064931766,
+        "x": 8.288914032373519,
         "y": 7.407024268593991
       },
       "prevControl": {
-        "x": 7.215768357000821,
-        "y": 7.352559775434121
-      },
-      "nextControl": {
-        "x": 8.727365091093818,
-        "y": 7.435010506384649
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 5.891426328307202,
-        "y": 6.754012053478652
-      },
-      "prevControl": {
-        "x": 7.7067795044681,
-        "y": 7.08518253400143
+        "x": 7.44886059085127,
+        "y": 7.407024268593991
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.2,
-      "rotationDegrees": -176.57118983132455,
-      "rotateFast": true
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "Intake&Shoot",
+      "name": "StopEverthing",
       "waypointRelativePos": 0,
       "command": {
         "type": "parallel",
@@ -63,13 +41,30 @@
             {
               "type": "named",
               "data": {
-                "name": "PathIntake"
+                "name": "AutoStopShooter"
               }
             },
             {
               "type": "named",
               "data": {
-                "name": "PathShoot"
+                "name": "PathIntakeStop"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Intake",
+      "waypointRelativePos": 0.5,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ShooterIntake"
               }
             }
           ]
@@ -85,13 +80,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -168.48616881551314,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "RandomWorkingOnIt",
+  "folder": "CenterLineNotes",
   "previewStartingState": {
-    "rotation": -138.20044862164173,
+    "rotation": -155.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

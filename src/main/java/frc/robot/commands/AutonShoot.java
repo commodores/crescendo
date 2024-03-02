@@ -15,6 +15,7 @@ public class AutonShoot extends Command {
   double shooterSetPoint;
   double angleSetPoint;
   double distance;
+  double powerLevel;
 
   /** Creates a new AutoShooterRPM. */
   public AutonShoot(Shooter shooterSub) {
@@ -32,6 +33,7 @@ public class AutonShoot extends Command {
   @Override
   public void execute() {
     distance = RobotContainer.m_Limelight.getDistance();
+    powerLevel = RobotContainer.shooterPower.getDouble(1);
     //KISS
     if(distance > 137.5 && distance < 200.0){
       shooterSetPoint = 3000.0;
@@ -83,7 +85,7 @@ public class AutonShoot extends Command {
       angleSetPoint = 0.525;
     }
 
-    m_Shooter.shoot(shooterSetPoint*.825);
+    m_Shooter.shoot(shooterSetPoint*powerLevel*.81);
     m_Shooter.setShooterAngle(angleSetPoint);
     //System.out.println(m_Limelight.getDistance());
   }

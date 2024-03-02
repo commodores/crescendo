@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.9,
-        "y": 5.55
+        "x": 2.602,
+        "y": 4.4
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.5722169626157434,
-        "y": 5.671877525573233
+        "x": 1.5534371930437985,
+        "y": 2.201642358834051
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.99,
-        "y": 6.85
+        "x": 7.93,
+        "y": 0.7929434040686271
       },
       "prevControl": {
-        "x": 1.3669845521509223,
-        "y": 7.043203177315446
+        "x": 5.122047475004041,
+        "y": 1.054148290114762
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,15 +30,15 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.55,
-      "rotationDegrees": -152.4904714321517,
-      "rotateFast": true
+      "waypointRelativePos": 0.25,
+      "rotationDegrees": -130.0,
+      "rotateFast": false
     }
   ],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "Intake&Shoot",
+      "name": "StopEverything",
       "waypointRelativePos": 0.0,
       "command": {
         "type": "parallel",
@@ -47,13 +47,30 @@
             {
               "type": "named",
               "data": {
-                "name": "PathShoot"
+                "name": "AutoStopShooter"
               }
             },
             {
               "type": "named",
               "data": {
-                "name": "PathIntake"
+                "name": "PathIntakeStop"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Intake",
+      "waypointRelativePos": 0.5,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ShooterIntake"
               }
             }
           ]
@@ -68,14 +85,14 @@
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": -155.0,
+    "velocity": 0.0,
+    "rotation": 180.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "WingNotes",
+  "folder": "CenterLineNotes",
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": 150.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

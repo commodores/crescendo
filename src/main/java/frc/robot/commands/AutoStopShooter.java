@@ -5,30 +5,20 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Limelight;
-import frc.robot.subsystems.Shooter;
+import frc.robot.RobotContainer;
 
 public class AutoStopShooter extends Command {
 
-  private final Shooter m_Shooter;
-  private final Limelight m_Limelight;
-  double shooterSetPoint;
-  double angleSetPoint;
-  double distance;
 
   /** Creates a new AutoShooterRPM. */
-  public AutoStopShooter(Shooter shooterSub, Limelight limelightSub) {
+  public AutoStopShooter() {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_Shooter = shooterSub;
-    m_Limelight = limelightSub;
-    addRequirements(m_Shooter);
-    addRequirements(m_Limelight);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_Shooter.stopShooter();
+    RobotContainer.m_Shooter.stopShooter();
   }
 
   // Called every time the scheduler runs while the command is scheduled.

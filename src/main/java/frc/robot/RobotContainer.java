@@ -28,6 +28,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.AutoFeeder;
 import frc.robot.commands.AutoIntake;
+import frc.robot.commands.AutoIntakeStop;
 import frc.robot.commands.AutoLEDTarget;
 import frc.robot.commands.AutoShooter;
 import frc.robot.commands.AutoStopShooter;
@@ -62,7 +63,7 @@ public class RobotContainer {
   public static final Intake m_Intake = new Intake();
   public static final Trampinator m_Trampinator = new Trampinator();
   public static final TrampElevator m_TrampElevator = new TrampElevator();
-  public final Shooter m_Shooter = new Shooter();
+  public static final Shooter m_Shooter = new Shooter();
   public static final Climber m_Climber = new Climber();
   public static final Limelight m_Limelight = new Limelight();
   public static final Blinkin m_Blinkin = new Blinkin();
@@ -98,8 +99,8 @@ public class RobotContainer {
     joystick.start().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldRelative()));
 
     /* Intake Commands */
-    joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).withTimeout(5)
-      .andThen(new GotIt().withTimeout(2))
+    joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).withTimeout(2.5)
+      .andThen(new GotIt().withTimeout(1))
       .andThen(new ReverseIntake(m_Intake).withTimeout(.1))
       .andThen(new InstantCommand(() -> m_Shooter.setShooterAngle(.61)))
     );
@@ -162,11 +163,12 @@ public class RobotContainer {
 
   public RobotContainer() {
     //Auto Naming of Commands and Such//
-    NamedCommands.registerCommand("ShooterIntake", new ShooterIntake(m_Intake, m_Shooter));
-    NamedCommands.registerCommand("AutoShooter", new AutoShooter(m_Shooter).withTimeout(.5));
+    NamedCommands.registerCommand("ShooterIntake", new ShooterIntake(m_Intake, m_Shooter).andThen(new ReverseIntake(m_Intake).withTimeout(.1)));
+    NamedCommands.registerCommand("AutoShooter", new AutoShooter(m_Shooter).withTimeout(1));
     NamedCommands.registerCommand("AutoFeeder", new AutoFeeder(m_Intake).withTimeout(.5));
-    NamedCommands.registerCommand("AutoStopShooter", new AutoStopShooter(m_Shooter, m_Limelight).withTimeout(.5));
+    NamedCommands.registerCommand("AutoStopShooter", new AutoStopShooter().withTimeout(.1));
     NamedCommands.registerCommand("PathIntake", new AutoIntake(m_Intake));
+    NamedCommands.registerCommand("PathIntakeStop", new AutoIntakeStop().withTimeout(.1));
     NamedCommands.registerCommand("PathShoot", new AutonShoot(m_Shooter));
     
     configureBindings();

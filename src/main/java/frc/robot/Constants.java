@@ -46,7 +46,7 @@ public class Constants {
         public static final int elevator = 8;
         public static final int shooter = 9;
   
-        public static final double kGearRatio = 5.0;
+        public static final double kGearRatio = 9.0;
         public static final double kMeterPerRevolution = Units.inchesToMeters((1.888*Math.PI)/kGearRatio);
   
           // PID coefficients for AMP/Trap
