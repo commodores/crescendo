@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.0461588195903664,
-        "y": 6.744683307548434
+        "x": 2.99,
+        "y": 6.85
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.0106680213360426,
-        "y": 6.100999838363314
+        "x": 1.618860692266839,
+        "y": 6.875285750571502
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.99,
-        "y": 5.56
+        "x": 2.9,
+        "y": 5.55
       },
       "prevControl": {
-        "x": 0.7790872145380657,
-        "y": 5.420068811046712
+        "x": 1.413628281802018,
+        "y": 5.308056434294687
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,48 +30,7 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "Shoot",
-      "waypointRelativePos": 0.1,
-      "command": {
-        "type": "sequential",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "AutoShooter"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Intake&Shoot",
-      "waypointRelativePos": 0.2,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "PathShoot"
-              }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "PathIntake"
-              }
-            }
-          ]
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -86,7 +45,7 @@
   "reversed": false,
   "folder": "WingNotes",
   "previewStartingState": {
-    "rotation": -159.1455419604217,
+    "rotation": -160.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

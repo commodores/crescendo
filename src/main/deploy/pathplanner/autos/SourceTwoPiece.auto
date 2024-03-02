@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.75,
-      "y": 4.356524349412336
+      "x": 0.74,
+      "y": 4.39
     },
-    "rotation": 119.46842727724851
+    "rotation": 120.0
   },
   "command": {
     "type": "sequential",
@@ -37,9 +37,28 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "SourcePartOne"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "PathIntake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PathShoot"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "SourcePartOne"
+                }
+              }
+            ]
           }
         }
       ]

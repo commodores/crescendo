@@ -5,7 +5,7 @@
       "x": 1.4229570277322372,
       "y": 5.55
     },
-    "rotation": -179.28384005452955
+    "rotation": 180.0
   },
   "command": {
     "type": "sequential",
@@ -37,19 +37,38 @@
           }
         },
         {
-          "type": "sequential",
+          "type": "parallel",
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "CenterPartOne"
+                  "name": "PathIntake"
                 }
               },
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "2-3"
+                  "name": "PathShoot"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "CenterPartOne"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "2-3"
+                      }
+                    }
+                  ]
                 }
               }
             ]

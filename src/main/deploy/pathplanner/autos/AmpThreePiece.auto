@@ -5,7 +5,7 @@
       "x": 0.7512873207564597,
       "y": 6.847299512780844
     },
-    "rotation": -113.59423974556307
+    "rotation": -111.19
   },
   "command": {
     "type": "sequential",
@@ -37,19 +37,38 @@
           }
         },
         {
-          "type": "sequential",
+          "type": "parallel",
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "AmpPartOne"
+                  "name": "PathIntake"
                 }
               },
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "3-2"
+                  "name": "PathShoot"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "AmpPartOne"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "3-2"
+                      }
+                    }
+                  ]
                 }
               }
             ]

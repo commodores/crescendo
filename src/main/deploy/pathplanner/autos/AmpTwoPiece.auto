@@ -5,7 +5,7 @@
       "x": 0.7512873207564597,
       "y": 6.847299512780844
     },
-    "rotation": -112.5430610000579
+    "rotation": -111.19
   },
   "command": {
     "type": "sequential",
@@ -37,9 +37,28 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "AmpPartOne"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "PathIntake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PathShoot"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "AmpPartOne"
+                }
+              }
+            ]
           }
         }
       ]

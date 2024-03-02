@@ -37,21 +37,47 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "SourcePartOne"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "1-2"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "2-3"
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "PathIntake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "PathShoot"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "SourcePartOne"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "1-2"
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "2-3"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
           }
         }
       ]
