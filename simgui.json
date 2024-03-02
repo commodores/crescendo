@@ -3,6 +3,10 @@
     "types": {
       "/FMSInfo": "FMSInfo",
       "/Pose": "Field2d",
+      "/Shuffleboard/Shooter Tuner/Shooter/Change Shooter Angle": "Command",
+      "/Shuffleboard/Shooter Tuner/Shooter/Disable Shooter": "Command",
+      "/Shuffleboard/Shooter Tuner/Shooter/Enable Feeder": "Command",
+      "/Shuffleboard/Shooter Tuner/Shooter/Enable Shooter": "Command",
       "/SmartDashboard/Auto Chooser": "String Chooser",
       "/SmartDashboard/Change Shooter Angle": "Command",
       "/SmartDashboard/Disable Shooter": "Command",

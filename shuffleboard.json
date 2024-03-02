@@ -11,9 +11,9 @@
         "vgap": 16.0,
         "titleType": 1,
         "tiles": {
-          "1,0": {
+          "3,0": {
             "size": [
-              2,
+              3,
               1
             ],
             "content": {
@@ -24,7 +24,7 @@
               "_showGlyph": false
             }
           },
-          "4,0": {
+          "6,0": {
             "size": [
               2,
               1
@@ -37,7 +37,7 @@
               "_showGlyph": false
             }
           },
-          "1,1": {
+          "6,1": {
             "size": [
               2,
               1
@@ -48,6 +48,36 @@
               "_title": "/SmartDashboard/Current Shooter Power",
               "_glyph": 148,
               "_showGlyph": false
+            }
+          },
+          "0,0": {
+            "size": [
+              3,
+              1
+            ],
+            "content": {
+              "_type": "Basic FMS Info",
+              "_source0": "network_table:///FMSInfo",
+              "_title": "FMSInfo",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "0,1": {
+            "size": [
+              6,
+              4
+            ],
+            "content": {
+              "_type": "Field",
+              "_source0": "network_table:///Pose",
+              "_title": "Pose",
+              "_glyph": 8,
+              "_showGlyph": true,
+              "Game/Game": "k2024Crescendo",
+              "Visuals/Robot Icon Size": 50.0,
+              "Visuals/Show Outside Circles": true,
+              "Colors/robotPose": "#00FF00FF"
             }
           }
         }

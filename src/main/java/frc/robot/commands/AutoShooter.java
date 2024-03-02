@@ -33,7 +33,7 @@ public class AutoShooter extends Command {
   @Override
   public void execute() {
     distance = RobotContainer.m_Limelight.getDistance();
-    powerLevel = RobotContainer.shooterPower;
+    powerLevel = RobotContainer.shooterPower.getDouble(1);
     //KISS
     if(distance > 137.5 && distance < 200.0){
       shooterSetPoint = 3000.0;
