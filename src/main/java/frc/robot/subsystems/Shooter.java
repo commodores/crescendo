@@ -99,6 +99,11 @@ public class Shooter extends SubsystemBase {
     shooterPIDRight.setReference(setPoint-1000, CANSparkMax.ControlType.kVelocity);
   }
 
+  public void shootClose(double setPoint) {
+    shooterPIDLeft.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
+    shooterPIDRight.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
+  }
+
   /**
    * Stops the shooter motor. Note: the NEO is set to Coast. Intended to be called
    * when a button is released.

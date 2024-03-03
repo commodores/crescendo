@@ -127,6 +127,9 @@ public class RobotContainer {
     joystick.y().onTrue(new InstantCommand(() -> m_Intake.runFeederSpeed(1.0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1))));
     joystick.y().onFalse(new InstantCommand(() -> m_Intake.runFeederSpeed(0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(0))));
 
+    joystick.b().whileTrue(new InstantCommand(() -> m_Shooter.shootClose(500)));
+    joystick.b().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()));
+
     /*Climber Commands */
     joystick.rightBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(1.0 )));
     joystick.rightBumper().onFalse(new InstantCommand(() -> m_Climber.windUp(0)));
