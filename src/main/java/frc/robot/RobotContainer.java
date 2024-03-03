@@ -90,7 +90,7 @@ public class RobotContainer {
             .withRotationalRate(joystick.a().getAsBoolean()?m_Limelight.LimelightAim():-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ));
     
-    m_Blinkin.setDefaultCommand(new AutoLEDTarget(m_Limelight, m_Blinkin));
+    m_Blinkin.setDefaultCommand(new AutoLEDTarget(m_Blinkin));
     
 
     //Button Bindings
@@ -99,14 +99,14 @@ public class RobotContainer {
     joystick.start().onTrue(m_Drivetrain.runOnce(() -> m_Drivetrain.seedFieldRelative()));
 
     /* Intake Commands */
-    joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).withTimeout(2.5)
-      .andThen(new GotIt().withTimeout(1))
+    joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).withTimeout(5)
+      .andThen(new GotIt().withTimeout(.1))
       .andThen(new ReverseIntake(m_Intake).withTimeout(.1))
       .andThen(new InstantCommand(() -> m_Shooter.setShooterAngle(.61)))
     );
     //joystick2.a().onFalse(new StopAllShooter(m_Intake, m_Shooter));
 
-    joystick2.b().onTrue(new TrampIntake(m_Intake, m_Trampinator).withTimeout(2).andThen(new GotIt().withTimeout(2)));
+    joystick2.b().onTrue(new TrampIntake(m_Intake, m_Trampinator).withTimeout(5).andThen(new GotIt().withTimeout(.1)));
     //joystick2.b().onFalse(new StopAll(m_Intake, m_Trampinator));    
 
     /*Trampinator Commands */
@@ -117,8 +117,8 @@ public class RobotContainer {
     joystick2.y().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
 
     /*Tramp Elevator Commands */
-    joystick2.rightBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.35));
-    joystick2.leftBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.0));
+    joystick2.rightBumper().onTrue(new InstantCommand(() -> m_TrampElevator.moveToPosition(0.1)));
+    joystick2.leftBumper().onTrue(new InstantCommand(() -> m_TrampElevator.moveToPosition(0.0)));
 
     /*Shooter Commands */
     joystick.x().whileTrue(new AutoShooter(m_Shooter));
@@ -152,7 +152,7 @@ public class RobotContainer {
     //Shooter Adjust for game piece newness
     shooterPower = tab.add("Shooter Percent", 1)
       .withWidget(BuiltInWidgets.kNumberSlider)
-      .withProperties(Map.of("min", 0, "max", 1))
+      .withProperties(Map.of("Min", 0, "Max", 1))
       .getEntry();
 
     if (Utils.isSimulation()) {

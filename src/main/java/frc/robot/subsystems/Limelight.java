@@ -17,7 +17,7 @@ public class Limelight extends SubsystemBase {
 
   NetworkTable table;
   NetworkTableEntry tx, ty, tv, ta, ts;
-  double x, y, v, area, s, limelightMountAngleDegrees, limelightLensHeightInches, goalHeightInches, angleToGoalDegrees, angleToGoalRadians, distanceFromLimelightToGoalInches;
+  double x, y, v, area, s, limelightMountAngleDegrees, limelightLensHeightInches, goalHeightInches, angleToGoalDegrees, angleToGoalRadians, distanceFromLimelightToGoalInches, kP;
 
   public Limelight(){
     table = NetworkTableInstance.getDefault().getTable("limelight-front");
@@ -135,8 +135,12 @@ public class Limelight extends SubsystemBase {
     // if it is too high, the robot will oscillate.
     // if it is too low, the robot will never reach its target
     // if the robot never turns in the correct direction, kP should be inverted.
-    double kP = .017;
-
+    if(getX() > -3 && getX() < 3){
+      kP = .2;
+    } else {
+      kP = .0175;
+    }
+    
     // tx ranges from (-hfov/2) to (hfov/2) in degrees. If your target is on the rightmost edge of 
     // your limelight 3 feed, tx should return roughly 31 degrees.
     double targetingAngularVelocity = getX() * kP;

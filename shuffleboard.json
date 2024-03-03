@@ -11,20 +11,7 @@
         "vgap": 16.0,
         "titleType": 1,
         "tiles": {
-          "3,0": {
-            "size": [
-              3,
-              1
-            ],
-            "content": {
-              "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Auto Chooser",
-              "_title": "/SmartDashboard/Auto Chooser",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "6,0": {
+          "5,0": {
             "size": [
               2,
               1
@@ -63,8 +50,20 @@
               "_showGlyph": true,
               "Game/Game": "k2024Crescendo",
               "Visuals/Robot Icon Size": 50.0,
-              "Visuals/Show Outside Circles": true,
-              "Colors/robotPose": "#FFFFFFFF"
+              "Visuals/Show Outside Circles": true
+            }
+          },
+          "3,0": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Auto Chooser",
+              "_title": "/SmartDashboard/Auto Chooser",
+              "_glyph": 148,
+              "_showGlyph": false
             }
           }
         }
@@ -72,9 +71,9 @@
     }
   ],
   "windowGeometry": {
-    "x": -8.0,
-    "y": -8.0,
-    "width": 1936.0,
-    "height": 1048.0
+    "x": 354.0,
+    "y": 3.0,
+    "width": 1059.0,
+    "height": 758.0
   }
 }

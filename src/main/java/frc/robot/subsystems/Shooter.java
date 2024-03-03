@@ -87,7 +87,7 @@ public class Shooter extends SubsystemBase {
     
 
     shooterPIDAngle.setFeedbackDevice(m_angle_encoder);
-   
+    resetAngle();   
   }
 
   /**
@@ -124,6 +124,5 @@ public class Shooter extends SubsystemBase {
     
     SmartDashboard.putNumber("Shooter Angle Degrees", Units.radiansToDegrees(m_angle_encoder.getPosition()));
     SmartDashboard.putNumber("Shooter Angles Radians", m_angle_encoder.getPosition());
-
   }
 }
