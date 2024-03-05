@@ -32,10 +32,12 @@ public class AutoLEDTarget extends Command {
   public void execute() {
     error = RobotContainer.m_Limelight.getX();
     //Check error
-    if(error > -3 && error < 3){
-      m_Blinkin.green();
-    } else {
-      m_Blinkin.defult();
+    if(RobotContainer.m_Limelight.seesTarget()){
+      if(error > -3 && error < 3){
+        m_Blinkin.green();
+      } else {
+        m_Blinkin.defult();
+      }
     }
   }
 

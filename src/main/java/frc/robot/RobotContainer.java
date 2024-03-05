@@ -101,8 +101,8 @@ public class RobotContainer {
     /* Intake Commands */
     joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).withTimeout(5)
       .andThen(new GotIt().withTimeout(.1))
-      .andThen(new ReverseIntake(m_Intake).withTimeout(.1))
-      .andThen(new InstantCommand(() -> m_Shooter.setShooterAngle(.61)))
+      .andThen(new ReverseIntake(m_Intake).withTimeout(.0825))
+      .andThen(new InstantCommand(() -> m_Shooter.setShooterAngle(.54)))
     );
     //joystick2.a().onFalse(new StopAllShooter(m_Intake, m_Shooter));
 
@@ -117,17 +117,17 @@ public class RobotContainer {
     joystick2.y().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
 
     /*Tramp Elevator Commands */
-    joystick2.rightBumper().onTrue(new InstantCommand(() -> m_TrampElevator.moveToPosition(0.1)));
-    joystick2.leftBumper().onTrue(new InstantCommand(() -> m_TrampElevator.moveToPosition(0.0)));
+    joystick2.rightBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.37));
+    joystick2.leftBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.0));
 
     /*Shooter Commands */
     joystick.x().whileTrue(new AutoShooter(m_Shooter));
-    joystick.x().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()).alongWith(new InstantCommand(() -> m_Shooter.setShooterAngle(.61))));
+    joystick.x().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()).alongWith(new InstantCommand(() -> m_Shooter.setShooterAngle(.54))));
     
     joystick.y().onTrue(new InstantCommand(() -> m_Intake.runFeederSpeed(1.0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1))));
     joystick.y().onFalse(new InstantCommand(() -> m_Intake.runFeederSpeed(0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(0))));
 
-    joystick.b().whileTrue(new InstantCommand(() -> m_Shooter.shootClose(500)));
+    joystick.b().whileTrue(new InstantCommand(() -> m_Shooter.shootClose(1250)));
     joystick.b().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()));
 
     /*Climber Commands */
@@ -166,8 +166,8 @@ public class RobotContainer {
 
   public RobotContainer() {
     //Auto Naming of Commands and Such//
-    NamedCommands.registerCommand("ShooterIntake", new ShooterIntake(m_Intake, m_Shooter).andThen(new ReverseIntake(m_Intake).withTimeout(.1)));
-    NamedCommands.registerCommand("AutoShooter", new AutoShooter(m_Shooter).withTimeout(1));
+    NamedCommands.registerCommand("ShooterIntake", new ShooterIntake(m_Intake, m_Shooter).withTimeout(5.0).andThen(new ReverseIntake(m_Intake).withTimeout(.2)));
+    NamedCommands.registerCommand("AutoShooter", new AutoShooter(m_Shooter).withTimeout(2));
     NamedCommands.registerCommand("AutoFeeder", new AutoFeeder(m_Intake).withTimeout(.5));
     NamedCommands.registerCommand("AutoStopShooter", new AutoStopShooter().withTimeout(.1));
     NamedCommands.registerCommand("PathIntake", new AutoIntake(m_Intake));

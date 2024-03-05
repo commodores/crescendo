@@ -37,46 +37,46 @@ public class AutoShooter extends Command {
     //KISS
     if(distance > 137.5 && distance < 200.0){
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.053;
+      angleSetPoint = 0.01;
     }else if(distance > 132.5 && distance < 137.5){
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.057;
+      angleSetPoint = 0.01;
     }else if(distance > 127.5 && distance < 132.5){
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.061;
+      angleSetPoint = 0.01;
     }else if(distance > 122.5 && distance < 127.5){
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.064;
+      angleSetPoint = 0.01;
     } else if(distance > 117.5 && distance < 122.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.067;
+      angleSetPoint = 0.01;
     }  else if(distance > 112.5 && distance < 117.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.0705;
+      angleSetPoint = 0.01;
     } else if(distance > 107.5 && distance < 112.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.0775;
+      angleSetPoint = 0.04;
     } else if(distance > 102.5 && distance < 107.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.085;
+      angleSetPoint = 0.065;
     } else if(distance > 97.5 && distance < 102.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.125;
+      angleSetPoint = 0.115;
     } else if(distance > 92.5 && distance < 97.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.2;
+      angleSetPoint = 0.16;
     } else if(distance > 87.5 && distance < 92.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.225;
+      angleSetPoint = 0.2;
     } else if(distance > 82.5 && distance < 87.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.25;
+      angleSetPoint = 0.23;
     } else if(distance > 77.5 && distance < 82.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.3;
+      angleSetPoint = 0.27;
     } else if(distance > 72.5 && distance < 77.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.35;
+      angleSetPoint = 0.34;
     } else if(distance > 67.5 && distance < 72.5) {
       shooterSetPoint = 2500.0;
       angleSetPoint = 0.4;

@@ -136,7 +136,7 @@ public class Limelight extends SubsystemBase {
     // if it is too low, the robot will never reach its target
     // if the robot never turns in the correct direction, kP should be inverted.
     if(getX() > -3 && getX() < 3){
-      kP = .2;
+      kP = .17;
     } else {
       kP = .0175;
     }

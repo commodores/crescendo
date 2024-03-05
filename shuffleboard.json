@@ -50,7 +50,8 @@
               "_showGlyph": true,
               "Game/Game": "k2024Crescendo",
               "Visuals/Robot Icon Size": 50.0,
-              "Visuals/Show Outside Circles": true
+              "Visuals/Show Outside Circles": true,
+              "Colors/robotPose": "#FFFFFFFF"
             }
           },
           "3,0": {
@@ -65,15 +66,58 @@
               "_glyph": 148,
               "_showGlyph": false
             }
+          },
+          "6,1": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Number Slider",
+              "_source0": "network_table:///Shuffleboard/Shooter Tuner/Shooter Percent",
+              "_title": "Shuffleboard/Shooter Tuner/Shooter Percent",
+              "_glyph": 148,
+              "_showGlyph": false,
+              "Slider Settings/Min": -1.0,
+              "Slider Settings/Max": 1.0,
+              "Slider Settings/Block increment": 0.0625,
+              "Visuals/Display value": true
+            }
+          },
+          "6,2": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Shooter Angle Degrees",
+              "_title": "SmartDashboard/Shooter Angle Degrees",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "6,3": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Shooter Angles Radians",
+              "_title": "SmartDashboard/Shooter Angles Radians",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
           }
         }
       }
     }
   ],
   "windowGeometry": {
-    "x": 354.0,
-    "y": 3.0,
-    "width": 1059.0,
-    "height": 758.0
+    "x": -8.0,
+    "y": -8.0,
+    "width": 1936.0,
+    "height": 1048.0
   }
 }

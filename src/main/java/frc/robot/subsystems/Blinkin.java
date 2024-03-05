@@ -35,7 +35,7 @@ public class Blinkin extends SubsystemBase {
   }
 
    public void defult() {
-    blinkin.set(-.29);
+    blinkin.set(-.11);
   }
 
 
