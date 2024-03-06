@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8054356108712217,
-        "y": 5.522617590689727
+        "x": 1.7547654527744134,
+        "y": 5.55
       },
       "isLocked": false,
       "linkedName": null
@@ -17,18 +17,24 @@
     {
       "anchor": {
         "x": 2.6,
-        "y": 4.4
+        "y": 4.35
       },
       "prevControl": {
-        "x": 1.684161913778373,
-        "y": 4.4777980465051845
+        "x": 1.3856420440113608,
+        "y": 4.533770522086499
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.55,
+      "rotationDegrees": 160.0,
+      "rotateFast": true
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [
     {
@@ -63,13 +69,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 150.0,
+    "rotation": 160.0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": "WingNotes",
   "previewStartingState": {
-    "rotation": 180.0,
+    "rotation": -175.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

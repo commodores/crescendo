@@ -166,7 +166,8 @@ public class RobotContainer {
 
   public RobotContainer() {
     //Auto Naming of Commands and Such//
-    NamedCommands.registerCommand("ShooterIntake", new ShooterIntake(m_Intake, m_Shooter).withTimeout(5.0).andThen(new ReverseIntake(m_Intake).withTimeout(.2)));
+    NamedCommands.registerCommand("ShooterIntake", new ShooterIntake(m_Intake, m_Shooter).andThen(new ReverseIntake(m_Intake).withTimeout(.1)));
+    NamedCommands.registerCommand("ReverseIntake", new ReverseIntake(m_Intake).withTimeout(.0825));
     NamedCommands.registerCommand("AutoShooter", new AutoShooter(m_Shooter).withTimeout(2));
     NamedCommands.registerCommand("AutoFeeder", new AutoFeeder(m_Intake).withTimeout(.5));
     NamedCommands.registerCommand("AutoStopShooter", new AutoStopShooter().withTimeout(.1));

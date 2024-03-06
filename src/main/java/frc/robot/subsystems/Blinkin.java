@@ -35,7 +35,15 @@ public class Blinkin extends SubsystemBase {
   }
 
    public void defult() {
-    blinkin.set(-.11);
+    blinkin.set(.91);
+  }
+
+  public void red() {
+    blinkin.set(.61);
+  }
+
+  public void blue() {
+    blinkin.set(.87);
   }
 
 

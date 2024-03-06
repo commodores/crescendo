@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.99,
+        "x": 3.3,
         "y": 6.85
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.9790334126122797,
-        "y": 7.071189415106104
+        "x": 4.587566160919623,
+        "y": 7.0431173320682845
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.288914032373519,
-        "y": 7.407024268593991
+        "x": 8.29,
+        "y": 7.47
       },
       "prevControl": {
-        "x": 7.44886059085127,
-        "y": 7.407024268593991
+        "x": 6.900018947680577,
+        "y": 7.304992888953387
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "StopEverthing",
-      "waypointRelativePos": 0,
+      "waypointRelativePos": 0.2,
       "command": {
         "type": "parallel",
         "data": {

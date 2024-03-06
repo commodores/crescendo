@@ -54,19 +54,6 @@
               "Colors/robotPose": "#FFFFFFFF"
             }
           },
-          "3,0": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "ComboBox Chooser",
-              "_source0": "network_table:///SmartDashboard/Auto Chooser",
-              "_title": "/SmartDashboard/Auto Chooser",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "6,1": {
             "size": [
               2,
@@ -106,6 +93,45 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/Shooter Angles Radians",
               "_title": "SmartDashboard/Shooter Angles Radians",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "6,4": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Shooter",
+              "_title": "SmartDashboard/Shooter",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "7,4": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Tramp",
+              "_title": "SmartDashboard/Tramp",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "3,0": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Auto Chooser",
+              "_title": "SmartDashboard/Auto Chooser",
               "_glyph": 148,
               "_showGlyph": false
             }

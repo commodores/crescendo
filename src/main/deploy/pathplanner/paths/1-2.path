@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 2.6,
-        "y": 4.4
+        "y": 4.35
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.3522838870111549,
-        "y": 5.120369233706343
+        "x": 1.165172169561218,
+        "y": 4.35
       },
       "isLocked": false,
       "linkedName": null
@@ -20,8 +20,8 @@
         "y": 5.55
       },
       "prevControl": {
-        "x": 1.851721647223517,
-        "y": 5.55
+        "x": 1.6281894381970583,
+        "y": 5.8397949523171775
       },
       "nextControl": null,
       "isLocked": false,
@@ -75,7 +75,7 @@
   "reversed": false,
   "folder": "WingNotes",
   "previewStartingState": {
-    "rotation": 150.0,
+    "rotation": 160.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

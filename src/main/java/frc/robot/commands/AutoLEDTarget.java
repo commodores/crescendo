@@ -4,6 +4,10 @@
 
 package frc.robot.commands;
 
+import java.util.Optional;
+
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Blinkin;
@@ -11,8 +15,8 @@ import frc.robot.subsystems.Blinkin;
 public class AutoLEDTarget extends Command {
 
   private final Blinkin m_Blinkin;
-  double defult = 2000;
   double error;
+  Optional<Alliance> ally;
 
   /** Creates a new AutoShooterRPM. */
   public AutoLEDTarget(Blinkin blinkinSub) {
@@ -24,7 +28,21 @@ public class AutoLEDTarget extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_Blinkin.defult();
+
+    ally = DriverStation.getAlliance();
+    if (ally.isPresent()) {
+        if (ally.get() == Alliance.Red) {
+            m_Blinkin.red();
+        }
+        if (ally.get() == Alliance.Blue) {
+            m_Blinkin.blue();
+        }
+    }
+    else {
+        m_Blinkin.defult();
+    }   
+    
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -36,7 +54,12 @@ public class AutoLEDTarget extends Command {
       if(error > -3 && error < 3){
         m_Blinkin.green();
       } else {
-        m_Blinkin.defult();
+        if (ally.get() == Alliance.Red) {
+            m_Blinkin.red();
+        }
+        if (ally.get() == Alliance.Blue) {
+            m_Blinkin.blue();
+        }
       }
     }
   }

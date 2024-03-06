@@ -48,7 +48,7 @@ public class ShooterIntake extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-   return m_Intake.getShooterDistance() < 90;
+   return m_Intake.getShooterDistance() < 80;
    //return false;
   }
 }
