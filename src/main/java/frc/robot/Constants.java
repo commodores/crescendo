@@ -5,9 +5,9 @@ import edu.wpi.first.math.util.Units;
 public class Constants {
 
     public static final class IntakeConstants {
-      public static final int intakeLeft = 1;
-      public static final int intakeRight = 2;
-      public static final int intakeChooser = 3;
+      public static final int intakeLeft = 2;
+      public static final int intakeRight = 1;
+      public static final int intakeChooser = 8;
       public static final int shooterFeeder = 7;
     }
 
@@ -42,10 +42,10 @@ public class Constants {
 
     public static final class TrampinatorConstants {
 
-      public static final int elevator = 8;
+      public static final int elevator = 10;
       public static final int shooter = 9;
 
-      public static final double kGearRatio = 5.0;
+      public static final double kGearRatio = 9.0;
       public static final double kMeterPerRevolution = Units.inchesToMeters((1.888*Math.PI)/kGearRatio);
 
       // PID coefficients for AMP/Trap
@@ -60,8 +60,7 @@ public class Constants {
     }
 
     public static final class ClimberConstants {
-      public static final int captainHook = 10;
-      public static final int climbing = 11;
+      public static final int captainHook = 3;
     }
 
     public static final class BlinkinConstants {

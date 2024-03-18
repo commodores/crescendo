@@ -58,8 +58,8 @@ public class CommandSwerveDrivetrain extends SwerveDrivetrain implements Subsyst
             this::seedFieldRelative,  // Consumer for seeding pose against auto
             this::getCurrentRobotChassisSpeeds,
             (speeds)->this.setControl(autoRequest.withSpeeds(speeds)), // Consumer of ChassisSpeeds to drive the robot
-            new HolonomicPathFollowerConfig(new PIDConstants(12, 0, 0),
-                                            new PIDConstants(12, 0, 0),//10
+            new HolonomicPathFollowerConfig(new PIDConstants(15, 0, 0),
+                                            new PIDConstants(15, 0, 0),//10
                                             TunerConstants.kSpeedAt12VoltsMps,
                                             driveBaseRadius,
                                             new ReplanningConfig()),

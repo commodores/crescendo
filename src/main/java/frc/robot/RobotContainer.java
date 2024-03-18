@@ -26,6 +26,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.commands.AutoAim;
 import frc.robot.commands.AutoFeeder;
 import frc.robot.commands.AutoIntake;
 import frc.robot.commands.AutoIntakeStop;
@@ -51,7 +52,7 @@ public class RobotContainer {
 
   private final SendableChooser<Command> autoChooser;
 
-  private double MaxSpeed = TunerConstants.kSpeedAt12VoltsMps; // kSpeedAt12VoltsMps desired top speed
+  public static final  double MaxSpeed = TunerConstants.kSpeedAt12VoltsMps; // kSpeedAt12VoltsMps desired top speed
   public static final double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
 
   /* Setting up bindings for necessary control of the swerve drive platform */
@@ -117,7 +118,7 @@ public class RobotContainer {
     joystick2.y().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
 
     /*Tramp Elevator Commands */
-    joystick2.rightBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.37));
+    joystick2.rightBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.34));
     joystick2.leftBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.0));
 
     /*Shooter Commands */
@@ -174,6 +175,8 @@ public class RobotContainer {
     NamedCommands.registerCommand("PathIntake", new AutoIntake(m_Intake));
     NamedCommands.registerCommand("PathIntakeStop", new AutoIntakeStop().withTimeout(.1));
     NamedCommands.registerCommand("PathShoot", new AutonShoot(m_Shooter));
+    NamedCommands.registerCommand("AutoAim", new AutoAim(m_Drivetrain));
+   
     
     configureBindings();
 
