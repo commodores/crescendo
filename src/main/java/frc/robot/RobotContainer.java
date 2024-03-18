@@ -103,7 +103,6 @@ public class RobotContainer {
     joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).withTimeout(5)
       .andThen(new GotIt().withTimeout(.1))
       .andThen(new ReverseIntake(m_Intake).withTimeout(.0825))
-      .andThen(new InstantCommand(() -> m_Shooter.setShooterAngle(.54)))
     );
     //joystick2.a().onFalse(new StopAllShooter(m_Intake, m_Shooter));
 
@@ -123,7 +122,7 @@ public class RobotContainer {
 
     /*Shooter Commands */
     joystick.x().whileTrue(new AutoShooter(m_Shooter));
-    joystick.x().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()).alongWith(new InstantCommand(() -> m_Shooter.setShooterAngle(.54))));
+    joystick.x().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()).alongWith(new InstantCommand(() -> m_Shooter.setShooterAngle(.58))));
     
     joystick.y().onTrue(new InstantCommand(() -> m_Intake.runFeederSpeed(1.0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1))));
     joystick.y().onFalse(new InstantCommand(() -> m_Intake.runFeederSpeed(0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(0))));

@@ -33,7 +33,7 @@ public class TrampElevator extends TrapezoidProfileSubsystem {
     shoulderMotor.restoreFactoryDefaults();
     shoulderMotor.setInverted(true);
     shoulderMotor.setSmartCurrentLimit(40);
-    shoulderMotor.setIdleMode(IdleMode.kCoast);
+    shoulderMotor.setIdleMode(IdleMode.kBrake);
 
     m_PIDController = shoulderMotor.getPIDController();
     m_PIDController.setP(Constants.TrampinatorConstants.KP);

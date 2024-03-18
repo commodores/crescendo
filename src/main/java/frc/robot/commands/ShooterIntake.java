@@ -26,7 +26,7 @@ public class ShooterIntake extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_Shooter.setShooterAngle(0.04);
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.

@@ -72,7 +72,7 @@ public class Shooter extends SubsystemBase {
     shooterAngleMotor.restoreFactoryDefaults();
     shooterAngleMotor.setInverted(false);
     shooterAngleMotor.setSmartCurrentLimit(60);
-    shooterAngleMotor.setIdleMode(IdleMode.kCoast);
+    shooterAngleMotor.setIdleMode(IdleMode.kBrake);
 
     shooterPIDAngle = shooterAngleMotor.getPIDController();
     shooterPIDAngle.setP(Constants.ShooterConstants.ANGLEKP);
@@ -119,7 +119,7 @@ public class Shooter extends SubsystemBase {
   }
 
   public void resetAngle(){
-    m_angle_encoder.setPosition(0.0);
+    m_angle_encoder.setPosition(0.58);
   }
 
   @Override
