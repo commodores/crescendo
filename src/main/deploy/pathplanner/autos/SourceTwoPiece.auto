@@ -41,6 +41,37 @@
           "data": {
             "pathName": "SourcePartOne"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoAim"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoShooter"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "AutoShooter"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "AutoFeeder"
+                }
+              }
+            ]
+          }
         }
       ]
     }

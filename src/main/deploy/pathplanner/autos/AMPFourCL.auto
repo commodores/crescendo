@@ -43,15 +43,9 @@
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "3-4"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "4-Shoot"
+            "name": "AutoAim"
           }
         },
         {
@@ -82,13 +76,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Shoot-5"
+            "pathName": "3-4"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "5-Shoot"
+            "pathName": "4-Shoot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoAim"
           }
         },
         {
@@ -111,6 +111,49 @@
                 "type": "named",
                 "data": {
                   "name": "AutoShooter"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Shoot-5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "5-Shoot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoAim"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoShooter"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "AutoShooter"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "AutoIntake"
                 }
               }
             ]

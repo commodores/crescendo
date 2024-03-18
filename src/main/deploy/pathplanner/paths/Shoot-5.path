@@ -32,42 +32,12 @@
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "StopEverything",
-      "waypointRelativePos": 0.2,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "AutoStopShooter"
-              }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "PathIntakeStop"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
       "name": "Intake",
       "waypointRelativePos": 0.5,
       "command": {
         "type": "parallel",
         "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "ShooterIntake"
-              }
-            }
-          ]
+          "commands": []
         }
       }
     }

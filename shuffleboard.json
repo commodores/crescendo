@@ -50,8 +50,7 @@
               "_showGlyph": true,
               "Game/Game": "k2024Crescendo",
               "Visuals/Robot Icon Size": 50.0,
-              "Visuals/Show Outside Circles": true,
-              "Colors/robotPose": "#FFFFFFFF"
+              "Visuals/Show Outside Circles": true
             }
           },
           "6,1": {
