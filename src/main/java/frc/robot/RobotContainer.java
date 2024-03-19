@@ -32,6 +32,7 @@ import frc.robot.commands.AutoIntake;
 import frc.robot.commands.AutoIntakeStop;
 import frc.robot.commands.AutoLEDTarget;
 import frc.robot.commands.AutoShooter;
+import frc.robot.commands.AutoShooterAngle;
 import frc.robot.commands.AutoStopShooter;
 import frc.robot.commands.GotIt;
 import frc.robot.commands.ReverseIntake;
@@ -44,6 +45,7 @@ import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.ShooterAngle;
 import frc.robot.subsystems.TrampElevator;
 import frc.robot.subsystems.Trampinator;
 
@@ -67,6 +69,7 @@ public class RobotContainer {
   public static final Climber m_Climber = new Climber();
   public static final Limelight m_Limelight = new Limelight();
   public static final Blinkin m_Blinkin = new Blinkin();
+  public static final ShooterAngle m_ShooterAngle = new ShooterAngle();
 
   public static GenericEntry shooterPower;
   
@@ -91,6 +94,7 @@ public class RobotContainer {
         ));
     
     m_Blinkin.setDefaultCommand(new AutoLEDTarget(m_Blinkin));
+    m_ShooterAngle.setDefaultCommand(new AutoShooterAngle(m_ShooterAngle));
     
 
     //Button Bindings
@@ -121,7 +125,7 @@ public class RobotContainer {
 
     /*Shooter Commands */
     joystick.x().whileTrue(new AutoShooter(m_Shooter));
-    joystick.x().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()).alongWith(new InstantCommand(() -> m_Shooter.setShooterAngle(.58))));
+    joystick.x().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()));
     
     joystick.y().onTrue(new InstantCommand(() -> m_Intake.runFeederSpeed(1.0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1))));
     joystick.y().onFalse(new InstantCommand(() -> m_Intake.runFeederSpeed(0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(0))));
@@ -149,7 +153,7 @@ public class RobotContainer {
     shooterCommands.add("Enable Feeder", new AutoFeeder(m_Intake));
     shooterCommands.add("Disable Shooter", new InstantCommand(() -> m_Shooter.stopShooter()));
     GenericEntry angle = shooterCommands.add("Shooter Angle", 0).getEntry();
-    shooterCommands.add("Change Shooter Angle", new InstantCommand(() -> m_Shooter.setShooterAngle(angle.getDouble(0))));
+    shooterCommands.add("Change Shooter Angle", new InstantCommand(() -> m_ShooterAngle.setShooterAngle(angle.getDouble(0))));
 
     //Shooter Adjust for game piece newness
     shooterPower = tab.add("Shooter Percent", 1)

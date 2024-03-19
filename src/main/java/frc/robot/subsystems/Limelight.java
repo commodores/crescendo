@@ -17,7 +17,7 @@ public class Limelight extends SubsystemBase {
 
   NetworkTable table;
   NetworkTableEntry tx, ty, tv, ta, ts;
-  double x, y, v, area, s, limelightMountAngleDegrees, limelightLensHeightInches, goalHeightInches, angleToGoalDegrees, angleToGoalRadians, distanceFromLimelightToGoalInches, kP;
+  double x, y, v, area, s, limelightMountAngleDegrees, limelightLensHeightInches, goalHeightInches, angleToGoalDegrees, angleToGoalRadians, distanceFromLimelightToGoalInches, kP, shooterAngleDegrees, shooterDistance;
 
   public Limelight(){
     table = NetworkTableInstance.getDefault().getTable("limelight-front");
@@ -27,9 +27,9 @@ public class Limelight extends SubsystemBase {
     ta = table.getEntry("ta");
     ts = table.getEntry("ts");
     
-    limelightMountAngleDegrees = 5.0; 
-    limelightLensHeightInches = 20.0; 
-    goalHeightInches = 57.0; 
+    limelightMountAngleDegrees = 2.95; //2.15
+    limelightLensHeightInches = 24.5; //26
+    goalHeightInches = 57.5; 
     
   }
 
@@ -126,6 +126,18 @@ public class Limelight extends SubsystemBase {
       angleToGoalRadians = angleToGoalDegrees * (3.14159 / 180.0);
       distanceFromLimelightToGoalInches = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
       return distanceFromLimelightToGoalInches;
+  }
+
+  public double getShooterAngle(){
+    double d;
+    d = distanceFromLimelightToGoalInches + 55;
+
+    shooterDistance = Math.sqrt((d * d) + 5184);
+
+    shooterAngleDegrees = Math.asin(72/shooterDistance)*100;
+
+    return shooterAngleDegrees;
+
   }
 
   public double LimelightAim()

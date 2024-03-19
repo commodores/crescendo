@@ -30,11 +30,11 @@ public class Constants {
       public static final double MaxRPM = 6700;
 
       // PID coefficients for Shooter Angle Motor
-      public static final double ANGLEKP = 11.0; //0.65
+      public static final double ANGLEKP = 8; //0.65
       public static final double ANGLEKI = 0.00000;
       public static final double ANGLEKD = 0; 
       public static final double ANGLEKIz = 0; 
-      public static final double ANGLEKFF = 0.0025; 
+      public static final double ANGLEKFF = 0.007; 
       public static final double ANGLEKMaxOutput = 1; 
       public static final double ANGLEKMinOutput = -1;
       public static final double ANGLEMaxRPM = 6700;   

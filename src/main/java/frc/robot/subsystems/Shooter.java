@@ -20,15 +20,15 @@ public class Shooter extends SubsystemBase {
    */
   private final CANSparkFlex shooterLeftMotor;
   private final CANSparkFlex shooterRightMotor;
-  private final CANSparkFlex shooterAngleMotor;
+  
   
   private final RelativeEncoder m_left_encoder;
   private final RelativeEncoder m_right_encoder;
-  private final RelativeEncoder m_angle_encoder;
+ 
  
   private final SparkPIDController shooterPIDLeft;
   private final SparkPIDController shooterPIDRight;
-  private final SparkPIDController shooterPIDAngle;
+  
 
 
   public Shooter() {
@@ -65,29 +65,6 @@ public class Shooter extends SubsystemBase {
     m_left_encoder = shooterLeftMotor.getEncoder();
     m_right_encoder = shooterRightMotor.getEncoder();
     
-
-    //Angle Motor
-    shooterAngleMotor = new CANSparkFlex(Constants.ShooterConstants.shooterAngle, MotorType.kBrushless);
-
-    shooterAngleMotor.restoreFactoryDefaults();
-    shooterAngleMotor.setInverted(false);
-    shooterAngleMotor.setSmartCurrentLimit(60);
-    shooterAngleMotor.setIdleMode(IdleMode.kBrake);
-
-    shooterPIDAngle = shooterAngleMotor.getPIDController();
-    shooterPIDAngle.setP(Constants.ShooterConstants.ANGLEKP);
-    shooterPIDAngle.setI(Constants.ShooterConstants.ANGLEKI);
-    shooterPIDAngle.setD(Constants.ShooterConstants.ANGLEKD);
-    shooterPIDAngle.setFF(Constants.ShooterConstants.ANGLEKFF);
-
-    shooterPIDAngle.setOutputRange(Constants.ShooterConstants.ANGLEKMinOutput, Constants.ShooterConstants.ANGLEKMaxOutput);
-
-    m_angle_encoder = shooterAngleMotor.getEncoder();
-    m_angle_encoder.setPositionConversionFactor((2 * Math.PI) / Constants.ShooterConstants.kAngleGearRatio); //Converted to Radians
-    
-
-    shooterPIDAngle.setFeedbackDevice(m_angle_encoder);
-    resetAngle();   
   }
 
   /**
@@ -114,20 +91,11 @@ public class Shooter extends SubsystemBase {
   }
 
 
-  public void setShooterAngle(double angle){
-    shooterPIDAngle.setReference(angle, CANSparkFlex.ControlType.kPosition, 0);
-  }
-
-  public void resetAngle(){
-    m_angle_encoder.setPosition(0.58);
-  }
+  
 
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Left Shooter Velocity", m_left_encoder.getVelocity());
     SmartDashboard.putNumber("Right Shooter Velocity", m_right_encoder.getVelocity()); 
-    
-    SmartDashboard.putNumber("Shooter Angle Degrees", Units.radiansToDegrees(m_angle_encoder.getPosition()));
-    SmartDashboard.putNumber("Shooter Angles Radians", m_angle_encoder.getPosition());
   }
 }

@@ -38,6 +38,7 @@ public class Robot extends TimedRobot {
     }
     
     SmartDashboard.putNumber("Distance to Goal", RobotContainer.m_Limelight.getDistance());
+    SmartDashboard.putNumber("Target Degrees", RobotContainer.m_Limelight.getShooterAngle());
     //SmartDashboard.putNumber("Current Shooter Power", RobotContainer.shooterPower.getDouble(1));
 
   }

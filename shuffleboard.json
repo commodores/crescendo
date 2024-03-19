@@ -50,7 +50,8 @@
               "_showGlyph": true,
               "Game/Game": "k2024Crescendo",
               "Visuals/Robot Icon Size": 50.0,
-              "Visuals/Show Outside Circles": true
+              "Visuals/Show Outside Circles": true,
+              "Colors/robotPose": "#FFFFFFFF"
             }
           },
           "6,1": {
@@ -131,6 +132,19 @@
               "_type": "ComboBox Chooser",
               "_source0": "network_table:///SmartDashboard/Auto Chooser",
               "_title": "SmartDashboard/Auto Chooser",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "8,2": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Target Degrees",
+              "_title": "/SmartDashboard/Target Degrees",
               "_glyph": 148,
               "_showGlyph": false
             }

@@ -13,7 +13,6 @@ public class AutoShooter extends Command {
   private final Shooter m_Shooter;
   //private final Limelight m_Limelight;
   double shooterSetPoint;
-  double angleSetPoint;
   double distance;
   double powerLevel;
 
@@ -37,56 +36,41 @@ public class AutoShooter extends Command {
     //KISS
     if(distance > 137.5 && distance < 200.0){
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.01;
+    
     }else if(distance > 132.5 && distance < 137.5){
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.01;
     }else if(distance > 127.5 && distance < 132.5){
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.01;
     }else if(distance > 122.5 && distance < 127.5){
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.01;
     } else if(distance > 117.5 && distance < 122.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.01;
     }  else if(distance > 112.5 && distance < 117.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.01;
     } else if(distance > 107.5 && distance < 112.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.04;
     } else if(distance > 102.5 && distance < 107.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.065;
     } else if(distance > 97.5 && distance < 102.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.115;
     } else if(distance > 92.5 && distance < 97.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.16;
     } else if(distance > 87.5 && distance < 92.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.2;
     } else if(distance > 82.5 && distance < 87.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.23;
     } else if(distance > 77.5 && distance < 82.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.27;
     } else if(distance > 72.5 && distance < 77.5) {
       shooterSetPoint = 3000.0;
-      angleSetPoint = 0.34;
     } else if(distance > 67.5 && distance < 72.5) {
       shooterSetPoint = 2500.0;
-      angleSetPoint = 0.4;
     } else {
       shooterSetPoint = 2500.0;
-      angleSetPoint = 0.525;
     }
 
-    m_Shooter.shoot(shooterSetPoint*powerLevel);
-    m_Shooter.setShooterAngle(angleSetPoint);
+    m_Shooter.shoot(3000);
+    //m_Shooter.shoot(shooterSetPoint*powerLevel);
     //System.out.println(m_Limelight.getDistance());
   }
 
