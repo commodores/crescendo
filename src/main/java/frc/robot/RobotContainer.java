@@ -33,7 +33,6 @@ import frc.robot.commands.AutoIntakeStop;
 import frc.robot.commands.AutoLEDTarget;
 import frc.robot.commands.AutoShooter;
 import frc.robot.commands.AutoStopShooter;
-import frc.robot.commands.AutonShoot;
 import frc.robot.commands.GotIt;
 import frc.robot.commands.ReverseIntake;
 import frc.robot.commands.ShooterIntake;
@@ -173,7 +172,6 @@ public class RobotContainer {
     NamedCommands.registerCommand("AutoStopShooter", new AutoStopShooter().withTimeout(.1));
     NamedCommands.registerCommand("PathIntake", new AutoIntake(m_Intake));
     NamedCommands.registerCommand("PathIntakeStop", new AutoIntakeStop().withTimeout(.1));
-    NamedCommands.registerCommand("PathShoot", new AutonShoot(m_Shooter));
     NamedCommands.registerCommand("AutoAim", new AutoAim(m_Drivetrain));
    
     
