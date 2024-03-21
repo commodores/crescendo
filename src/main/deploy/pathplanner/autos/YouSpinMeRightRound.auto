@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.74,
-      "y": 4.39
+      "x": 0.7419585748262406,
+      "y": 4.393839333133212
     },
-    "rotation": 120.0
+    "rotation": 119.47588900324571
   },
   "command": {
     "type": "sequential",
@@ -24,71 +24,52 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "AutoShooter"
+                  "name": "AutoFeeder"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "AutoFeeder"
+                  "name": "AutoShooter"
                 }
               }
             ]
           }
         },
         {
-          "type": "path",
-          "data": {
-            "pathName": "SourcePartOne"
-          }
-        },
-        {
           "type": "named",
           "data": {
-            "name": "AutoAim"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "AutoShooter"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "AutoShooter"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "AutoFeeder"
-                }
-              }
-            ]
+            "name": "AutoStopShooter"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "1-8"
+            "pathName": "SpinnyStart"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "8-Shoot"
+            "pathName": "spin1"
           }
         },
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "AutoAim"
+            "pathName": "spin2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "spin3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "spin4"
           }
         },
         {
@@ -125,6 +106,6 @@
       ]
     }
   },
-  "folder": "ThreePiece",
+  "folder": null,
   "choreoAuto": false
 }

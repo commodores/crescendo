@@ -10,21 +10,13 @@ import com.ctre.phoenix6.mechanisms.swerve.SwerveRequest;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.generated.TunerConstants;
-import frc.robot.subsystems.CommandSwerveDrivetrain;
 
 
 public class AutoAim extends Command {
   /** Creates a new AutoAim. */
-  public CommandSwerveDrivetrain m_Drivetrain = TunerConstants.DriveTrain;
-
-  private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
-      .withDeadband(RobotContainer.MaxSpeed * 0.1).withRotationalDeadband(RobotContainer.MaxAngularRate * 0.1) // Add a 10% deadband
-      .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // I want field-centric
-                                                               // driving in open loop
-
-  public AutoAim(CommandSwerveDrivetrain driverSub) {
-    m_Drivetrain = driverSub;     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(m_Drivetrain);
+  
+  
+  public AutoAim() {
   }
 
   // Called when the command is initially scheduled.
@@ -34,8 +26,8 @@ public class AutoAim extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Drivetrain.applyRequest(() -> 
-      drive.withVelocityX(0)
+    RobotContainer.m_Drivetrain.applyRequest(() -> 
+      RobotContainer.drive.withVelocityX(0)
             .withVelocityY(0) // Drive left with negative X (left)
             .withRotationalRate(RobotContainer.m_Limelight.LimelightAim()) // Drive counterclockwise with negative X (left)
         );

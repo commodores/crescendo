@@ -109,6 +109,12 @@
               }
             ]
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoStopShooter"
+          }
         }
       ]
     }

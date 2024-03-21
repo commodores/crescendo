@@ -11,7 +11,7 @@ import frc.robot.RobotContainer;
  * 
  * Add your docs here.
  */
-public class Limelight extends SubsystemBase {
+public class LimelightRear extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
@@ -19,8 +19,8 @@ public class Limelight extends SubsystemBase {
   NetworkTableEntry tx, ty, tv, ta, ts;
   double x, y, v, area, s, limelightMountAngleDegrees, limelightLensHeightInches, goalHeightInches, angleToGoalDegrees, angleToGoalRadians, distanceFromLimelightToGoalInches, kP, shooterAngleDegrees, shooterDistance;
 
-  public Limelight(){
-    table = NetworkTableInstance.getDefault().getTable("limelight-front");
+  public LimelightRear(){
+    table = NetworkTableInstance.getDefault().getTable("limelight-rear");
     tx = table.getEntry("tx");
     ty = table.getEntry("ty");
     tv = table.getEntry("tv");
@@ -45,7 +45,7 @@ public class Limelight extends SubsystemBase {
 
   
   public void postToDashboard(){
-    SmartDashboard.putNumber("LimelightX", x);
+    SmartDashboard.putNumber("LimelightRear", x);
     //SmartDashboard.putNumber("LimelightY", y);
     //SmartDashboard.putNumber("LimelightV", v);
     //SmartDashboard.putNumber("LimelightArea", area);
@@ -140,7 +140,7 @@ public class Limelight extends SubsystemBase {
 
   }
 
-  public double LimelightAim()
+  public double LimelightRearAim()
   {    
     // kP (constant of proportionality)
     // this is a hand-tuned number that determines the aggressiveness of our proportional control loop

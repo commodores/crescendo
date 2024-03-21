@@ -17,7 +17,7 @@ public class Constants {
       public static final int shooterAngle = 6;
       
 
-      public static final double kAngleGearRatio = 5.0 * 5.0 * 10.0;  
+      public static final double kAngleGearRatio = 5.0 * 5.0 * 10.0 * 1.06;  
 
       // PID coefficients for Shooter
       public static final double KP = .0006; 

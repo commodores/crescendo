@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.AutoAim;
 import frc.robot.commands.AutoFeeder;
@@ -33,10 +34,12 @@ import frc.robot.commands.AutoIntakeStop;
 import frc.robot.commands.AutoLEDTarget;
 import frc.robot.commands.AutoShooter;
 import frc.robot.commands.AutoShooterAngle;
+import frc.robot.commands.AutoSlowShoot;
 import frc.robot.commands.AutoStopShooter;
 import frc.robot.commands.GotIt;
 import frc.robot.commands.ReverseIntake;
 import frc.robot.commands.ShooterIntake;
+import frc.robot.commands.StopAll;
 import frc.robot.commands.TrampIntake;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.Blinkin;
@@ -61,7 +64,7 @@ public class RobotContainer {
   private final CommandXboxController joystick2 = new CommandXboxController(1); // Secondary
 
   //Create Subsystems
-  public final CommandSwerveDrivetrain m_Drivetrain = TunerConstants.DriveTrain; // My drivetrain  
+  public static final CommandSwerveDrivetrain m_Drivetrain = TunerConstants.DriveTrain; // My drivetrain  
   public static final Intake m_Intake = new Intake();
   public static final Trampinator m_Trampinator = new Trampinator();
   public static final TrampElevator m_TrampElevator = new TrampElevator();
@@ -75,7 +78,7 @@ public class RobotContainer {
   
 
   //Drive Swerve
-  private final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
+  public static final SwerveRequest.FieldCentric drive = new SwerveRequest.FieldCentric()
       .withDeadband(MaxSpeed * 0.1).withRotationalDeadband(MaxAngularRate * 0.1) // Add a 10% deadband
       .withDriveRequestType(DriveRequestType.OpenLoopVoltage); // I want field-centric
                                                                // driving in open loop
@@ -105,9 +108,10 @@ public class RobotContainer {
     /* Intake Commands */
     joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).withTimeout(5)
       .andThen(new GotIt().withTimeout(.1))
-      .andThen(new ReverseIntake(m_Intake).withTimeout(.0825))
     );
     //joystick2.a().onFalse(new StopAllShooter(m_Intake, m_Shooter));
+
+    joystick2.back().onTrue(new ReverseIntake(m_Intake).withTimeout(.1));
 
     joystick2.b().onTrue(new TrampIntake(m_Intake, m_Trampinator).withTimeout(5).andThen(new GotIt().withTimeout(.1)));
     //joystick2.b().onFalse(new StopAll(m_Intake, m_Trampinator));    
@@ -124,14 +128,23 @@ public class RobotContainer {
     joystick2.leftBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.0));
 
     /*Shooter Commands */
-    joystick.x().whileTrue(new AutoShooter(m_Shooter));
-    joystick.x().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()));
+    //joystick.x().whileTrue(new AutoShooter(m_Shooter));
+    //joystick.x().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()));
     
-    joystick.y().onTrue(new InstantCommand(() -> m_Intake.runFeederSpeed(1.0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1))));
-    joystick.y().onFalse(new InstantCommand(() -> m_Intake.runFeederSpeed(0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(0))));
+    //joystick.y().onTrue(new InstantCommand(() -> m_Intake.runFeederSpeed(1.0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1))));
+    //joystick.y().onFalse(new InstantCommand(() -> m_Intake.runFeederSpeed(0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(0))));
 
     joystick.b().whileTrue(new InstantCommand(() -> m_Shooter.shootClose(1250)));
     joystick.b().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()));
+
+    joystick.x().onTrue(new AutoShooter(m_Shooter).withTimeout(1).andThen(new ParallelCommandGroup(
+      new AutoFeeder(m_Intake),
+      new AutoShooter(m_Shooter)
+    ).withTimeout(1).andThen(new AutoStopShooter().withTimeout(.1))));
+
+    joystick.y().onTrue(new AutoAim());
+    
+     //joystick.x().onFalse(new AutoStopShooter().withTimeout(.1).alongWith(new StopAll(m_Intake, m_Trampinator)).withTimeout(.1));
 
     /*Climber Commands */
     joystick.rightBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(1.0 )));
@@ -169,14 +182,15 @@ public class RobotContainer {
 
   public RobotContainer() {
     //Auto Naming of Commands and Such//
-    NamedCommands.registerCommand("ShooterIntake", new ShooterIntake(m_Intake, m_Shooter).andThen(new ReverseIntake(m_Intake).withTimeout(.1)));
-    NamedCommands.registerCommand("ReverseIntake", new ReverseIntake(m_Intake).withTimeout(.0825));
+    NamedCommands.registerCommand("ShooterIntake", new ShooterIntake(m_Intake, m_Shooter));
+    //NamedCommands.registerCommand("ReverseIntake", new ReverseIntake(m_Intake).withTimeout(.0825));
     NamedCommands.registerCommand("AutoShooter", new AutoShooter(m_Shooter).withTimeout(.5));
+    NamedCommands.registerCommand("AutoSlowShoot", new AutoSlowShoot(m_Shooter));
     NamedCommands.registerCommand("AutoFeeder", new AutoFeeder(m_Intake).withTimeout(.5));
-    NamedCommands.registerCommand("AutoStopShooter", new AutoStopShooter().withTimeout(.1));
+    NamedCommands.registerCommand("AutoStopShooter", new AutoStopShooter().withTimeout(.03));
     NamedCommands.registerCommand("PathIntake", new AutoIntake(m_Intake));
     NamedCommands.registerCommand("PathIntakeStop", new AutoIntakeStop().withTimeout(.1));
-    NamedCommands.registerCommand("AutoAim", new AutoAim(m_Drivetrain));
+    
    
     
     configureBindings();

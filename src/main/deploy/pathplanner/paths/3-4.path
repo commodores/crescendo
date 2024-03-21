@@ -3,12 +3,12 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.3,
+        "x": 2.99,
         "y": 6.85
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.587566160919623,
+        "x": 4.277566160919624,
         "y": 7.0431173320682845
       },
       "isLocked": false,
@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 8.29,
-        "y": 7.47
+        "x": 8.32,
+        "y": 7.67
       },
       "prevControl": {
-        "x": 6.900018947680577,
-        "y": 7.304992888953387
+        "x": 6.930018947680578,
+        "y": 7.504992888953387
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,6 +42,23 @@
               "type": "named",
               "data": {
                 "name": "ShooterIntake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Stop",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "AutoStopShooter"
               }
             }
           ]

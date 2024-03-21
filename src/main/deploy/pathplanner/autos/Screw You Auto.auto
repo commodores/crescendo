@@ -1,14 +1,20 @@
 {
   "version": 1.0,
-  "startingPose": null,
+  "startingPose": {
+    "position": {
+      "x": 0.74,
+      "y": 4.39
+    },
+    "rotation": 120.08983137933271
+  },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "Screw You Path"
+            "name": "AutoShooter"
           }
         },
         {
@@ -16,12 +22,30 @@
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "Screw You Path"
+                  "name": "AutoShooter"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "AutoFeeder"
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Screw You Path"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoStopShooter"
           }
         }
       ]

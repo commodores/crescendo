@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.74,
-      "y": 4.39
+      "x": 1.42,
+      "y": 5.55
     },
-    "rotation": 120.0
+    "rotation": 180.0
   },
   "command": {
     "type": "sequential",
@@ -39,13 +39,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SourcePartOne"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "AutoAim"
+            "pathName": "CenterToAmp"
           }
         },
         {
@@ -76,19 +70,38 @@
         {
           "type": "path",
           "data": {
-            "pathName": "1-8"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "8-Shoot"
+            "pathName": "3-2"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "AutoAim"
+            "name": "AutoShooter"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "AutoShooter"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "AutoFeeder"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "2-1"
           }
         },
         {
@@ -125,6 +138,6 @@
       ]
     }
   },
-  "folder": "ThreePiece",
+  "folder": "FourPiece",
   "choreoAuto": false
 }

@@ -45,12 +45,6 @@
         {
           "type": "named",
           "data": {
-            "name": "AutoAim"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
             "name": "AutoShooter"
           }
         },
@@ -71,6 +65,12 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoStopShooter"
           }
         }
       ]

@@ -3,10 +3,7 @@
   "robotLength": 0.939,
   "holonomicMode": true,
   "pathFolders": [
-    "(Old)Five",
-    "(Old)Six",
     "CenterLineNotes",
-    "RandomWorkingOnIt",
     "Starting Paths",
     "WingNotes"
   ],

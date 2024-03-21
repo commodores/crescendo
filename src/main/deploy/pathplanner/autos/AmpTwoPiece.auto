@@ -3,9 +3,9 @@
   "startingPose": {
     "position": {
       "x": 0.7512873207564597,
-      "y": 6.847299512780844
+      "y": 6.71
     },
-    "rotation": -111.19
+    "rotation": -120.0
   },
   "command": {
     "type": "sequential",
@@ -45,12 +45,6 @@
         {
           "type": "named",
           "data": {
-            "name": "AutoAim"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
             "name": "AutoShooter"
           }
         },
@@ -71,6 +65,12 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoStopShooter"
           }
         }
       ]

@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 0.75,
-        "y": 6.847299512780844
+        "y": 6.71
       },
       "prevControl": null,
       "nextControl": {
         "x": 1.91,
-        "y": 6.847299512780844
+        "y": 6.71
       },
       "isLocked": false,
       "linkedName": null
@@ -36,7 +36,42 @@
     }
   ],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "StopShooter",
+      "waypointRelativePos": 0.0,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "AutoStopShooter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "ShooterIntake",
+      "waypointRelativePos": 0.05,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ShooterIntake"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 5.0,
     "maxAcceleration": 5.0,
@@ -51,7 +86,7 @@
   "reversed": false,
   "folder": "Starting Paths",
   "previewStartingState": {
-    "rotation": -111.19,
+    "rotation": -120.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

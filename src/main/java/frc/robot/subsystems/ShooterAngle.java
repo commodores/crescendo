@@ -11,6 +11,7 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
 
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -18,8 +19,10 @@ import frc.robot.Constants;
 public class ShooterAngle extends SubsystemBase {
 
   private final CANSparkFlex shooterAngleMotor;
-   private final RelativeEncoder m_angle_encoder;
-   private final SparkPIDController shooterPIDAngle;
+  private final RelativeEncoder m_angle_encoder;
+  private final SparkPIDController shooterPIDAngle;
+  private final DigitalInput upLimitSwitch, downLimitSwitch;
+
   /** Creates a new ShooterAngle. */
   public ShooterAngle() {
 
@@ -43,9 +46,11 @@ public class ShooterAngle extends SubsystemBase {
     m_angle_encoder = shooterAngleMotor.getEncoder();
     m_angle_encoder.setPositionConversionFactor((2 * Math.PI) / Constants.ShooterConstants.kAngleGearRatio); //Converted to Radians
     
+    upLimitSwitch = new DigitalInput(0);
+    downLimitSwitch = new DigitalInput(1);
 
     shooterPIDAngle.setFeedbackDevice(m_angle_encoder);
-    resetAngle();   
+    resetAngleUp(); 
 
   }
 
@@ -53,8 +58,20 @@ public class ShooterAngle extends SubsystemBase {
     shooterPIDAngle.setReference(Math.toRadians(degrees), CANSparkFlex.ControlType.kPosition, 0);
   }
 
-  public void resetAngle(){
-    m_angle_encoder.setPosition(1.04);
+  public void resetAngleUp(){
+    m_angle_encoder.setPosition(Math.toRadians(60));
+  }
+
+  public void resetAngleDown(){
+    m_angle_encoder.setPosition(Math.toRadians(28.5));
+  }
+
+  public boolean getUpLimitSwitch(){
+    return !upLimitSwitch.get();
+  }
+
+  public boolean getDownLimitSwitch(){
+    return !downLimitSwitch.get();
   }
 
   @Override
@@ -62,6 +79,17 @@ public class ShooterAngle extends SubsystemBase {
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Shooter Angle Degrees", Units.radiansToDegrees(m_angle_encoder.getPosition()));
     SmartDashboard.putNumber("Shooter Angles Radians", m_angle_encoder.getPosition());
+
+    SmartDashboard.putBoolean("Up Limit", getUpLimitSwitch());
+    SmartDashboard.putBoolean("Down Limit", getDownLimitSwitch());
+
+    if(getUpLimitSwitch()){
+      resetAngleUp();
+    }
+
+    if(getDownLimitSwitch()){
+      resetAngleDown();
+    }
 
   }
 }
