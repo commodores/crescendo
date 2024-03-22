@@ -4,12 +4,14 @@
   "holonomicMode": true,
   "pathFolders": [
     "CenterLineNotes",
+    "GP Paths",
     "Starting Paths",
     "WingNotes"
   ],
   "autoFolders": [
-    "FourPiece",
     "FivePiece",
+    "FourPiece",
+    "GP Autos",
     "ThreePiece",
     "TwoPiece"
   ],

@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.42,
-        "y": 2.49
+        "x": 8.3,
+        "y": 3.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 8.400858983536148,
-        "y": 2.8545962546470554
+        "x": 8.3,
+        "y": 4.5
       },
       "isLocked": false,
       "linkedName": null
@@ -17,11 +17,11 @@
     {
       "anchor": {
         "x": 8.3,
-        "y": 4.0
+        "y": 5.5
       },
       "prevControl": {
-        "x": 8.298242778303738,
-        "y": 3.328330293024223
+        "x": 8.3,
+        "y": 4.5
       },
       "nextControl": null,
       "isLocked": false,
@@ -39,11 +39,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -22.90848508979449,
+    "rotation": 0.0,
     "rotateFast": true
   },
   "reversed": false,
-  "folder": null,
+  "folder": "GP Paths",
   "previewStartingState": {
     "rotation": 180.0,
     "velocity": 0

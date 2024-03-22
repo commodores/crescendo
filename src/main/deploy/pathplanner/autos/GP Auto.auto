@@ -39,7 +39,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Screw You Path"
+            "pathName": "Gracious Professionalism Path"
           }
         },
         {
@@ -51,6 +51,6 @@
       ]
     }
   },
-  "folder": null,
+  "folder": "GP Autos",
   "choreoAuto": false
 }

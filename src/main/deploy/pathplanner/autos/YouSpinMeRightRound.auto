@@ -67,12 +67,6 @@
           }
         },
         {
-          "type": "path",
-          "data": {
-            "pathName": "spin4"
-          }
-        },
-        {
           "type": "named",
           "data": {
             "name": "AutoShooter"
@@ -106,6 +100,6 @@
       ]
     }
   },
-  "folder": null,
+  "folder": "GP Autos",
   "choreoAuto": false
 }

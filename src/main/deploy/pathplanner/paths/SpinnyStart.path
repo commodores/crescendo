@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 8.42,
+        "x": 8.3,
         "y": 1.1847507331378302
       },
       "prevControl": {
-        "x": 5.536933982958875,
-        "y": 1.3806543976724328
+        "x": 5.410285843825473,
+        "y": 1.1847507331378302
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,7 +30,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.75,
+      "waypointRelativePos": 0.8,
       "rotationDegrees": 150.24986541108677,
       "rotateFast": false
     }
@@ -63,11 +63,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 60.25511870305766,
+    "rotation": 90.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "GP Paths",
   "previewStartingState": {
     "rotation": 119.87599269168943,
     "velocity": 0

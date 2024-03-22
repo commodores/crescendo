@@ -109,12 +109,10 @@ public class RobotContainer {
     joystick2.a().onTrue(new ShooterIntake(m_Intake, m_Shooter).withTimeout(5)
       .andThen(new GotIt().withTimeout(.1))
     );
-    //joystick2.a().onFalse(new StopAllShooter(m_Intake, m_Shooter));
-
+    
     joystick2.back().onTrue(new ReverseIntake(m_Intake).withTimeout(.1));
 
     joystick2.b().onTrue(new TrampIntake(m_Intake, m_Trampinator).withTimeout(5).andThen(new GotIt().withTimeout(.1)));
-    //joystick2.b().onFalse(new StopAll(m_Intake, m_Trampinator));    
 
     /*Trampinator Commands */
     joystick2.x().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(1)));
@@ -128,23 +126,13 @@ public class RobotContainer {
     joystick2.leftBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.0));
 
     /*Shooter Commands */
-    //joystick.x().whileTrue(new AutoShooter(m_Shooter));
-    //joystick.x().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()));
-    
-    //joystick.y().onTrue(new InstantCommand(() -> m_Intake.runFeederSpeed(1.0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1))));
-    //joystick.y().onFalse(new InstantCommand(() -> m_Intake.runFeederSpeed(0)).alongWith(new InstantCommand(() -> m_Intake.runIntakeSpeed(0))));
-
     joystick.b().whileTrue(new InstantCommand(() -> m_Shooter.shootClose(1250)));
     joystick.b().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()));
 
-    joystick.x().onTrue(new AutoShooter(m_Shooter).withTimeout(1).andThen(new ParallelCommandGroup(
+    joystick.x().onTrue(new AutoShooter(m_Shooter).withTimeout(.5).andThen(new ParallelCommandGroup(
       new AutoFeeder(m_Intake),
       new AutoShooter(m_Shooter)
-    ).withTimeout(1).andThen(new AutoStopShooter().withTimeout(.1))));
-
-    joystick.y().onTrue(new AutoAim());
-    
-     //joystick.x().onFalse(new AutoStopShooter().withTimeout(.1).alongWith(new StopAll(m_Intake, m_Trampinator)).withTimeout(.1));
+    ).withTimeout(.5).andThen(new AutoStopShooter().withTimeout(.03))));
 
     /*Climber Commands */
     joystick.rightBumper().whileTrue(new InstantCommand(() -> m_Climber.windUp(1.0 )));
@@ -183,15 +171,9 @@ public class RobotContainer {
   public RobotContainer() {
     //Auto Naming of Commands and Such//
     NamedCommands.registerCommand("ShooterIntake", new ShooterIntake(m_Intake, m_Shooter));
-    //NamedCommands.registerCommand("ReverseIntake", new ReverseIntake(m_Intake).withTimeout(.0825));
     NamedCommands.registerCommand("AutoShooter", new AutoShooter(m_Shooter).withTimeout(.5));
-    NamedCommands.registerCommand("AutoSlowShoot", new AutoSlowShoot(m_Shooter));
     NamedCommands.registerCommand("AutoFeeder", new AutoFeeder(m_Intake).withTimeout(.5));
-    NamedCommands.registerCommand("AutoStopShooter", new AutoStopShooter().withTimeout(.03));
-    NamedCommands.registerCommand("PathIntake", new AutoIntake(m_Intake));
-    NamedCommands.registerCommand("PathIntakeStop", new AutoIntakeStop().withTimeout(.1));
-    
-   
+    NamedCommands.registerCommand("AutoStopShooter", new AutoStopShooter().withTimeout(.03));   
     
     configureBindings();
 
