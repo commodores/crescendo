@@ -114,7 +114,7 @@ public class RobotContainer {
     
     joystick2.back().onTrue(new ReverseIntake(m_Intake).withTimeout(.1));
 
-    joystick2.b().onTrue(new TrampIntake(m_Intake, m_Trampinator).withTimeout(5).andThen(new GotIt().withTimeout(.1)));
+    joystick2.b().onTrue(new TrampIntake(m_Intake, m_Trampinator).withTimeout(3).andThen(new GotIt().withTimeout(.1)));
 
     /*Trampinator Commands */
     joystick2.x().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(1)));
