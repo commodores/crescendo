@@ -48,7 +48,7 @@ public class CommandSwerveDrivetrain extends SwerveDrivetrain implements Subsyst
 
     public CommandSwerveDrivetrain(SwerveDrivetrainConstants driveTrainConstants, double OdometryUpdateFrequency, SwerveModuleConstants... modules) {
         super(driveTrainConstants, OdometryUpdateFrequency, modules);
-        PPHolonomicDriveController.setRotationTargetOverride(this::getRotationTargetOverride);
+        //PPHolonomicDriveController.setRotationTargetOverride(this::getRotationTargetOverride);
         configurePathPlanner();
         if (Utils.isSimulation()) {
             startSimThread();
@@ -56,7 +56,7 @@ public class CommandSwerveDrivetrain extends SwerveDrivetrain implements Subsyst
     }
     public CommandSwerveDrivetrain(SwerveDrivetrainConstants driveTrainConstants, SwerveModuleConstants... modules) {
         super(driveTrainConstants, modules);
-        PPHolonomicDriveController.setRotationTargetOverride(this::getRotationTargetOverride);
+        //PPHolonomicDriveController.setRotationTargetOverride(this::getRotationTargetOverride);
         configurePathPlanner();
         if (Utils.isSimulation()) {
             startSimThread();
@@ -65,10 +65,10 @@ public class CommandSwerveDrivetrain extends SwerveDrivetrain implements Subsyst
 
      public Optional<Rotation2d> getRotationTargetOverride() {
         // Some condition that should decide if we want to override rotation
-        if (RobotContainer.m_Limelight.seesTarget()) {
+        if (RobotContainer.m_LimelightRear.seesTarget()) {
             // Return an optional containing the rotation override (this should be a field
             // relative rotation)
-            Rotation2d targetRelativeToRobot = Rotation2d.fromDegrees(-RobotContainer.m_Limelight.getX());
+            Rotation2d targetRelativeToRobot = Rotation2d.fromDegrees(-RobotContainer.m_LimelightRear.getX() + 13) ;
             Rotation2d currentRotation = getState().Pose.getRotation();
             Rotation2d absolute = new Rotation2d(targetRelativeToRobot.getRadians() + currentRotation.getRadians());
             // SmartDashboard.putNumber("Current Rotation", currentRotation.getDegrees());
@@ -93,7 +93,7 @@ public class CommandSwerveDrivetrain extends SwerveDrivetrain implements Subsyst
             this::getCurrentRobotChassisSpeeds,
             (speeds)->this.setControl(autoRequest.withSpeeds(speeds)), // Consumer of ChassisSpeeds to drive the robot
             new HolonomicPathFollowerConfig(new PIDConstants(11, 0, 0),
-                                            new PIDConstants(10, 0, 0),//10
+                                            new PIDConstants(2, 0, 0),//10
                                             TunerConstants.kSpeedAt12VoltsMps,
                                             driveBaseRadius,
                                             new ReplanningConfig()),

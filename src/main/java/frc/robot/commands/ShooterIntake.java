@@ -27,7 +27,7 @@ public class ShooterIntake extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.m_ShooterAngle.setShooterAngle(60);
+    RobotContainer.m_ShooterAngle.setShooterAngle(45);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -49,7 +49,7 @@ public class ShooterIntake extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-   return m_Intake.getShooterDistance() < 200;
+   return m_Intake.getShooterDistance() < 180;
    //return false;
   }
 }

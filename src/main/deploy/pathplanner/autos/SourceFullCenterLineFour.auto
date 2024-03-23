@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7419585748262406,
-      "y": 4.393839333133212
+      "x": 0.7326298288960215,
+      "y": 4.356524349412336
     },
-    "rotation": 119.47588900324571
+    "rotation": 121.21840276434644
   },
   "command": {
     "type": "sequential",
@@ -37,33 +37,15 @@
           }
         },
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "AutoStopShooter"
+            "pathName": "Source-8"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "SpinnyStart"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "spin1"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "spin2"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "spin3"
+            "pathName": "8-Shoot Better"
           }
         },
         {
@@ -89,6 +71,55 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Shoot-7"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "7-Shoot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoShooter"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "AutoShooter"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "AutoFeeder"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Shoot-6"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "6-Shoot"
           }
         },
         {

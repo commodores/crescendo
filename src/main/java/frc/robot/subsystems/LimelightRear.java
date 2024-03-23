@@ -121,49 +121,5 @@ public class LimelightRear extends SubsystemBase {
     table.getEntry("pipeline").setNumber(p);
   }
 
-  public double getDistance(){
-      angleToGoalDegrees = limelightMountAngleDegrees + getY();
-      angleToGoalRadians = angleToGoalDegrees * (3.14159 / 180.0);
-      distanceFromLimelightToGoalInches = (goalHeightInches - limelightLensHeightInches) / Math.tan(angleToGoalRadians);
-      return distanceFromLimelightToGoalInches;
-  }
-
-  public double getShooterAngle(){
-    double d;
-    d = distanceFromLimelightToGoalInches + 45; //65
-
-    shooterDistance = Math.sqrt((d * d) + 5184);
-
-    shooterAngleDegrees = Math.asin(72/shooterDistance)*100;
-
-    return shooterAngleDegrees;
-
-  }
-
-  public double LimelightRearAim()
-  {    
-    // kP (constant of proportionality)
-    // this is a hand-tuned number that determines the aggressiveness of our proportional control loop
-    // if it is too high, the robot will oscillate.
-    // if it is too low, the robot will never reach its target
-    // if the robot never turns in the correct direction, kP should be inverted.
-    if(getX() > -3 && getX() < 3){
-      kP = .17;
-    } else {
-      kP = .0175;
-    }
-    
-    // tx ranges from (-hfov/2) to (hfov/2) in degrees. If your target is on the rightmost edge of 
-    // your limelight 3 feed, tx should return roughly 31 degrees.
-    double targetingAngularVelocity = getX() * kP;
-
-    // convert to radians per second for our drive method
-    targetingAngularVelocity *= RobotContainer.MaxAngularRate;
-
-    //invert since tx is positive when the target is to the right of the crosshair
-    targetingAngularVelocity *= -1.0;
-
-    return targetingAngularVelocity;
-  }
 
 }

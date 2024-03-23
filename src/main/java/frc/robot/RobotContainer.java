@@ -47,6 +47,7 @@ import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.LimelightRear;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.ShooterAngle;
 import frc.robot.subsystems.TrampElevator;
@@ -71,6 +72,7 @@ public class RobotContainer {
   public static final Shooter m_Shooter = new Shooter();
   public static final Climber m_Climber = new Climber();
   public static final Limelight m_Limelight = new Limelight();
+  public static final LimelightRear m_LimelightRear = new LimelightRear();
   public static final Blinkin m_Blinkin = new Blinkin();
   public static final ShooterAngle m_ShooterAngle = new ShooterAngle();
 
@@ -129,7 +131,7 @@ public class RobotContainer {
     joystick.b().whileTrue(new InstantCommand(() -> m_Shooter.shootClose(1250)));
     joystick.b().onFalse(new InstantCommand(() -> m_Shooter.stopShooter()));
 
-    joystick.x().onTrue(new AutoShooter(m_Shooter).withTimeout(.5).andThen(new ParallelCommandGroup(
+    joystick.x().onTrue(new AutoShooter(m_Shooter).withTimeout(1).andThen(new ParallelCommandGroup(
       new AutoFeeder(m_Intake),
       new AutoShooter(m_Shooter)
     ).withTimeout(.5).andThen(new AutoStopShooter().withTimeout(.03))));

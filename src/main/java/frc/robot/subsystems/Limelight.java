@@ -130,7 +130,7 @@ public class Limelight extends SubsystemBase {
 
   public double getShooterAngle(){
     double d;
-    d = distanceFromLimelightToGoalInches + 45; //65
+    d = distanceFromLimelightToGoalInches + 60; //65
 
     shooterDistance = Math.sqrt((d * d) + 5184);
 

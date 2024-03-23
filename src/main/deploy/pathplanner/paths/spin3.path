@@ -16,28 +16,28 @@
     },
     {
       "anchor": {
-        "x": 8.148982843420232,
-        "y": 7.369709284873116
+        "x": 8.3,
+        "y": 7.5
       },
       "prevControl": {
-        "x": 8.117934900232061,
-        "y": 7.12132573936777
+        "x": 8.3,
+        "y": 7.249683479462457
       },
       "nextControl": {
-        "x": 8.17696908121089,
-        "y": 7.593599187198374
+        "x": 8.3,
+        "y": 7.725632262473453
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 4.9678804812155075,
-        "y": 6.931258226152816
+        "x": 4.529429422495208,
+        "y": 6.1103285842935335
       },
       "prevControl": {
-        "x": 5.956727549818736,
-        "y": 6.968573209873692
+        "x": 5.518276491098437,
+        "y": 6.147643568014409
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,9 +46,9 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.5,
-      "rotationDegrees": -100.93053163013364,
-      "rotateFast": true
+      "waypointRelativePos": 0.15,
+      "rotationDegrees": -90.0,
+      "rotateFast": false
     }
   ],
   "constraintZones": [],
@@ -79,11 +79,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -160.0,
-    "rotateFast": false
+    "rotation": -175.0,
+    "rotateFast": true
   },
   "reversed": false,
-  "folder": "GP Paths",
+  "folder": "Spinny",
   "previewStartingState": {
     "rotation": 0.0,
     "velocity": 0
