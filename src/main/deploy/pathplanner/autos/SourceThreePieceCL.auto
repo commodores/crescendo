@@ -45,12 +45,6 @@
         {
           "type": "named",
           "data": {
-            "name": "AutoAim"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
             "name": "AutoShooter"
           }
         },
@@ -83,12 +77,6 @@
           "type": "path",
           "data": {
             "pathName": "8-Shoot"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "AutoAim"
           }
         },
         {

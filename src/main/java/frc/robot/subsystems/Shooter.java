@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -71,8 +73,14 @@ public class Shooter extends SubsystemBase {
    * the NEO's velocity. Intended to be called when a button is pressed.
    */
   public void shoot(double setPoint) {
-    shooterPIDLeft.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
-    shooterPIDRight.setReference(setPoint-1000, CANSparkMax.ControlType.kVelocity);
+    if(DriverStation.getAlliance().isPresent() && DriverStation.getAlliance().get().equals(Alliance.Red)){
+      shooterPIDLeft.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
+      shooterPIDRight.setReference(setPoint-1000, CANSparkMax.ControlType.kVelocity);
+    } else {
+      shooterPIDLeft.setReference(setPoint-1000, CANSparkMax.ControlType.kVelocity);
+      shooterPIDRight.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
+    }
+    
   }
 
   public void shootClose(double setPoint) {

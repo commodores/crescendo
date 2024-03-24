@@ -39,7 +39,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Gracious Professionalism Path"
+            "pathName": "SourceToEightDisrupt"
           }
         },
         {
@@ -51,6 +51,6 @@
       ]
     }
   },
-  "folder": null,
+  "folder": "GP Autos",
   "choreoAuto": false
 }
