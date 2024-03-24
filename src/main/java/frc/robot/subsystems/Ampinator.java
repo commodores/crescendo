@@ -11,11 +11,11 @@ import com.revrobotics.CANSparkFlex;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Trampinator extends SubsystemBase {
+public class Ampinator extends SubsystemBase {
 
   private final CANSparkFlex shooterMotor;
   /** Creates a new Trampinator. */
-  public Trampinator() {
+  public Ampinator() {
 
      shooterMotor = new CANSparkFlex(Constants.TrampinatorConstants.shooter, MotorType.kBrushless);
      shooterMotor.restoreFactoryDefaults();

@@ -15,7 +15,7 @@ import frc.robot.Constants;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
-public class TrampElevator extends TrapezoidProfileSubsystem {
+public class AmpElevator extends TrapezoidProfileSubsystem {
 
   // Define the motor and encoders
   private final CANSparkMax shoulderMotor;
@@ -23,7 +23,7 @@ public class TrampElevator extends TrapezoidProfileSubsystem {
   private final RelativeEncoder m_relative_encoder;
 
   /** Creates a new ArmShoulder. */
-  public TrampElevator() {
+  public AmpElevator() {
     super(
         // The constraints for the generated profiles
         new TrapezoidProfile.Constraints(2.54, 2.54));

@@ -76,52 +76,6 @@
       }
     },
     {
-      "name": "Auto Feeder and Shooter",
-      "waypointRelativePos": 0.7,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "PathIntake"
-              }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "AutoSlowShoot"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Stop Everything",
-      "waypointRelativePos": 1.75,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "AutoStopShooter"
-              }
-            },
-            {
-              "type": "named",
-              "data": {
-                "name": "AutoIntakeStop"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
       "name": "Shooter Intake",
       "waypointRelativePos": 1.8,
       "command": {

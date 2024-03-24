@@ -40,7 +40,8 @@ import frc.robot.commands.GotIt;
 import frc.robot.commands.ReverseIntake;
 import frc.robot.commands.ShooterIntake;
 import frc.robot.commands.StopAll;
-import frc.robot.commands.TrampIntake;
+import frc.robot.commands.AmpIntake;
+import frc.robot.commands.AmpIntakeManual;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.Blinkin;
 import frc.robot.subsystems.Climber;
@@ -50,8 +51,8 @@ import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.LimelightRear;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.ShooterAngle;
-import frc.robot.subsystems.TrampElevator;
-import frc.robot.subsystems.Trampinator;
+import frc.robot.subsystems.AmpElevator;
+import frc.robot.subsystems.Ampinator;
 
 public class RobotContainer {
 
@@ -67,8 +68,8 @@ public class RobotContainer {
   //Create Subsystems
   public static final CommandSwerveDrivetrain m_Drivetrain = TunerConstants.DriveTrain; // My drivetrain  
   public static final Intake m_Intake = new Intake();
-  public static final Trampinator m_Trampinator = new Trampinator();
-  public static final TrampElevator m_TrampElevator = new TrampElevator();
+  public static final Ampinator m_Trampinator = new Ampinator();
+  public static final AmpElevator m_TrampElevator = new AmpElevator();
   public static final Shooter m_Shooter = new Shooter();
   public static final Climber m_Climber = new Climber();
   public static final Limelight m_Limelight = new Limelight();
@@ -112,18 +113,22 @@ public class RobotContainer {
       .andThen(new GotIt().withTimeout(.1))
     );
     
-    joystick2.back().onTrue(new ReverseIntake(m_Intake).withTimeout(.1));
+    joystick2.b().onTrue(new AmpIntake(m_Intake, m_Trampinator).withTimeout(3).andThen(new GotIt().withTimeout(.1)));
+    
+    //Manual Amp Control
+    joystick2.back().whileTrue(new AmpIntakeManual(m_Intake, m_Trampinator, -1));
+    joystick2.back().onFalse(new AmpIntakeManual(m_Intake, m_Trampinator, 0));
+    joystick2.start().whileTrue(new AmpIntakeManual(m_Intake, m_Trampinator, 1));
+    joystick2.start().onFalse(new AmpIntakeManual(m_Intake, m_Trampinator, 0));    
 
-    joystick2.b().onTrue(new TrampIntake(m_Intake, m_Trampinator).withTimeout(3).andThen(new GotIt().withTimeout(.1)));
-
-    /*Trampinator Commands */
+    /*Ampinator Commands */
     joystick2.x().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(1)));
     joystick2.x().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
 
     joystick2.y().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(-1)));
     joystick2.y().onFalse(new InstantCommand(() -> m_Trampinator.runShooterSpeed(0)));
 
-    /*Tramp Elevator Commands */
+    /*Amp Elevator Commands */
     joystick2.rightBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.34));
     joystick2.leftBumper().onTrue(m_TrampElevator.setElevatorGoalCommand(0.0));
 

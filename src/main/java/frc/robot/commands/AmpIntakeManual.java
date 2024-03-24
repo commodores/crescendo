@@ -8,16 +8,18 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Ampinator;
 
-public class StopAll extends Command {
+public class AmpIntakeManual extends Command {
   /** Creates a new IntakeInn. */
 
   private final Intake m_Intake;
   private final Ampinator m_Trampinator;
+  private final double m_Speed;
 
-  public StopAll(Intake intakeSub, Ampinator trampSub) {
+  public AmpIntakeManual(Intake intakeSub, Ampinator trampSub, double speed) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_Intake = intakeSub;
     m_Trampinator = trampSub;
+    m_Speed = speed;
     addRequirements(m_Intake);
     addRequirements(m_Trampinator);
   }
@@ -30,17 +32,14 @@ public class StopAll extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Intake.runIntakeSpeed(0);
-    m_Intake.runChooserSpeed(0);
-    m_Trampinator.runShooterSpeed(0);
+    m_Intake.runIntakeSpeed(-m_Speed);
+    m_Intake.runChooserSpeed(m_Speed);
+    m_Trampinator.runShooterSpeed(m_Speed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_Intake.runIntakeSpeed(0);
-    m_Intake.runChooserSpeed(0);
-    m_Trampinator.runShooterSpeed(0);
   }
 
   // Returns true when the command should end.

@@ -39,12 +39,6 @@
         {
           "type": "named",
           "data": {
-            "name": "AutoAim"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
             "name": "AutoShooter"
           }
         },
@@ -76,12 +70,6 @@
         {
           "type": "named",
           "data": {
-            "name": "AutoAim"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
             "name": "AutoShooter"
           }
         },
@@ -108,12 +96,6 @@
           "type": "path",
           "data": {
             "pathName": "2-3"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "AutoAim"
           }
         },
         {

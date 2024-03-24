@@ -6,15 +6,15 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Trampinator;
+import frc.robot.subsystems.Ampinator;
 
-public class TrampIntake extends Command {
+public class AmpIntake extends Command {
   /** Creates a new IntakeInn. */
 
   private final Intake m_Intake;
-  private final Trampinator m_Trampinator;
+  private final Ampinator m_Trampinator;
 
-  public TrampIntake(Intake intakeSub, Trampinator trampSub) {
+  public AmpIntake(Intake intakeSub, Ampinator trampSub) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_Intake = intakeSub;
     m_Trampinator = trampSub;
