@@ -77,7 +77,7 @@ public class Shooter extends SubsystemBase {
       shooterPIDLeft.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
       shooterPIDRight.setReference(setPoint-1000, CANSparkMax.ControlType.kVelocity);
     } else {
-      shooterPIDLeft.setReference(setPoint-1000, CANSparkMax.ControlType.kVelocity);
+      shooterPIDLeft.setReference(setPoint-1200, CANSparkMax.ControlType.kVelocity);
       shooterPIDRight.setReference(setPoint, CANSparkMax.ControlType.kVelocity);
     }
     

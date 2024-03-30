@@ -3,9 +3,9 @@
   "startingPose": {
     "position": {
       "x": 0.75,
-      "y": 6.85
+      "y": 6.71
     },
-    "rotation": -111.19
+    "rotation": -119.73201890144712
   },
   "command": {
     "type": "sequential",
@@ -45,6 +45,18 @@
         {
           "type": "named",
           "data": {
+            "name": "IntakeBump"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoStopShooter"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
             "name": "AutoShooter"
           }
         },
@@ -71,6 +83,12 @@
           "type": "path",
           "data": {
             "pathName": "3-4"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "IntakeBump"
           }
         },
         {

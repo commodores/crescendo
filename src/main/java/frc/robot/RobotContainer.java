@@ -40,6 +40,7 @@ import frc.robot.commands.GotIt;
 import frc.robot.commands.ReverseIntake;
 import frc.robot.commands.ShooterIntake;
 import frc.robot.commands.StopAll;
+import frc.robot.commands.StopAllShooter;
 import frc.robot.commands.AmpIntake;
 import frc.robot.commands.AmpIntakeManual;
 import frc.robot.generated.TunerConstants;
@@ -119,7 +120,14 @@ public class RobotContainer {
     joystick2.back().whileTrue(new AmpIntakeManual(m_Intake, m_Trampinator, -1));
     joystick2.back().onFalse(new AmpIntakeManual(m_Intake, m_Trampinator, 0));
     joystick2.start().whileTrue(new AmpIntakeManual(m_Intake, m_Trampinator, 1));
-    joystick2.start().onFalse(new AmpIntakeManual(m_Intake, m_Trampinator, 0));    
+    joystick2.start().onFalse(new AmpIntakeManual(m_Intake, m_Trampinator, 0)); 
+    
+    // Manual Shooter Intake Control
+    joystick2.povRight().whileTrue(new AutoIntake(m_Intake));
+    joystick2.povRight().onFalse(new StopAllShooter(m_Intake, m_Shooter));
+
+    joystick2.povLeft().whileTrue(new ReverseIntake(m_Intake));
+    joystick2.povLeft().onFalse(new StopAllShooter(m_Intake, m_Shooter));
 
     /*Ampinator Commands */
     joystick2.x().whileTrue(new InstantCommand(() -> m_Trampinator.runShooterSpeed(1)));
@@ -178,9 +186,13 @@ public class RobotContainer {
   public RobotContainer() {
     //Auto Naming of Commands and Such//
     NamedCommands.registerCommand("ShooterIntake", new ShooterIntake(m_Intake, m_Shooter));
-    NamedCommands.registerCommand("AutoShooter", new AutoShooter(m_Shooter).withTimeout(.5));
-    NamedCommands.registerCommand("AutoFeeder", new AutoFeeder(m_Intake).withTimeout(.5));
-    NamedCommands.registerCommand("AutoStopShooter", new AutoStopShooter().withTimeout(.03));   
+    NamedCommands.registerCommand("IntakeBump", new AutoFeeder(m_Intake).withTimeout(.01));
+    NamedCommands.registerCommand("AutoShooter", new AutoShooter(m_Shooter).withTimeout(.75));
+    NamedCommands.registerCommand("AutoPooper", new AutoSlowShoot(m_Shooter));
+    NamedCommands.registerCommand("AutoFeeder", new AutoFeeder(m_Intake).withTimeout(.75));
+    NamedCommands.registerCommand("PooperFeeder", new AutoFeeder(m_Intake));
+    NamedCommands.registerCommand("AutoStopShooter", new AutoStopShooter().withTimeout(.03));
+    NamedCommands.registerCommand("PathStopPooper", new StopAllShooter(m_Intake, m_Shooter).withTimeout(.03));
     
     configureBindings();
 

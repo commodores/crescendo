@@ -30,6 +30,7 @@ public class ReverseIntake extends Command {
   @Override
   public void execute() {
     m_Intake.runIntakeSpeed(1);
+    m_Intake.runChooserSpeed(1);
     m_Intake.runFeederSpeed(-1.0);
   }
 
@@ -37,6 +38,7 @@ public class ReverseIntake extends Command {
   @Override
   public void end(boolean interrupted) {
     m_Intake.runIntakeSpeed(0);
+    m_Intake.runChooserSpeed(0);
     m_Intake.runFeederSpeed(0);
   }
 

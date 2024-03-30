@@ -24,22 +24,16 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "AutoFeeder"
+                  "name": "AutoShooter"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "AutoShooter"
+                  "name": "AutoFeeder"
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "AutoStopShooter"
           }
         },
         {

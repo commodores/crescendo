@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 8.37,
-        "y": 2.4627889255778523
+        "x": 8.43,
+        "y": 2.46
       },
       "prevControl": {
-        "x": 6.068672500981365,
-        "y": 1.539243078486157
+        "x": 6.128672500981366,
+        "y": 1.5364541529083047
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,6 +42,23 @@
               "type": "named",
               "data": {
                 "name": "ShooterIntake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Stop",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "AutoStopShooter"
               }
             }
           ]

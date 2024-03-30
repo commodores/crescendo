@@ -47,6 +47,23 @@
           ]
         }
       }
+    },
+    {
+      "name": "Stop",
+      "waypointRelativePos": 0,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "AutoStopShooter"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "globalConstraints": {

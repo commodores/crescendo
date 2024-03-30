@@ -33,7 +33,7 @@ public class AutoShooterAngle extends Command {
 
     distanceToGoal = RobotContainer.m_Limelight.getDistance();
 
-    if(distanceToGoal < 240){
+    if(distanceToGoal < 300){
       if(angle < 28.5){
         setPoint = 28.5;
       } else if(angle > 60) {

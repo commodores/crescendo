@@ -43,6 +43,12 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "IntakeBump"
+          }
+        },
+        {
           "type": "path",
           "data": {
             "pathName": "8-Shoot Better"
@@ -77,6 +83,12 @@
           "type": "path",
           "data": {
             "pathName": "Shoot-7"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "IntakeBump"
           }
         },
         {
@@ -117,9 +129,9 @@
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "6-Shoot"
+            "name": "IntakeBump"
           }
         },
         {

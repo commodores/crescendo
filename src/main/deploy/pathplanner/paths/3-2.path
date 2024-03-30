@@ -4,12 +4,12 @@
     {
       "anchor": {
         "x": 3.3,
-        "y": 6.85
+        "y": 6.9
       },
       "prevControl": null,
       "nextControl": {
         "x": 1.4416199312588232,
-        "y": 6.753907337576247
+        "y": 6.8039073375762475
       },
       "isLocked": false,
       "linkedName": null
@@ -80,7 +80,7 @@
   "reversed": false,
   "folder": "WingNotes",
   "previewStartingState": {
-    "rotation": -155.0,
+    "rotation": -158.0,
     "velocity": 0
   },
   "useDefaultConstraints": true

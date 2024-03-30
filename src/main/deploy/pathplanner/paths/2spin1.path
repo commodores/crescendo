@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7419585748262406,
-        "y": 4.393839333133212
+        "x": 8.3,
+        "y": 0.75
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.585401898076523,
-        "y": 1.4925993488350622
+        "x": 6.647054748654951,
+        "y": 2.5280901470893857
       },
       "isLocked": false,
       "linkedName": null
@@ -17,44 +17,20 @@
     {
       "anchor": {
         "x": 8.3,
-        "y": 0.75
+        "y": 2.4348026877871947
       },
       "prevControl": {
-        "x": 5.410285843825473,
-        "y": 0.75
+        "x": 7.300000000000001,
+        "y": 2.4348026877871947
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.8,
-      "rotationDegrees": 173.9364432512636,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "StopShooter",
-      "waypointRelativePos": 0.2,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "AutoStopShooter"
-              }
-            }
-          ]
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 5.0,
     "maxAcceleration": 5.0,
@@ -69,7 +45,7 @@
   "reversed": false,
   "folder": "Spinny",
   "previewStartingState": {
-    "rotation": 119.87599269168943,
+    "rotation": 91.8778774472855,
     "velocity": 0
   },
   "useDefaultConstraints": true

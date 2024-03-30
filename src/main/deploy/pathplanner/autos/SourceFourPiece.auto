@@ -39,6 +39,12 @@
         {
           "type": "named",
           "data": {
+            "name": "IntakeBump"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
             "name": "AutoShooter"
           }
         },
@@ -65,6 +71,12 @@
           "type": "path",
           "data": {
             "pathName": "1-2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "IntakeBump"
           }
         },
         {
@@ -101,6 +113,12 @@
         {
           "type": "named",
           "data": {
+            "name": "IntakeBump"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
             "name": "AutoShooter"
           }
         },
@@ -121,6 +139,12 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoStopShooter"
           }
         }
       ]
