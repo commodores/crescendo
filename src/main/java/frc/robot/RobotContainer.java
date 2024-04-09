@@ -45,6 +45,7 @@ import frc.robot.commands.AmpIntake;
 import frc.robot.commands.AmpIntakeManual;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.Blinkin;
+import frc.robot.subsystems.CANdleSub;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Intake;
@@ -76,6 +77,7 @@ public class RobotContainer {
   public static final Limelight m_Limelight = new Limelight();
   public static final LimelightRear m_LimelightRear = new LimelightRear();
   public static final Blinkin m_Blinkin = new Blinkin();
+  public static final CANdleSub m_Candlesub = new CANdleSub();
   public static final ShooterAngle m_ShooterAngle = new ShooterAngle();
 
   public static GenericEntry shooterPower;
@@ -100,7 +102,7 @@ public class RobotContainer {
             .withRotationalRate(joystick.a().getAsBoolean()?m_Limelight.LimelightAim():-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
         ));
     
-    m_Blinkin.setDefaultCommand(new AutoLEDTarget(m_Blinkin));
+    m_Candlesub.setDefaultCommand(new AutoLEDTarget(m_Candlesub));
     m_ShooterAngle.setDefaultCommand(new AutoShooterAngle(m_ShooterAngle));
     
 

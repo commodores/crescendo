@@ -3,25 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.9,
-        "y": 5.55
+        "x": 0.7139723370355832,
+        "y": 6.726025815687995
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7547654527744134,
-        "y": 5.55
+        "x": -0.3731498372087653,
+        "y": 8.28392638603459
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.9,
-        "y": 4.15
+        "x": 8.288914032373519,
+        "y": 7.435010506384649
       },
       "prevControl": {
-        "x": 1.6856420440113606,
-        "y": 4.3337705220865
+        "x": 4.501443184704551,
+        "y": 7.556284203477499
+      },
+      "nextControl": {
+        "x": 8.620013353124312,
+        "y": 7.4244088039960765
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 4.3,
+        "y": 6.726025815687995
+      },
+      "prevControl": {
+        "x": 5.008984690696654,
+        "y": 6.642067102316023
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,15 +47,37 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 0.55,
-      "rotationDegrees": 160.0,
+      "rotationDegrees": 180.0,
       "rotateFast": true
+    },
+    {
+      "waypointRelativePos": 1.05,
+      "rotationDegrees": 180.0,
+      "rotateFast": false
     }
   ],
   "constraintZones": [],
   "eventMarkers": [
     {
-      "name": "StopShooter",
-      "waypointRelativePos": 0,
+      "name": "Intake",
+      "waypointRelativePos": 1.35,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "ShooterIntake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Stop",
+      "waypointRelativePos": 0.1,
       "command": {
         "type": "parallel",
         "data": {
@@ -48,23 +86,6 @@
               "type": "named",
               "data": {
                 "name": "AutoStopShooter"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "Intake",
-      "waypointRelativePos": 0.3,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "ShooterIntake"
               }
             }
           ]
@@ -80,13 +101,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 155.0,
+    "rotation": -165.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "WingNotes",
+  "folder": null,
   "previewStartingState": {
-    "rotation": -175.0,
+    "rotation": -119.74000000000001,
     "velocity": 0
   },
   "useDefaultConstraints": true

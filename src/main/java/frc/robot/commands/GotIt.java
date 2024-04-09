@@ -16,7 +16,7 @@ public class GotIt extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.m_Blinkin.orange();
+    RobotContainer.m_Candlesub.setColor(100,0,100);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -26,7 +26,7 @@ public class GotIt extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    new AutoLEDTarget(RobotContainer.m_Blinkin);
+    new AutoLEDTarget(RobotContainer.m_Candlesub);
   }
 
   // Returns true when the command should end.

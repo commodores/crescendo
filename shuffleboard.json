@@ -11,7 +11,7 @@
         "vgap": 16.0,
         "titleType": 1,
         "tiles": {
-          "5,0": {
+          "2,1": {
             "size": [
               2,
               1
@@ -39,23 +39,6 @@
           },
           "0,1": {
             "size": [
-              6,
-              4
-            ],
-            "content": {
-              "_type": "Field",
-              "_source0": "network_table:///Pose",
-              "_title": "Pose",
-              "_glyph": 8,
-              "_showGlyph": true,
-              "Game/Game": "k2024Crescendo",
-              "Visuals/Robot Icon Size": 50.0,
-              "Visuals/Show Outside Circles": true,
-              "Colors/robotPose": "#FFFFFFFF"
-            }
-          },
-          "6,1": {
-            "size": [
               2,
               1
             ],
@@ -71,7 +54,7 @@
               "Visuals/Display value": true
             }
           },
-          "6,2": {
+          "0,2": {
             "size": [
               2,
               1
@@ -84,7 +67,7 @@
               "_showGlyph": false
             }
           },
-          "6,3": {
+          "0,3": {
             "size": [
               2,
               1
@@ -97,7 +80,7 @@
               "_showGlyph": false
             }
           },
-          "6,4": {
+          "0,4": {
             "size": [
               2,
               1
@@ -110,7 +93,7 @@
               "_showGlyph": false
             }
           },
-          "8,4": {
+          "2,4": {
             "size": [
               2,
               1
@@ -136,7 +119,7 @@
               "_showGlyph": false
             }
           },
-          "8,2": {
+          "2,2": {
             "size": [
               2,
               1
@@ -149,7 +132,7 @@
               "_showGlyph": false
             }
           },
-          "8,3": {
+          "2,3": {
             "size": [
               1,
               1
@@ -164,7 +147,7 @@
               "Colors/Color when false": "#8B0000FF"
             }
           },
-          "9,3": {
+          "3,3": {
             "size": [
               1,
               1
@@ -177,6 +160,27 @@
               "_showGlyph": false,
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
+            }
+          },
+          "7,0": {
+            "size": [
+              6,
+              5
+            ],
+            "content": {
+              "_type": "Camera Stream",
+              "_source0": "camera_server://USB Camera 0",
+              "_title": "USB Camera 0",
+              "_glyph": 148,
+              "_showGlyph": false,
+              "Crosshair/Show crosshair": true,
+              "Crosshair/Crosshair color": "#FFFFFFFF",
+              "Controls/Show controls": true,
+              "Controls/Rotation": "HALF",
+              "compression": -1.0,
+              "fps": 8,
+              "imageWidth": 320,
+              "imageHeight": 240
             }
           }
         }

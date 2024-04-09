@@ -37,7 +37,7 @@ public class Shooter extends SubsystemBase {
     //Shooter Motors
     shooterLeftMotor = new CANSparkFlex(Constants.ShooterConstants.shooterLeft, MotorType.kBrushless);
     shooterLeftMotor.restoreFactoryDefaults();
-    shooterLeftMotor.setSmartCurrentLimit(80);
+    shooterLeftMotor.setSmartCurrentLimit(100);
     shooterLeftMotor.setIdleMode(IdleMode.kCoast);
     shooterLeftMotor.setInverted(false);
     shooterPIDLeft = shooterLeftMotor.getPIDController();
@@ -51,7 +51,7 @@ public class Shooter extends SubsystemBase {
 
     shooterRightMotor = new CANSparkFlex(Constants.ShooterConstants.shooterRight, MotorType.kBrushless);
     shooterRightMotor.restoreFactoryDefaults();
-    shooterRightMotor.setSmartCurrentLimit(80);
+    shooterRightMotor.setSmartCurrentLimit(100);
     shooterRightMotor.setIdleMode(IdleMode.kCoast);
     shooterRightMotor.setInverted(true);
     shooterPIDRight = shooterRightMotor.getPIDController();

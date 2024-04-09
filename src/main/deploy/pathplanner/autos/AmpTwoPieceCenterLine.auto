@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7326298288960215,
-      "y": 4.356524349412336
+      "x": 0.7139723370355832,
+      "y": 6.726025815687995
     },
-    "rotation": 121.21840276434644
+    "rotation": -118.393019421383
   },
   "command": {
     "type": "sequential",
@@ -24,13 +24,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "AutoFeeder"
+                  "name": "AutoShooter"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "AutoShooter"
+                  "name": "AutoFeeder"
                 }
               }
             ]
@@ -39,13 +39,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Source-8"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "8-Shoot Better"
+            "pathName": "AmpCenterFour"
           }
         },
         {
@@ -76,13 +70,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Shoot-7"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "7-Shoot"
+            "pathName": "ShootToFive"
           }
         },
         {
@@ -108,18 +96,6 @@
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Shoot-6"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "AutoStopShooter"
           }
         }
       ]

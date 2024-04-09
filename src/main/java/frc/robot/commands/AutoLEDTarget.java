@@ -11,18 +11,19 @@ import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Blinkin;
+import frc.robot.subsystems.CANdleSub;
 
 public class AutoLEDTarget extends Command {
 
-  private final Blinkin m_Blinkin;
+  private final CANdleSub m_CANdleSub;
   double error;
   Optional<Alliance> ally;
 
   /** Creates a new AutoShooterRPM. */
-  public AutoLEDTarget(Blinkin blinkinSub) {
+  public AutoLEDTarget(CANdleSub CANdleSub) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_Blinkin = blinkinSub;
-    addRequirements(m_Blinkin);
+    m_CANdleSub = CANdleSub;
+    addRequirements(m_CANdleSub);
   }
 
   // Called when the command is initially scheduled.
@@ -32,14 +33,14 @@ public class AutoLEDTarget extends Command {
     ally = DriverStation.getAlliance();
     if (ally.isPresent()) {
         if (ally.get() == Alliance.Red) {
-            m_Blinkin.red();
+            m_CANdleSub.setColor(255, 0, 0);
         }
         if (ally.get() == Alliance.Blue) {
-            m_Blinkin.blue();
+            m_CANdleSub.setColor(0, 0, 255);
         }
     }
     else {
-        m_Blinkin.defult();
+        m_CANdleSub.setColor(200, 200, 0);
     }   
     
 
@@ -52,13 +53,13 @@ public class AutoLEDTarget extends Command {
     //Check error
     if(RobotContainer.m_Limelight.seesTarget()){
       if(error > -3 && error < 3){
-        m_Blinkin.green();
+        m_CANdleSub.setColor(0, 255, 0);
       } else {
         if (ally.get() == Alliance.Red) {
-            m_Blinkin.red();
+            m_CANdleSub.setColor(255, 0, 0);
         }
         if (ally.get() == Alliance.Blue) {
-            m_Blinkin.blue();
+            m_CANdleSub.setColor(0, 0, 255);
         }
       }
     }
@@ -67,7 +68,7 @@ public class AutoLEDTarget extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_Blinkin.defult();
+    m_CANdleSub.setColor(200, 200, 0);
   }
 
   // Returns true when the command should end.

@@ -59,11 +59,11 @@ public class ShooterAngle extends SubsystemBase {
   }
 
   public void resetAngleUp(){
-    m_angle_encoder.setPosition(Math.toRadians(60));
+    m_angle_encoder.setPosition(Math.toRadians(61));
   }
 
   public void resetAngleDown(){
-    m_angle_encoder.setPosition(Math.toRadians(28.5));
+    m_angle_encoder.setPosition(Math.toRadians(30));
   }
 
   public boolean getUpLimitSwitch(){

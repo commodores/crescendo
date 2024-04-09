@@ -3,8 +3,8 @@
   "robotLength": 0.939,
   "holonomicMode": true,
   "pathFolders": [
-    "CenterLineNotes",
     "CenterLineFourFull",
+    "CenterLineNotes",
     "Spinny",
     "Starting Paths",
     "WingNotes"

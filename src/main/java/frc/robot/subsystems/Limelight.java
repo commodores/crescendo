@@ -130,7 +130,7 @@ public class Limelight extends SubsystemBase {
 
   public double getShooterAngle(){
     double d;
-    d = distanceFromLimelightToGoalInches + 54; //65 if this goes down angle goes up
+    d = distanceFromLimelightToGoalInches + 30; //65 if this goes down angle goes up//28 at dcmp
 
     shooterDistance = Math.sqrt((d * d) + 5184);
 
