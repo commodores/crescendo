@@ -132,13 +132,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "3-4"
+            "pathName": "ThreeToFour"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "4-Shoot"
+            "pathName": "FourToShoot"
           }
         },
         {
@@ -175,6 +175,6 @@
       ]
     }
   },
-  "folder": "FivePiece",
+  "folder": "Wing and Center",
   "choreoAuto": false
 }

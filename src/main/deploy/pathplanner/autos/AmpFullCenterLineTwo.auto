@@ -5,7 +5,7 @@
       "x": 0.7139723370355832,
       "y": 6.726025815687995
     },
-    "rotation": -118.393019421383
+    "rotation": -119.74000000000001
   },
   "command": {
     "type": "sequential",
@@ -18,7 +18,7 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
               {
@@ -39,7 +39,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AmpCenterFour"
+            "pathName": "AmpToFour"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "FourToShoot"
           }
         },
         {
@@ -49,7 +55,7 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
               {
@@ -65,48 +71,11 @@
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "ShootToFive"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "AutoShooter"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "AutoShooter"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "AutoFeeder"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "ShootToSix"
           }
         }
       ]
     }
   },
-  "folder": "FourPiece",
+  "folder": "Center Line Only",
   "choreoAuto": false
 }

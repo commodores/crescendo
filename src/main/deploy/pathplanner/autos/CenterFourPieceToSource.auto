@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7139723370355832,
-      "y": 6.726025815687995
+      "x": 1.42,
+      "y": 5.55
     },
-    "rotation": -118.393019421383
+    "rotation": 180.0
   },
   "command": {
     "type": "sequential",
@@ -39,7 +39,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AmpCenterFour"
+            "pathName": "CenterToAmp"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "IntakeBump"
           }
         },
         {
@@ -70,7 +76,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "ShootToFive"
+            "pathName": "3-2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "IntakeBump"
           }
         },
         {
@@ -97,10 +109,53 @@
               }
             ]
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "2-1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "IntakeBump"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoShooter"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "AutoShooter"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "AutoFeeder"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoStopShooter"
+          }
         }
       ]
     }
   },
-  "folder": "FourPiece",
+  "folder": "Wing Line Only",
   "choreoAuto": false
 }

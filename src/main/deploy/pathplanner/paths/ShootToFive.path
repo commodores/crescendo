@@ -61,7 +61,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Wing to Center Line Paths",
   "previewStartingState": {
     "rotation": -165.0,
     "velocity": 0

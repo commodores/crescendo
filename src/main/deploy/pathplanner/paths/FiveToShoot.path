@@ -3,38 +3,32 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.55,
-        "y": 0.6
+        "x": 8.3,
+        "y": 5.746507493014986
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.5,
-        "y": 0.6000000000000003
+        "x": 6.890273396910431,
+        "y": 6.192670930796408
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.6,
-        "y": 4.4
+        "x": 4.3,
+        "y": 7.04
       },
       "prevControl": {
-        "x": 1.3763132980811417,
-        "y": 2.593391368600919
+        "x": 4.902579259703974,
+        "y": 6.884614496501721
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.75,
-      "rotationDegrees": -130.0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -45,11 +39,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 155.0,
+    "rotation": -165.75,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "CenterLineNotes",
+  "folder": "Wing to Center Line Paths",
   "previewStartingState": {
     "rotation": 180.0,
     "velocity": 0

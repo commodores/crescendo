@@ -70,13 +70,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "1-8"
+            "pathName": "OneToEight"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "8-Shoot"
+            "pathName": "8-Shoot Better"
           }
         },
         {
@@ -113,6 +113,6 @@
       ]
     }
   },
-  "folder": "ThreePiece",
+  "folder": "Wing and Center",
   "choreoAuto": false
 }

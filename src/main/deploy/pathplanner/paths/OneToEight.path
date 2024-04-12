@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.43,
-        "y": 2.46
+        "x": 2.9,
+        "y": 4.15
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.324576165515968,
-        "y": 1.4739418569746237
+        "x": 1.8514371930437996,
+        "y": 1.9516423588340506
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.62,
-        "y": 2.65
+        "x": 8.4,
+        "y": 0.75
       },
       "prevControl": {
-        "x": 5.201099129470986,
-        "y": 0.9422033389521326
+        "x": 5.6465587338774,
+        "y": 1.3594149400357096
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "Intake",
-      "waypointRelativePos": 0,
+      "waypointRelativePos": 0.5,
       "command": {
         "type": "parallel",
         "data": {
@@ -56,14 +56,14 @@
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": 141.0,
+    "velocity": 0.0,
+    "rotation": 163.61,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Center Line Full Paths",
+  "folder": "Wing to Center Line Paths",
   "previewStartingState": {
-    "rotation": -157.99,
+    "rotation": 155.0,
     "velocity": 0.0
   },
   "useDefaultConstraints": true

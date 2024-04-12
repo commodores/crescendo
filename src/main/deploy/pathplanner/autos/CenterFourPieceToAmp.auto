@@ -39,7 +39,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "CenterToAmp"
+            "pathName": "CenterToSource"
           }
         },
         {
@@ -76,7 +76,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "3-2"
+            "pathName": "1-2"
           }
         },
         {
@@ -113,7 +113,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "2-1"
+            "pathName": "2-3"
           }
         },
         {
@@ -156,6 +156,6 @@
       ]
     }
   },
-  "folder": "FourPiece",
+  "folder": "Wing Line Only",
   "choreoAuto": false
 }

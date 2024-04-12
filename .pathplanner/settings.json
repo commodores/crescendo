@@ -3,18 +3,17 @@
   "robotLength": 0.939,
   "holonomicMode": true,
   "pathFolders": [
-    "CenterLineFourFull",
-    "CenterLineNotes",
-    "Spinny",
+    "Wing to Center Line Paths",
+    "Center Line Full Paths",
+    "Disruption Paths",
     "Starting Paths",
     "WingNotes"
   ],
   "autoFolders": [
-    "FivePiece",
-    "FourPiece",
-    "GP Autos",
-    "ThreePiece",
-    "TwoPiece"
+    "Center Line Only",
+    "Disruption",
+    "Wing and Center",
+    "Wing Line Only"
   ],
   "defaultMaxVel": 5.0,
   "defaultMaxAccel": 5.0,
